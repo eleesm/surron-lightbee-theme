@@ -1,6 +1,13 @@
 <!doctype html>
 <html lang="{{ request.locale.iso_code }}">
   <head>
+    <!-- Google Fonts: Archivo (Italic 900) & Inter (400-700) -->
+    {% # theme-check-disable RemoteAsset %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    {% # theme-check-enable RemoteAsset %}
+
     {% # Inlined CSS Variables %}
     {% render 'css-variables' %}
 
@@ -17,13 +24,18 @@
       {{ settings.type_primary_font | font_url | preload_tag: as: 'font', crossorigin: 'anonymous' }}
     {% endunless %}
 
-    {% # Load and preload the critical CSS %}
+    {% # Stylesheets %}
     {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'animations.css' | asset_url | stylesheet_tag }}
 
     {% # Social, title, etc. %}
     {% render 'meta-tags' %}
 
     {{ content_for_header }}
+
+    {% # Custom Scripts %}
+    <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
   </head>
 
   <body>

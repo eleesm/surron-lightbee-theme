@@ -6,13 +6,20 @@
   {{ settings.type_primary_font | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}
 
   :root {
-    --font-primary--family: {{ settings.type_primary_font.family }}, {{ settings.type_primary_font.fallback_families }};
-    --font-primary--style: {{ settings.type_primary_font.style }};
-    --font-primary--weight: {{ settings.type_primary_font.weight }};
-    --page-width: {{ settings.max_page_width }};
-    --page-margin: {{ settings.min_page_margin }}px;
-    --color-background: {{ settings.background_color }};
-    --color-foreground: {{ settings.foreground_color }};
-    --style-border-radius-inputs: {{ settings.input_corner_radius }}px;
+    --font-heading-family: 'Archivo', sans-serif;
+    --font-body-family: 'Inter', sans-serif;
+    --font-primary--family: var(--font-body-family);
+    --font-primary--style: normal;
+    --font-primary--weight: 400;
+    --page-width: {{ settings.max_page_width | default: '110rem' }};
+    --page-margin: {{ settings.min_page_margin | default: 20 }}px;
+    --color-background: {{ settings.background_color | default: '#F5F6F8' }};
+    --color-foreground: {{ settings.foreground_color | default: '#0B0B0C' }};
+    --color-subtext: {{ settings.subtext_color | default: '#61666D' }};
+    --color-accent-blue: {{ settings.accent_blue | default: '#1E90FF' }};
+    --color-accent-yellow: {{ settings.accent_yellow | default: '#FFD400' }};
+    --radius-card: {{ settings.card_corner_radius | default: 32 }}px;
+    --radius-pill: {{ settings.button_corner_radius | default: 999 }}px;
+    --style-border-radius-inputs: {{ settings.input_corner_radius | default: 8 }}px;
   }
 {% endstyle %}

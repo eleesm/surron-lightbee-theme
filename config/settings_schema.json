@@ -1,9 +1,9 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Skeleton",
-    "theme_version": "0.1.0",
-    "theme_author": "Shopify",
+    "theme_name": "Sur-Ron Light Bee 2026",
+    "theme_version": "1.0.0",
+    "theme_author": "Sur-Ron",
     "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
     "theme_support_url": "https://support.shopify.com/"
   },
@@ -39,7 +39,7 @@
             "label": "t:options.page_width.wide"
           }
         ],
-        "default": "90rem"
+        "default": "110rem"
       },
       {
         "type": "range",
@@ -59,24 +59,62 @@
       {
         "type": "color",
         "id": "background_color",
-        "default": "#FFFFFF",
+        "default": "#F5F6F8",
         "label": "t:labels.background"
       },
       {
         "type": "color",
         "id": "foreground_color",
-        "default": "#333333",
+        "default": "#0B0B0C",
         "label": "t:labels.foreground"
+      },
+      {
+        "type": "color",
+        "id": "subtext_color",
+        "default": "#61666D",
+        "label": "Subtext Color"
+      },
+      {
+        "type": "color",
+        "id": "accent_blue",
+        "default": "#1E90FF",
+        "label": "Accent Blue"
+      },
+      {
+        "type": "color",
+        "id": "accent_yellow",
+        "default": "#FFD400",
+        "label": "Accent Yellow"
+      },
+      {
+        "type": "range",
+        "id": "card_corner_radius",
+        "min": 0,
+        "max": 64,
+        "step": 2,
+        "unit": "px",
+        "label": "Card Corner Radius",
+        "default": 32
+      },
+      {
+        "type": "range",
+        "id": "button_corner_radius",
+        "min": 0,
+        "max": 999,
+        "step": 1,
+        "unit": "px",
+        "label": "Button / Pill Radius",
+        "default": 999
       },
       {
         "type": "range",
         "id": "input_corner_radius",
         "min": 0,
-        "max": 10,
+        "max": 20,
         "step": 1,
         "unit": "px",
         "label": "t:labels.input_corner_radius",
-        "default": 4
+        "default": 8
       }
     ]
   }

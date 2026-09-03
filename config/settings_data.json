@@ -8,5 +8,14 @@
  * ------------------------------------------------------------
  */
 {
-  "current": {}
+  "current": {
+    "background_color": "#F5F6F8",
+    "foreground_color": "#0B0B0C",
+    "subtext_color": "#61666D",
+    "accent_blue": "#1E90FF",
+    "accent_yellow": "#FFD400",
+    "card_corner_radius": 32,
+    "button_corner_radius": 999,
+    "input_corner_radius": 8
+  }
 }

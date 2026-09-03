@@ -1,0 +1,154 @@
+/* ==========================================================================
+   Sur-Ron Light Bee 2026 - Modern Design System & Base Tokens
+   ========================================================================== */
+
+:root {
+  --color-background: #F5F6F8;
+  --color-foreground: #0B0B0C;
+  --color-subtext: #61666D;
+  --color-accent-blue: #1E90FF;
+  --color-accent-yellow: #FFD400;
+  --radius-card: 32px;
+  --radius-pill: 999px;
+  --font-heading: 'Archivo', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* Base Body Styles */
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography: Headings */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.heading-title {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--color-foreground);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+/* Typography: Subtext */
+.subtext,
+p.subtext {
+  color: var(--color-subtext);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+/* Component: Large Cards */
+.card,
+.card-large,
+.feature-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-card);
+  border: 1px solid rgba(11, 11, 12, 0.06);
+  box-shadow: 0 10px 30px -10px rgba(11, 11, 12, 0.05);
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover,
+.card-large:hover,
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -12px rgba(11, 11, 12, 0.1);
+}
+
+/* Component: Buttons & Pills */
+button,
+.btn,
+.button,
+.pill {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  padding: 0.85rem 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.btn-primary,
+.btn-order-now {
+  background-color: var(--color-foreground);
+  color: #FFFFFF;
+}
+
+.btn-primary:hover,
+.btn-order-now:hover {
+  background-color: var(--color-accent-blue);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(30, 144, 255, 0.3);
+}
+
+.btn-accent-blue {
+  background-color: var(--color-accent-blue);
+  color: #FFFFFF;
+}
+
+.btn-accent-blue:hover {
+  background-color: #1877d5;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(30, 144, 255, 0.35);
+}
+
+.btn-accent-yellow {
+  background-color: var(--color-accent-yellow);
+  color: #0B0B0C;
+}
+
+.btn-accent-yellow:hover {
+  background-color: #e6bf00;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 212, 0, 0.35);
+}
+
+/* Custom Brushstroke Underline (.stroke) */
+.stroke {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.stroke::after {
+  content: "";
+  position: absolute;
+  left: -0.15em;
+  right: -0.15em;
+  bottom: 0.08em;
+  height: 0.42em;
+  background-color: var(--color-accent-blue);
+  transform: skew(-14deg) rotate(-1deg);
+  border-radius: 4px;
+  z-index: -1;
+  opacity: 0.88;
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.stroke:hover::after {
+  transform: skew(-16deg) rotate(-1.5deg) scaleX(1.04);
+  opacity: 1;
+}

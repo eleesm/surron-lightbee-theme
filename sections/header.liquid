@@ -1,61 +1,231 @@
-<header>
-  <h2 class="header__title">
-    {{ shop.name | link_to: routes.root_url }}
-  </h2>
+<div class="header-wrapper full-width">
+  <header class="header">
+    <div class="header__left">
+      <a href="{{ routes.root_url }}" class="header__logo">
+        <span class="header__logo-brand">SUR-RON</span>
+        <span class="header__logo-model">LIGHT BEE</span>
+      </a>
+    </div>
 
-  <div class="header__menu">
-    {% for link in section.settings.menu.links %}
-      {{ link.title | link_to: link.url }}
-    {% endfor %}
-  </div>
-
-  <div class="header__icons">
-    {% if shop.customer_accounts_enabled %}
-      <shopify-account menu="{{ section.settings.customer_account_menu }}">
-        {{ 'icon-account.svg' | inline_asset_content }}
-      </shopify-account>
+    {% if section.settings.menu != blank %}
+      <nav class="header__menu" aria-label="Main Navigation">
+        {% for link in section.settings.menu.links %}
+          <a href="{{ link.url }}" class="header__link">{{ link.title }}</a>
+        {% endfor %}
+      </nav>
     {% endif %}
 
-    <a href="{{ routes.cart_url }}">
-      {% if cart.item_count > 0 %}
-        <sup>{{ cart.item_count }}</sup>
+    <div class="header__right">
+      {% if shop.customer_accounts_enabled %}
+        <shopify-account menu="{{ section.settings.customer_account_menu }}">
+          {{ 'icon-account.svg' | inline_asset_content }}
+        </shopify-account>
       {% endif %}
 
-      {{ 'icon-cart.svg' | inline_asset_content }}
-    </a>
-  </div>
-</header>
+      <a href="{{ routes.cart_url }}" class="header__cart-link" aria-label="Cart">
+        {% if cart.item_count > 0 %}
+          <span class="header__cart-count">{{ cart.item_count }}</span>
+        {% endif %}
+        {{ 'icon-cart.svg' | inline_asset_content }}
+      </a>
+
+      <a href="{{ section.settings.order_button_url | default: '#order' }}" class="header__order-btn">
+        {{ section.settings.order_button_text | default: 'Order Now' }}
+      </a>
+    </div>
+  </header>
+</div>
 
 {% stylesheet %}
-  header {
-    height: 5rem;
+  .header-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: transparent;
+    border-bottom: 1px solid transparent;
+    transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                backdrop-filter 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .header-wrapper.scrolled {
+    background-color: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(11, 11, 12, 0.08);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+  }
+
+  .header {
+    max-width: var(--page-width, 110rem);
+    margin: 0 auto;
+    padding: 1.25rem var(--page-margin, 20px);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1.5rem;
+    transition: padding 0.3s ease;
   }
-  header a {
-    position: relative;
+
+  .header-wrapper.scrolled .header {
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+  }
+
+  .header__left {
+    display: flex;
+    align-items: center;
+  }
+
+  .header__logo {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
     text-decoration: none;
-    color: var(--color-foreground);
+    color: var(--color-foreground, #0B0B0C);
+    font-family: var(--font-heading, 'Archivo', sans-serif);
+    font-style: italic;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  .header__logo-brand {
+    color: var(--color-foreground, #0B0B0C);
+  }
+
+  .header__logo-model {
+    color: var(--color-accent-blue, #1E90FF);
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+  }
+
+  .header__menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .header__link {
+    text-decoration: none;
+    color: var(--color-foreground, #0B0B0C);
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: color 0.2s ease;
+  }
+
+  .header__link:hover {
+    color: var(--color-accent-blue, #1E90FF);
+  }
+
+  .header__right {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .header__cart-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-foreground, #0B0B0C);
+    text-decoration: none;
+    transition: transform 0.2s ease;
+  }
+
+  .header__cart-link:hover {
+    transform: scale(1.08);
+  }
+
+  .header__cart-link svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .header__cart-count {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    background-color: var(--color-accent-blue, #1E90FF);
+    color: #FFFFFF;
+    font-size: 0.7rem;
+    font-weight: 700;
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  header a sup {
-    position: absolute;
-    left: 100%;
-    overflow: hidden;
-    max-width: var(--page-margin);
+
+  .header__order-btn {
+    background-color: var(--color-foreground, #0B0B0C);
+    color: #FFFFFF;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 0.7rem 1.6rem;
+    border-radius: var(--radius-pill, 999px);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 14px rgba(11, 11, 12, 0.15);
   }
-  header svg {
-    width: 2rem;
+
+  .header__order-btn:hover {
+    background-color: var(--color-accent-blue, #1E90FF);
+    color: #FFFFFF;
+    transform: scale(1.04);
+    box-shadow: 0 6px 20px rgba(30, 144, 255, 0.35);
   }
-  header .header__menu,
-  header .header__icons {
-    display: flex;
-    gap: 1rem;
+
+  @media (max-width: 768px) {
+    .header__menu {
+      display: none;
+    }
+    .header__order-btn {
+      padding: 0.55rem 1.2rem;
+      font-size: 0.8rem;
+    }
   }
 {% endstylesheet %}
+
+{% javascript %}
+  function initHeaderScroll() {
+    const headerWrapper = document.querySelector('.header-wrapper');
+    if (!headerWrapper) return;
+
+    const checkScroll = () => {
+      if (window.scrollY > 20) {
+        headerWrapper.classList.add('scrolled');
+      } else {
+        headerWrapper.classList.remove('scrolled');
+      }
+    };
+
+    window.addEventListener('scroll', checkScroll, { passive: true });
+    checkScroll();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeaderScroll);
+  } else {
+    initHeaderScroll();
+  }
+{% endjavascript %}
 
 {% schema %}
 {
@@ -71,6 +241,17 @@
       "id": "customer_account_menu",
       "label": "t:labels.customer_account_menu",
       "default": "customer-account-main-menu"
+    },
+    {
+      "type": "text",
+      "id": "order_button_text",
+      "label": "Order Button Text",
+      "default": "Order Now"
+    },
+    {
+      "type": "url",
+      "id": "order_button_url",
+      "label": "Order Button URL"
     }
   ]
 }

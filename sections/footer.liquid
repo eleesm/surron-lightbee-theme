@@ -1,39 +1,135 @@
-<footer>
-  <div class="footer__copyright">
-    &copy;
-    {{ 'now' | date: '%Y' }}
-    {{ shop.name | link_to: routes.root_url }}, {{ powered_by_link }}
-  </div>
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__disclaimer">
+      <span class="footer__disclaimer-badge">Notice</span>
+      <p class="footer__disclaimer-text">For off-road use only. Not street legal.</p>
+    </div>
 
-  <div class="footer__links">
-    {% for link in section.settings.menu.links %}
-      {{ link.title | link_to: link.url }}
-    {% endfor %}
-  </div>
+    <div class="footer__content">
+      <div class="footer__copyright">
+        &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.
+      </div>
 
-  <div class="footer__payment">
-    {% if section.settings.show_payment_icons %}
-      {% for type in shop.enabled_payment_types %}
-        {{ type | payment_type_svg_tag }}
-      {% endfor %}
-    {% endif %}
+      {% if section.settings.menu != blank %}
+        <nav class="footer__links" aria-label="Footer Navigation">
+          {% for link in section.settings.menu.links %}
+            {{ link.title | link_to: link.url }}
+          {% endfor %}
+        </nav>
+      {% endif %}
+
+      <div class="footer__payment">
+        {% if section.settings.show_payment_icons %}
+          {% for type in shop.enabled_payment_types %}
+            {{ type | payment_type_svg_tag }}
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
   </div>
 </footer>
 
 {% stylesheet %}
-  footer {
+  .footer {
+    width: 100%;
+    margin-top: auto;
+    padding: 3rem 0 2rem;
+    border-top: 1px solid rgba(11, 11, 12, 0.08);
+    background-color: var(--color-background, #F5F6F8);
+    font-family: var(--font-body, 'Inter', sans-serif);
+  }
+
+  .footer__inner {
+    max-width: var(--page-width, 110rem);
+    margin: 0 auto;
+    padding: 0 var(--page-margin, 20px);
     display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .footer__disclaimer {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    background-color: rgba(11, 11, 12, 0.03);
+    border: 1px solid rgba(11, 11, 12, 0.08);
+    border-radius: var(--radius-pill, 999px);
+    width: fit-content;
+  }
+
+  .footer__disclaimer-badge {
+    background-color: var(--color-accent-yellow, #FFD400);
+    color: #0B0B0C;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-pill, 999px);
+  }
+
+  .footer__disclaimer-text {
+    color: var(--color-subtext, #61666D);
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .footer__content {
+    display: flex;
+    align-items: center;
     justify-content: space-between;
-    margin-top: 2rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(11, 11, 12, 0.04);
   }
-  footer a {
-    text-decoration: none;
-    color: var(--color-foreground);
+
+  .footer__copyright {
+    color: var(--color-subtext, #61666D);
+    font-size: 0.875rem;
   }
-  footer .footer__links,
-  footer .footer__payment {
+
+  .footer__links {
     display: flex;
-    gap: 1rem;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .footer__links a {
+    text-decoration: none;
+    color: var(--color-subtext, #61666D);
+    font-size: 0.875rem;
+    transition: color 0.2s ease;
+  }
+
+  .footer__links a:hover {
+    color: var(--color-accent-blue, #1E90FF);
+  }
+
+  .footer__payment {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .footer__payment svg {
+    height: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .footer__content {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .footer__disclaimer {
+      width: 100%;
+      border-radius: 16px;
+    }
   }
 {% endstylesheet %}
 
