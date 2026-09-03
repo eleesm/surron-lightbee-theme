@@ -1,0 +1,1 @@
+C:/Users/Samo/Desktop/surron-project/lightbee-theme/AGENTS.md
