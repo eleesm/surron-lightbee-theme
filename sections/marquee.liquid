@@ -1,14 +1,12 @@
-<section class="marquee-section full-width" id="marquee" aria-label="Key Highlights">
+<section class="marquee-section full-width" id="marquee" aria-label="Highlights Marquee">
   <div class="marquee-wrapper">
     <div class="marquee-track">
-      {% assign marquee_text = section.settings.text | default: '10kW PEAK POWER ✦ 59KG ✦ 2.5kWh ✦ 1.29s 0-30 ✦ FREE USA SHIPPING ✦ 100-DAY WARRANTY ✦' %}
+      {% capture marquee_unit %}10kW PEAK POWER ✦ 59KG ✦ 2.5kWh ✦ 1.29s 0-30 ✦ FREE USA SHIPPING ✦ 100-DAY WARRANTY ✦ &nbsp;{% endcapture %}
       <div class="marquee-content">
-        <span>{{ marquee_text }}</span>
-        <span>{{ marquee_text }}</span>
+        <span>{{ marquee_unit }}{{ marquee_unit }}{{ marquee_unit }}</span>
       </div>
       <div class="marquee-content" aria-hidden="true">
-        <span>{{ marquee_text }}</span>
-        <span>{{ marquee_text }}</span>
+        <span>{{ marquee_unit }}{{ marquee_unit }}{{ marquee_unit }}</span>
       </div>
     </div>
   </div>
@@ -18,24 +16,29 @@
   .marquee-section {
     position: relative;
     overflow: hidden;
-    padding: 1.25rem 0;
-    margin: 2rem 0;
+    padding: 1.5rem 0;
+    margin: 1.5rem 0;
     z-index: 10;
   }
 
   .marquee-wrapper {
     background-color: var(--color-accent-yellow, #FFD400);
-    transform: rotate(-1.6deg) scale(1.03);
+    transform: rotate(-1.6deg) scale(1.04);
     padding: 1rem 0;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(255, 212, 0, 0.25);
   }
 
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: mq 24s linear infinite;
+    will-change: transform;
+  }
+
   .marquee-content {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    padding-right: 1.5rem;
     white-space: nowrap;
   }
 
@@ -53,18 +56,11 @@
 
 {% schema %}
 {
-  "name": "Marquee Ticker",
-  "settings": [
-    {
-      "type": "text",
-      "id": "text",
-      "label": "Scrolling Text",
-      "default": "10kW PEAK POWER ✦ 59KG ✦ 2.5kWh ✦ 1.29s 0-30 ✦ FREE USA SHIPPING ✦ 100-DAY WARRANTY ✦"
-    }
-  ],
+  "name": "Marquee",
+  "settings": [],
   "presets": [
     {
-      "name": "Marquee Ticker"
+      "name": "Marquee"
     }
   ]
 }

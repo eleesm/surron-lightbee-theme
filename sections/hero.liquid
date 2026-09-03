@@ -1,19 +1,25 @@
 <section class="hero full-width" id="hero">
   <div class="hero__bg-container">
+    {% if section.settings.image != blank %}
+      {% assign hero_image_src = section.settings.image | image_url: width: 2000 %}
+    {% else %}
+      {% assign hero_image_src = 'hero.jpg' | asset_url %}
+    {% endif %}
+
     <img
-      src="{{ 'hero.jpg' | asset_url }}"
-      alt="Sur-Ron Light Bee 2026 Studio Shot"
+      src="{{ hero_image_src }}"
+      alt="{{ section.settings.image.alt | default: 'Sur-Ron Light Bee 2026 Hero Shot' }}"
       class="hero__bg-img ken-burns"
-      width="1920"
-      height="1080"
+      width="2000"
+      height="1200"
       loading="eager"
       fetchpriority="high"
     >
-    <div class="hero__overlay" style="opacity: {{ section.settings.overlay_opacity | default: 12 }}%;"></div>
+    <div class="hero__overlay"></div>
   </div>
 
   <div class="hero__container">
-    <div class="hero__content scroll-reveal">
+    <div class="hero__content" data-rv>
       <div class="hero__eyebrow">
         <span class="pulse-dot" aria-hidden="true"></span>
         <span>{{ section.settings.eyebrow | default: 'THE 2026 LIGHT BEE' }}</span>
@@ -23,39 +29,31 @@
         {{ section.settings.title | default: 'Power Upgraded. <span class="stroke">Light</span> As Always.' }}
       </h1>
 
-      <p class="hero__subtext subtext">
-        {{ section.settings.subtext | default: '10kW of peak power. 59kg of pure control. The most powerful Light Bee ever built — still light enough to lift.' }}
+      <p class="hero__subtext">
+        {{ section.settings.subtitle | default: '10kW of peak power. 59kg of pure control. The most powerful Light Bee ever built — still light enough to lift.' }}
       </p>
 
       <div class="hero__actions">
-        <a href="{{ section.settings.primary_cta_link | default: '#colors' }}" class="btn btn-accent-blue pill hero__cta-primary">
+        <a href="#colors" class="btn btn-accent-blue pill hero__cta-primary">
           {{ section.settings.primary_cta_text | default: 'Choose Your Color' }}
-        </a>
-        <a href="{{ section.settings.secondary_cta_link | default: '#specs' }}" class="hero__cta-secondary">
-          {{ section.settings.secondary_cta_text | default: 'See Full Specs' }} &rarr;
         </a>
       </div>
 
       <div class="hero__chips">
         <div class="hero__chip floating-chip">
           <span class="chip-icon">⚡</span>
-          <span class="chip-text">{{ section.settings.chip_1 | default: '10kW PEAK' }}</span>
+          <span class="chip-text">10kW PEAK</span>
         </div>
         <div class="hero__chip floating-chip">
           <span class="chip-icon">🪶</span>
-          <span class="chip-text">{{ section.settings.chip_2 | default: '59KG' }}</span>
+          <span class="chip-text">59KG</span>
         </div>
         <div class="hero__chip floating-chip">
           <span class="chip-icon">🔋</span>
-          <span class="chip-text">{{ section.settings.chip_3 | default: '2.5kWh' }}</span>
+          <span class="chip-text">2.5kWh</span>
         </div>
       </div>
     </div>
-
-    <a href="#marquee" class="hero__scroll-indicator floating-scroll" aria-label="Scroll down">
-      <span>SCROLL</span>
-      <span class="scroll-arrow">&darr;</span>
-    </a>
   </div>
 </section>
 
@@ -66,7 +64,6 @@
     min-height: 100svh;
     display: flex;
     align-items: center;
-    justify-content: center;
     overflow: hidden;
     padding: 7rem var(--page-margin, 20px) 4rem;
   }
@@ -90,7 +87,7 @@
   .hero__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(11, 11, 12, 0.05) 0%, rgba(11, 11, 12, 0.25) 100%);
+    background: linear-gradient(135deg, rgba(5, 8, 12, 0.75) 0%, rgba(5, 8, 12, 0.60) 50%, rgba(5, 8, 12, 0.75) 100%);
     pointer-events: none;
   }
 
@@ -101,16 +98,15 @@
     width: 100%;
     margin: 0 auto;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    justify-content: flex-start;
   }
 
   .hero__content {
     max-width: 54rem;
+    text-align: left;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 1.5rem;
   }
 
@@ -123,67 +119,56 @@
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--color-foreground, #0B0B0C);
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     padding: 0.45rem 1.1rem;
     border-radius: var(--radius-pill, 999px);
-    border: 1px solid rgba(11, 11, 12, 0.08);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   }
 
   .hero__title {
-    font-size: clamp(2.6rem, 5.8vw, 5.2rem);
-    line-height: 1.02;
+    font-size: clamp(52px, 6.2vw, 120px);
+    line-height: 0.98;
     margin: 0;
-    color: var(--color-foreground, #0B0B0C);
+    color: #FFFFFF;
+    font-style: italic;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
   }
 
   .hero__subtext {
-    font-size: clamp(1.05rem, 1.4vw, 1.35rem);
+    font-size: clamp(1.1rem, 1.5vw, 1.35rem);
     max-width: 42rem;
     margin: 0;
-    color: var(--color-subtext, #61666D);
+    color: rgba(255, 255, 255, 0.82);
+    line-height: 1.6;
+    font-family: var(--font-body, 'Inter', sans-serif);
   }
 
   .hero__actions {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 1.5rem;
     margin-top: 0.5rem;
-    flex-wrap: wrap;
   }
 
   .hero__cta-primary {
-    padding: 0.95rem 2.4rem;
+    padding: 1rem 2.6rem;
     font-size: 1.05rem;
-  }
-
-  .hero__cta-secondary {
-    font-family: var(--font-body, 'Inter', sans-serif);
-    font-weight: 600;
-    font-size: 1rem;
-    color: var(--color-foreground, #0B0B0C);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    transition: color 0.2s ease, transform 0.2s ease;
-  }
-
-  .hero__cta-secondary:hover {
-    color: var(--color-accent-blue, #1E90FF);
-    transform: translateX(4px);
+    background-color: var(--color-accent-blue, #1E90FF);
+    color: #FFFFFF;
+    box-shadow: 0 8px 24px rgba(30, 144, 255, 0.4);
   }
 
   .hero__chips {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 1rem;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     flex-wrap: wrap;
   }
 
@@ -192,68 +177,61 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.65rem 1.35rem;
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: var(--radius-pill, 999px);
-    box-shadow: 0 8px 24px -6px rgba(11, 11, 12, 0.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     font-family: var(--font-heading, 'Archivo', sans-serif);
     font-style: italic;
     font-weight: 900;
     font-size: 0.95rem;
-    color: var(--color-foreground, #0B0B0C);
+    color: #FFFFFF;
     letter-spacing: 0.02em;
-  }
-
-  .hero__scroll-indicator {
-    position: absolute;
-    bottom: -2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.2rem;
-    text-decoration: none;
-    color: var(--color-foreground, #0B0B0C);
-    font-family: var(--font-body, 'Inter', sans-serif);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    opacity: 0.8;
-    transition: opacity 0.2s ease;
-  }
-
-  .hero__scroll-indicator:hover {
-    opacity: 1;
-  }
-
-  .scroll-arrow {
-    font-size: 1.1rem;
   }
 
   @media (max-width: 768px) {
     .hero {
-      padding-top: 6rem;
-      padding-bottom: 3.5rem;
+      padding: 6rem 1.25rem 3rem;
+      min-height: 90vh;
+    }
+    .hero__content {
+      align-items: flex-start;
+      gap: 1.2rem;
+    }
+    .hero__title {
+      font-size: clamp(38px, 11vw, 60px);
+    }
+    .hero__subtext {
+      font-size: 1rem;
     }
     .hero__chips {
       gap: 0.5rem;
     }
     .hero__chip {
-      padding: 0.5rem 1rem;
-      font-size: 0.85rem;
+      padding: 0.5rem 0.9rem;
+      font-size: 0.82rem;
     }
     .hero__actions {
-      flex-direction: column;
-      gap: 1rem;
+      width: 100%;
+    }
+    .hero__cta-primary {
+      width: 100%;
+      justify-content: center;
     }
   }
 {% endstylesheet %}
 
 {% schema %}
 {
-  "name": "Hero Section",
+  "name": "Hero",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero Background Image"
+    },
     {
       "type": "text",
       "id": "eyebrow",
@@ -268,64 +246,20 @@
     },
     {
       "type": "textarea",
-      "id": "subtext",
-      "label": "Subtext",
+      "id": "subtitle",
+      "label": "Subtitle",
       "default": "10kW of peak power. 59kg of pure control. The most powerful Light Bee ever built — still light enough to lift."
     },
     {
       "type": "text",
       "id": "primary_cta_text",
-      "label": "Primary Button Text",
+      "label": "Button Text",
       "default": "Choose Your Color"
-    },
-    {
-      "type": "url",
-      "id": "primary_cta_link",
-      "label": "Primary Button Link"
-    },
-    {
-      "type": "text",
-      "id": "secondary_cta_text",
-      "label": "Secondary Button Text",
-      "default": "See Full Specs"
-    },
-    {
-      "type": "url",
-      "id": "secondary_cta_link",
-      "label": "Secondary Button Link"
-    },
-    {
-      "type": "text",
-      "id": "chip_1",
-      "label": "Chip 1 Text",
-      "default": "10kW PEAK"
-    },
-    {
-      "type": "text",
-      "id": "chip_2",
-      "label": "Chip 2 Text",
-      "default": "59KG"
-    },
-    {
-      "type": "text",
-      "id": "chip_3",
-      "label": "Chip 3 Text",
-      "default": "2.5kWh"
-    },
-    {
-      "type": "range",
-      "id": "overlay_opacity",
-      "min": 0,
-      "max": 50,
-      "step": 1,
-      "unit": "%",
-      "label": "Overlay Opacity",
-      "default": 12
     }
   ],
   "presets": [
     {
-      "name": "Hero Section"
+      "name": "Hero"
     }
   ]
 }

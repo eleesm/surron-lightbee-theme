@@ -1,0 +1,232 @@
+<section class="stats-dark-section full-width" id="specs" aria-labelledby="StatsDarkHeading">
+  <div class="stats-dark__bg-container">
+    {% if section.settings.image != blank %}
+      {% assign stats_bg_src = section.settings.image | image_url: width: 2000 %}
+    {% else %}
+      {% assign stats_bg_src = 'action.jpg' | asset_url %}
+    {% endif %}
+
+    <img
+      src="{{ stats_bg_src }}"
+      alt="{{ section.settings.image.alt | default: 'Sur-Ron Light Bee 2026 Action Background' }}"
+      class="stats-dark__bg-img"
+      width="2000"
+      height="1200"
+      loading="lazy"
+    >
+    <div class="stats-dark__overlay"></div>
+  </div>
+
+  <div class="stats-dark__container">
+    <div class="stats-dark__header text-center" data-rv>
+      <span class="stats-dark__eyebrow">DOMINANT METRICS</span>
+      <h2 id="StatsDarkHeading" class="stats-dark__heading">
+        Light. Rigid. <span class="stroke">Stable.</span>
+      </h2>
+      <p class="stats-dark__subtext">
+        Zero delay torque delivery with unrivaled agility on the steepest inclines.
+      </p>
+    </div>
+
+    <!-- 3 Glassmorphism Stat Cards -->
+    <div class="stats-dark__grid" data-rv>
+      <!-- Stat 1 -->
+      <div class="stat-card">
+        <div class="stat-card__number-wrap">
+          <span class="stat-card__number" data-counter-target="1.29" data-counter-decimals="2">0.00</span>
+          <span class="stat-card__unit">s</span>
+        </div>
+        <span class="stat-card__label">0–30 km/h (sec)</span>
+      </div>
+
+      <!-- Stat 2 -->
+      <div class="stat-card">
+        <div class="stat-card__number-wrap">
+          <span class="stat-card__number" data-counter-target="2.5" data-counter-decimals="1">0.0</span>
+          <span class="stat-card__unit">s</span>
+        </div>
+        <span class="stat-card__label">0–50 km/h (sec)</span>
+      </div>
+
+      <!-- Stat 3 -->
+      <div class="stat-card">
+        <div class="stat-card__number-wrap">
+          <span class="stat-card__number" data-counter-target="59" data-counter-decimals="0">0</span>
+          <span class="stat-card__unit">kg</span>
+        </div>
+        <span class="stat-card__label">ready to ride</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .stats-dark-section {
+    position: relative;
+    padding: 7.5rem var(--page-margin, 20px);
+    overflow: hidden;
+    color: #FFFFFF;
+  }
+
+  .stats-dark__bg-container {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .stats-dark__bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  .stats-dark__overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(5, 8, 12, 0.78);
+    z-index: 1;
+  }
+
+  .stats-dark__container {
+    position: relative;
+    z-index: 2;
+    max-width: var(--page-width, 110rem);
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .stats-dark__header {
+    max-width: 44rem;
+    margin: 0 auto 4.5rem;
+    text-align: center;
+  }
+
+  .stats-dark__eyebrow {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    color: var(--color-accent-yellow, #FFD400);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+
+  .stats-dark__heading {
+    font-size: clamp(2.4rem, 4.5vw, 4.4rem);
+    color: #FFFFFF;
+    margin: 0 0 1rem;
+  }
+
+  .stats-dark__subtext {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* 3 Column Grid */
+  .stats-dark__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 64rem;
+    margin: 0 auto;
+  }
+
+  .stat-card {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-card, 32px);
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 212, 0, 0.4);
+  }
+
+  .stat-card__number-wrap {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .stat-card__number {
+    font-family: var(--font-heading, 'Archivo', sans-serif);
+    font-style: italic;
+    font-weight: 900;
+    font-size: clamp(3.2rem, 5.5vw, 5.2rem);
+    line-height: 1;
+    color: var(--color-accent-yellow, #FFD400);
+    letter-spacing: -0.04em;
+  }
+
+  .stat-card__unit {
+    font-family: var(--font-heading, 'Archivo', sans-serif);
+    font-style: italic;
+    font-weight: 900;
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    color: #FFFFFF;
+  }
+
+  .stat-card__label {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.88);
+    letter-spacing: -0.01em;
+    display: block;
+  }
+
+  /* Mobile: 2 Columns & Parallax Disabled */
+  @media (max-width: 768px) {
+    .stats-dark__bg-img {
+      position: absolute;
+    }
+    .stats-dark__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+    .stat-card:last-child {
+      grid-column: 1 / -1;
+    }
+    .stat-card {
+      padding: 2rem 1.25rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Stats Dark",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stats Dark"
+    }
+  ]
+}
+{% endschema %}

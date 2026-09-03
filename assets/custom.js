@@ -17,22 +17,21 @@ document.addEventListener('DOMContentLoaded', () => {
     handleHeaderScroll();
   }
 
-  // 2. Sticky Buy Bar Visibility
-  const stickyBuyBar = document.querySelector('.sticky-buy-bar');
-  if (stickyBuyBar) {
-    const handleStickyBar = () => {
-      const threshold = window.innerHeight * 0.8;
-      if (window.scrollY > threshold) {
-        stickyBuyBar.classList.add('is-visible');
-      } else {
-        stickyBuyBar.classList.remove('is-visible');
-      }
-    };
-    window.addEventListener('scroll', handleStickyBar, { passive: true });
-    handleStickyBar();
+  // 2. Global Scroll-Reveal ([data-rv] threshold 0.25)
+  const rvElements = document.querySelectorAll('[data-rv]');
+  if (rvElements.length > 0) {
+    const rvObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.25 });
+    rvElements.forEach(el => rvObserver.observe(el));
   }
 
-  // 3. Color Stage Swatch Switcher & 3D Tilt
+  // 3. Color Stage Swatch Switcher (Crossfade 220ms, .on class, tag update)
   const colorStage = document.querySelector('.stage-card');
   const mainImage = document.getElementById('StageProductImage');
   const variantTag = document.getElementById('StageVariantName');
@@ -42,19 +41,20 @@ document.addEventListener('DOMContentLoaded', () => {
     swatches.forEach(swatch => {
       swatch.addEventListener('click', (e) => {
         e.preventDefault();
-        swatches.forEach(s => s.classList.remove('active'));
-        swatch.classList.add('active');
+        swatches.forEach(s => s.classList.remove('on', 'active'));
+        swatch.classList.add('on', 'active');
 
         const newSrc = swatch.getAttribute('data-image-src');
         const colorName = swatch.getAttribute('data-color-name');
 
         if (mainImage.src !== newSrc) {
+          mainImage.style.transition = 'opacity 220ms ease';
           mainImage.style.opacity = '0';
           setTimeout(() => {
             mainImage.src = newSrc;
             mainImage.alt = colorName;
             mainImage.style.opacity = '1';
-          }, 200);
+          }, 220);
         }
 
         if (variantTag && colorName) {
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3D Tilt Effect on Color Stage (.stage-card)
+  // 3D Tilt Effect on Color Stage (rotateY ±12deg, rotateX ±9deg, translateY -10px)
   if (colorStage) {
     const inner = colorStage.querySelector('.stage-inner') || colorStage;
     
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
       
-      // rotateY up to 12deg, rotateX up to 9deg
+      // rotateY ±12deg, rotateX ±9deg
       const rotateX = ((centerY - y) / centerY) * 9;
       const rotateY = ((x - centerX) / centerX) * 12;
       
@@ -88,13 +88,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. Performance Stats Count-Up Animation
+  // 4. Performance Stats Count-Up Animation (1400ms, ease-out cubic)
   const statNumbers = document.querySelectorAll('[data-counter-target]');
   if (statNumbers.length > 0) {
     const countUp = (el) => {
       const target = parseFloat(el.getAttribute('data-counter-target'));
       const decimals = parseInt(el.getAttribute('data-counter-decimals') || '0', 10);
-      const duration = 1400; // 1.4s
+      const duration = 1400; // 1400ms
       const startTime = performance.now();
 
       const updateCounter = (currentTime) => {
@@ -124,52 +124,8 @@ document.addEventListener('DOMContentLoaded', () => {
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.25 });
 
     statNumbers.forEach(stat => counterObserver.observe(stat));
   }
-
-  // 5. Scroll Reveal Observer
-  const revealElements = document.querySelectorAll('.scroll-reveal');
-  if (revealElements.length > 0) {
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-
-    revealElements.forEach(el => revealObserver.observe(el));
-  }
-
-  // 6. FAQ Accordion Interaction
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const header = item.querySelector('.faq-header');
-    if (!header) return;
-
-    header.addEventListener('click', () => {
-      const isOpen = item.classList.contains('is-open');
-      
-      // Close other open FAQ items
-      faqItems.forEach(other => {
-        if (other !== item) {
-          other.classList.remove('is-open');
-          const otherBody = other.querySelector('.faq-body');
-          if (otherBody) otherBody.style.maxHeight = null;
-        }
-      });
-
-      if (!isOpen) {
-        item.classList.add('is-open');
-        const body = item.querySelector('.faq-body');
-        if (body) body.style.maxHeight = body.scrollHeight + 'px';
-      } else {
-        item.classList.remove('is-open');
-        const body = item.querySelector('.faq-body');
-        if (body) body.style.maxHeight = null;
-      }
-    });
-  });
 });
