@@ -1,0 +1,177 @@
+<aside class="sticky-buy-bar" aria-label="Quick Purchase Bar">
+  <div class="sticky-buy-bar__inner">
+    <div class="sticky-buy-bar__product">
+      <img
+        src="{{ 'volt.jpg' | asset_url }}"
+        alt="Sur-Ron Light Bee 2026 Thumbnail"
+        class="sticky-buy-bar__thumb"
+        width="80"
+        height="55"
+        loading="lazy"
+      >
+      <div class="sticky-buy-bar__info">
+        <span class="sticky-buy-bar__title">Sur-Ron Light Bee 2026</span>
+        <span class="sticky-buy-bar__stock">⚡ In Stock — Ships in 24h</span>
+      </div>
+    </div>
+
+    <div class="sticky-buy-bar__pricing">
+      <span class="sticky-buy-bar__price-current">{{ section.settings.price | default: '$3,599' }}</span>
+      <span class="sticky-buy-bar__price-original">{{ section.settings.compare_price | default: '$4,499' }}</span>
+    </div>
+
+    <div class="sticky-buy-bar__action">
+      <a href="{{ section.settings.cta_link | default: '#colors' }}" class="btn btn-accent-blue pill sticky-buy-bar__btn">
+        {{ section.settings.cta_text | default: 'Order Now' }}
+      </a>
+    </div>
+  </div>
+</aside>
+
+{% stylesheet %}
+  .sticky-buy-bar {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(120px);
+    z-index: 990;
+    width: calc(100% - 2rem);
+    max-width: 44rem;
+    background: rgba(11, 11, 12, 0.94);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-pill, 999px);
+    padding: 0.75rem 1.25rem 0.75rem 1.5rem;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .sticky-buy-bar.is-visible {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .sticky-buy-bar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+  }
+
+  .sticky-buy-bar__product {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .sticky-buy-bar__thumb {
+    width: 50px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: #1A1A1E;
+  }
+
+  .sticky-buy-bar__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sticky-buy-bar__title {
+    font-family: var(--font-heading, 'Archivo', sans-serif);
+    font-style: italic;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    color: #FFFFFF;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
+
+  .sticky-buy-bar__stock {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.75rem;
+    color: var(--color-accent-yellow, #FFD400);
+    font-weight: 600;
+  }
+
+  .sticky-buy-bar__pricing {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .sticky-buy-bar__price-current {
+    font-family: var(--font-heading, 'Archivo', sans-serif);
+    font-style: italic;
+    font-weight: 900;
+    font-size: 1.35rem;
+    color: #FFFFFF;
+  }
+
+  .sticky-buy-bar__price-original {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: line-through;
+  }
+
+  .sticky-buy-bar__btn {
+    padding: 0.65rem 1.6rem;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 640px) {
+    .sticky-buy-bar {
+      bottom: 1rem;
+      padding: 0.65rem 1rem;
+      border-radius: 20px;
+    }
+    .sticky-buy-bar__stock {
+      display: none;
+    }
+    .sticky-buy-bar__thumb {
+      display: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Sticky Buy Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "price",
+      "label": "Price",
+      "default": "$3,599"
+    },
+    {
+      "type": "text",
+      "id": "compare_price",
+      "label": "Compare Price",
+      "default": "$4,499"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button Text",
+      "default": "Order Now"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sticky Buy Bar"
+    }
+  ]
+}
+{% endschema %}

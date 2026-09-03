@@ -1,0 +1,332 @@
+<section class="hero full-width" id="hero">
+  <div class="hero__bg-container">
+    <img
+      src="{{ 'hero.jpg' | asset_url }}"
+      alt="Sur-Ron Light Bee 2026 Studio Shot"
+      class="hero__bg-img ken-burns"
+      width="1920"
+      height="1080"
+      loading="eager"
+      fetchpriority="high"
+    >
+    <div class="hero__overlay" style="opacity: {{ section.settings.overlay_opacity | default: 12 }}%;"></div>
+  </div>
+
+  <div class="hero__container">
+    <div class="hero__content scroll-reveal">
+      <div class="hero__eyebrow">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        <span>{{ section.settings.eyebrow | default: 'THE 2026 LIGHT BEE' }}</span>
+      </div>
+
+      <h1 class="hero__title">
+        {{ section.settings.title | default: 'Power Upgraded. <span class="stroke">Light</span> As Always.' }}
+      </h1>
+
+      <p class="hero__subtext subtext">
+        {{ section.settings.subtext | default: '10kW of peak power. 59kg of pure control. The most powerful Light Bee ever built — still light enough to lift.' }}
+      </p>
+
+      <div class="hero__actions">
+        <a href="{{ section.settings.primary_cta_link | default: '#colors' }}" class="btn btn-accent-blue pill hero__cta-primary">
+          {{ section.settings.primary_cta_text | default: 'Choose Your Color' }}
+        </a>
+        <a href="{{ section.settings.secondary_cta_link | default: '#specs' }}" class="hero__cta-secondary">
+          {{ section.settings.secondary_cta_text | default: 'See Full Specs' }} &rarr;
+        </a>
+      </div>
+
+      <div class="hero__chips">
+        <div class="hero__chip floating-chip">
+          <span class="chip-icon">⚡</span>
+          <span class="chip-text">{{ section.settings.chip_1 | default: '10kW PEAK' }}</span>
+        </div>
+        <div class="hero__chip floating-chip">
+          <span class="chip-icon">🪶</span>
+          <span class="chip-text">{{ section.settings.chip_2 | default: '59KG' }}</span>
+        </div>
+        <div class="hero__chip floating-chip">
+          <span class="chip-icon">🔋</span>
+          <span class="chip-text">{{ section.settings.chip_3 | default: '2.5kWh' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <a href="#marquee" class="hero__scroll-indicator floating-scroll" aria-label="Scroll down">
+      <span>SCROLL</span>
+      <span class="scroll-arrow">&darr;</span>
+    </a>
+  </div>
+</section>
+
+{% stylesheet %}
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 7rem var(--page-margin, 20px) 4rem;
+  }
+
+  .hero__bg-container {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .hero__bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(11, 11, 12, 0.05) 0%, rgba(11, 11, 12, 0.25) 100%);
+    pointer-events: none;
+  }
+
+  .hero__container {
+    position: relative;
+    z-index: 2;
+    max-width: var(--page-width, 110rem);
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero__content {
+    max-width: 54rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-foreground, #0B0B0C);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 0.45rem 1.1rem;
+    border-radius: var(--radius-pill, 999px);
+    border: 1px solid rgba(11, 11, 12, 0.08);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  }
+
+  .hero__title {
+    font-size: clamp(2.6rem, 5.8vw, 5.2rem);
+    line-height: 1.02;
+    margin: 0;
+    color: var(--color-foreground, #0B0B0C);
+  }
+
+  .hero__subtext {
+    font-size: clamp(1.05rem, 1.4vw, 1.35rem);
+    max-width: 42rem;
+    margin: 0;
+    color: var(--color-subtext, #61666D);
+  }
+
+  .hero__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .hero__cta-primary {
+    padding: 0.95rem 2.4rem;
+    font-size: 1.05rem;
+  }
+
+  .hero__cta-secondary {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-foreground, #0B0B0C);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .hero__cta-secondary:hover {
+    color: var(--color-accent-blue, #1E90FF);
+    transform: translateX(4px);
+  }
+
+  .hero__chips {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .hero__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.35rem;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: var(--radius-pill, 999px);
+    box-shadow: 0 8px 24px -6px rgba(11, 11, 12, 0.08);
+    font-family: var(--font-heading, 'Archivo', sans-serif);
+    font-style: italic;
+    font-weight: 900;
+    font-size: 0.95rem;
+    color: var(--color-foreground, #0B0B0C);
+    letter-spacing: 0.02em;
+  }
+
+  .hero__scroll-indicator {
+    position: absolute;
+    bottom: -2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    text-decoration: none;
+    color: var(--color-foreground, #0B0B0C);
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+  }
+
+  .hero__scroll-indicator:hover {
+    opacity: 1;
+  }
+
+  .scroll-arrow {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding-top: 6rem;
+      padding-bottom: 3.5rem;
+    }
+    .hero__chips {
+      gap: 0.5rem;
+    }
+    .hero__chip {
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+    }
+    .hero__actions {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Hero Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "THE 2026 LIGHT BEE"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Power Upgraded. <span class=\"stroke\">Light</span> As Always."
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "10kW of peak power. 59kg of pure control. The most powerful Light Bee ever built — still light enough to lift."
+    },
+    {
+      "type": "text",
+      "id": "primary_cta_text",
+      "label": "Primary Button Text",
+      "default": "Choose Your Color"
+    },
+    {
+      "type": "url",
+      "id": "primary_cta_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_cta_text",
+      "label": "Secondary Button Text",
+      "default": "See Full Specs"
+    },
+    {
+      "type": "url",
+      "id": "secondary_cta_link",
+      "label": "Secondary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "chip_1",
+      "label": "Chip 1 Text",
+      "default": "10kW PEAK"
+    },
+    {
+      "type": "text",
+      "id": "chip_2",
+      "label": "Chip 2 Text",
+      "default": "59KG"
+    },
+    {
+      "type": "text",
+      "id": "chip_3",
+      "label": "Chip 3 Text",
+      "default": "2.5kWh"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "%",
+      "label": "Overlay Opacity",
+      "default": 12
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Section"
+    }
+  ]
+}
+{% endschema %}

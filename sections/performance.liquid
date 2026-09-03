@@ -1,0 +1,248 @@
+<section class="performance-section full-width" id="specs" aria-labelledby="PerfHeading">
+  <div class="performance__bg-container">
+    <img
+      src="{{ 'action.jpg' | asset_url }}"
+      alt="Sur-Ron Light Bee 2026 Mountain Action Shot"
+      class="performance__bg-img"
+      width="1920"
+      height="1080"
+      loading="lazy"
+    >
+    <div class="performance__overlay" style="background-color: rgba(11, 11, 12, {{ section.settings.overlay_opacity | default: 78 | divided_by: 100.0 }});"></div>
+  </div>
+
+  <div class="performance__container">
+    <div class="performance__header text-center scroll-reveal">
+      <span class="performance__eyebrow">RAW ACCELERATION & CONTROL</span>
+      <h2 id="PerfHeading" class="performance__heading">
+        {{ section.settings.heading | default: 'Light. Rigid. <span class="stroke">Stable.</span>' }}
+      </h2>
+      <p class="performance__subtext">
+        {{ section.settings.subtext | default: 'Surging from standstill with explosive torque yet remaining featherlight beneath your boots.' }}
+      </p>
+    </div>
+
+    <!-- 3 Glassmorphism Stat Cards -->
+    <div class="performance__grid">
+      <!-- Stat 1 -->
+      <div class="perf-card scroll-reveal delay-1">
+        <div class="perf-card__value-wrap">
+          <span class="perf-card__number" data-counter-target="1.29" data-counter-decimals="2">0.00</span>
+          <span class="perf-card__unit">s</span>
+        </div>
+        <h3 class="perf-card__label">0–30 km/h</h3>
+        <p class="perf-card__desc">Instantaneous burst from 0 RPM via direct torque vectoring.</p>
+      </div>
+
+      <!-- Stat 2 -->
+      <div class="perf-card scroll-reveal delay-2">
+        <div class="perf-card__value-wrap">
+          <span class="perf-card__number" data-counter-target="2.5" data-counter-decimals="1">0.0</span>
+          <span class="perf-card__unit">s</span>
+        </div>
+        <h3 class="perf-card__label">0–50 km/h</h3>
+        <p class="perf-card__desc">Continuous high-efficiency pull through mid-range power band.</p>
+      </div>
+
+      <!-- Stat 3 -->
+      <div class="perf-card scroll-reveal delay-3">
+        <div class="perf-card__value-wrap">
+          <span class="perf-card__number" data-counter-target="59" data-counter-decimals="0">0</span>
+          <span class="perf-card__unit">kg</span>
+        </div>
+        <h3 class="perf-card__label">Ready To Ride</h3>
+        <p class="perf-card__desc">Aerospace-grade forged aluminum frame. Lift over fences alone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .performance-section {
+    position: relative;
+    padding: 7rem var(--page-margin, 20px);
+    overflow: hidden;
+    color: #FFFFFF;
+  }
+
+  .performance__bg-container {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .performance__bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  @supports not (position: fixed) {
+    .performance__bg-img {
+      position: absolute;
+    }
+  }
+
+  .performance__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .performance__container {
+    position: relative;
+    z-index: 2;
+    max-width: var(--page-width, 110rem);
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .performance__header {
+    max-width: 44rem;
+    margin: 0 auto 4.5rem;
+    text-align: center;
+  }
+
+  .performance__eyebrow {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    color: var(--color-accent-yellow, #FFD400);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+
+  .performance__heading {
+    font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+    color: #FFFFFF;
+    margin: 0 0 1rem;
+  }
+
+  .performance__subtext {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .performance__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .perf-card {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-card, 32px);
+    padding: 3rem 2.2rem;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+  }
+
+  .perf-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 212, 0, 0.5);
+  }
+
+  .perf-card__value-wrap {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .perf-card__number {
+    font-family: var(--font-heading, 'Archivo', sans-serif);
+    font-style: italic;
+    font-weight: 900;
+    font-size: clamp(3.2rem, 5.5vw, 5.4rem);
+    line-height: 1;
+    color: var(--color-accent-yellow, #FFD400);
+    letter-spacing: -0.04em;
+  }
+
+  .perf-card__unit {
+    font-family: var(--font-heading, 'Archivo', sans-serif);
+    font-style: italic;
+    font-weight: 900;
+    font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+    color: #FFFFFF;
+  }
+
+  .perf-card__label {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 0.6rem;
+    letter-spacing: -0.01em;
+  }
+
+  .perf-card__desc {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.68);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  @media (max-width: 860px) {
+    .performance__grid {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    .perf-card {
+      padding: 2.2rem 1.5rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Performance Stats",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Light. Rigid. <span class=\"stroke\">Stable.</span>"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Surging from standstill with explosive torque yet remaining featherlight beneath your boots."
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 50,
+      "max": 95,
+      "step": 1,
+      "unit": "%",
+      "label": "Dark Overlay Opacity",
+      "default": 78
+    }
+  ],
+  "presets": [
+    {
+      "name": "Performance Stats"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,383 @@
+<section class="color-stage-section" id="colors" aria-labelledby="ColorStageHeading">
+  <div class="color-stage__container">
+    <div class="color-stage__header text-center scroll-reveal">
+      <span class="color-stage__eyebrow">CUSTOM FINISHES</span>
+      <h2 id="ColorStageHeading" class="color-stage__heading">
+        Choose Your <span class="stroke">Edge.</span>
+      </h2>
+      <p class="color-stage__subtext subtext">
+        Four precision-anodized and powder-coated editions engineered for 2026.
+      </p>
+    </div>
+
+    <!-- 3D Stage Card -->
+    <div class="stage-card scroll-reveal delay-1">
+      <div class="stage-inner">
+        <div class="stage-tag">
+          <span class="stage-tag__sub">2026 COLORWAY</span>
+          <span class="stage-tag__main" id="StageVariantName">Volt Black</span>
+        </div>
+
+        <div class="stage-image-wrapper">
+          <img
+            id="StageProductImage"
+            src="{{ 'volt.jpg' | asset_url }}"
+            alt="Sur-Ron Light Bee 2026 - Volt Black"
+            class="stage-product-img"
+            width="1000"
+            height="700"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="stage-shadow" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <!-- Swatches -->
+    <div class="stage-swatches-container scroll-reveal delay-2">
+      <div class="stage-swatches" role="radiogroup" aria-label="Colorway Selection">
+        <button
+          type="button"
+          class="stage-swatch active"
+          data-image-src="{{ 'volt.jpg' | asset_url }}"
+          data-color-name="Volt Black"
+          style="background-color: #111111;"
+          aria-label="Select Volt Black"
+        >
+          <span class="swatch-tooltip">Volt Black</span>
+        </button>
+
+        <button
+          type="button"
+          class="stage-swatch"
+          data-image-src="{{ 'arctic.jpg' | asset_url }}"
+          data-color-name="Arctic White"
+          style="background-color: #EDEFF2;"
+          aria-label="Select Arctic White"
+        >
+          <span class="swatch-tooltip">Arctic White</span>
+        </button>
+
+        <button
+          type="button"
+          class="stage-swatch"
+          data-image-src="{{ 'olive.jpg' | asset_url }}"
+          data-color-name="Trail Olive"
+          style="background-color: #7A8B3F;"
+          aria-label="Select Trail Olive"
+        >
+          <span class="swatch-tooltip">Trail Olive</span>
+        </button>
+
+        <button
+          type="button"
+          class="stage-swatch"
+          data-image-src="{{ 'ultra.jpg' | asset_url }}"
+          data-color-name="Ultra Violet"
+          style="background-color: #5B2D9E;"
+          aria-label="Select Ultra Violet"
+        >
+          <span class="swatch-tooltip">Ultra Violet</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Lineup Showcase Banner -->
+    <div class="stage-banner scroll-reveal delay-3">
+      <div class="stage-banner__inner zoom-on-hover">
+        <img
+          src="{{ 'lineup.jpg' | asset_url }}"
+          alt="Sur-Ron Light Bee 2026 Complete Lineup"
+          class="stage-banner__img"
+          width="1600"
+          height="600"
+          loading="lazy"
+        >
+        <div class="stage-banner__caption">
+          <span class="stage-banner__tag">THE FULL FLEET</span>
+          <h3 class="stage-banner__title">Born For Every Terrain</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .color-stage-section {
+    padding: 6rem 0 5rem;
+    position: relative;
+    background-color: var(--color-background, #F5F6F8);
+  }
+
+  .color-stage__container {
+    max-width: var(--page-width, 110rem);
+    margin: 0 auto;
+    padding: 0 var(--page-margin, 20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .color-stage__header {
+    margin-bottom: 3.5rem;
+    max-width: 42rem;
+  }
+
+  .color-stage__eyebrow {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--color-accent-blue, #1E90FF);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .color-stage__heading {
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+    margin: 0 0 1rem;
+    color: var(--color-foreground, #0B0B0C);
+  }
+
+  /* Stage Card with 3D Tilt */
+  .stage-card {
+    width: 100%;
+    max-width: 68rem;
+    perspective: 1200px;
+    margin-bottom: 2.5rem;
+  }
+
+  .stage-inner {
+    background: #FFFFFF;
+    border-radius: 36px;
+    border: 1px solid rgba(11, 11, 12, 0.08);
+    box-shadow: 0 24px 60px -12px rgba(11, 11, 12, 0.08);
+    padding: 3rem 2.5rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-style: preserve-3d;
+  }
+
+  .stage-tag {
+    position: absolute;
+    top: 2.2rem;
+    left: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    z-index: 2;
+  }
+
+  .stage-tag__sub {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--color-subtext, #61666D);
+    text-transform: uppercase;
+  }
+
+  .stage-tag__main {
+    font-family: var(--font-heading, 'Archivo', sans-serif);
+    font-style: italic;
+    font-weight: 900;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    color: var(--color-foreground, #0B0B0C);
+    letter-spacing: -0.02em;
+  }
+
+  .stage-image-wrapper {
+    width: 100%;
+    height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stage-product-img {
+    max-height: 480px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.12));
+  }
+
+  .stage-shadow {
+    position: absolute;
+    bottom: 2rem;
+    left: 15%;
+    right: 15%;
+    height: 30px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0) 75%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Swatches */
+  .stage-swatches-container {
+    margin-bottom: 4rem;
+  }
+
+  .stage-swatches {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+  }
+
+  .stage-swatch {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 5px solid #FFFFFF;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+    cursor: pointer;
+    position: relative;
+    padding: 0;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .stage-swatch:hover {
+    transform: scale(1.12);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  }
+
+  .stage-swatch.active {
+    outline: 3px solid var(--color-accent-blue, #1E90FF);
+    outline-offset: 3px;
+    transform: scale(1.15);
+  }
+
+  .swatch-tooltip {
+    position: absolute;
+    bottom: -2.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0B0B0C;
+    color: #FFFFFF;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .stage-swatch:hover .swatch-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-2px);
+  }
+
+  /* Lineup Banner */
+  .stage-banner {
+    width: 100%;
+    max-width: 68rem;
+  }
+
+  .stage-banner__inner {
+    border-radius: 32px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 16px 40px -10px rgba(11, 11, 12, 0.1);
+  }
+
+  .stage-banner__img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .stage-banner__caption {
+    position: absolute;
+    bottom: 2rem;
+    left: 2.5rem;
+    z-index: 2;
+    color: #FFFFFF;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  }
+
+  .stage-banner__tag {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    color: var(--color-accent-yellow, #FFD400);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .stage-banner__title {
+    font-family: var(--font-heading, 'Archivo', sans-serif);
+    font-style: italic;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .stage-image-wrapper {
+      height: 300px;
+    }
+    .stage-product-img {
+      max-height: 300px;
+    }
+    .stage-tag {
+      top: 1.5rem;
+      left: 1.5rem;
+    }
+    .stage-tag__main {
+      font-size: 1.3rem;
+    }
+    .stage-swatch {
+      width: 46px;
+      height: 46px;
+      border-width: 4px;
+    }
+    .stage-banner__img {
+      height: 240px;
+    }
+    .stage-banner__caption {
+      left: 1.5rem;
+      bottom: 1.5rem;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Color Stage",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Choose Your <span class=\"stroke\">Edge.</span>"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Four precision-anodized and powder-coated editions engineered for 2026."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Color Stage"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,85 @@
+<aside class="announcement-bar" style="background-color: {{ section.settings.bg_color | default: '#0B0B0C' }}; color: {{ section.settings.text_color | default: '#FFFFFF' }};" aria-label="Announcement">
+  <div class="announcement-bar__inner">
+    {% if section.settings.link != blank %}
+      <a href="{{ section.settings.link }}" class="announcement-bar__link">
+        {{ section.settings.text | default: 'FREE 7-DAY USA SHIPPING — 20% OFF LAUNCH WEEK ONLY' }}
+      </a>
+    {% else %}
+      <p class="announcement-bar__text">
+        {{ section.settings.text | default: 'FREE 7-DAY USA SHIPPING — 20% OFF LAUNCH WEEK ONLY' }}
+      </p>
+    {% endif %}
+  </div>
+</aside>
+
+{% stylesheet %}
+  .announcement-bar {
+    width: 100%;
+    padding: 0.65rem 1rem;
+    text-align: center;
+    position: relative;
+    z-index: 1001;
+  }
+
+  .announcement-bar__inner {
+    max-width: var(--page-width, 110rem);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .announcement-bar__text,
+  .announcement-bar__link {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: inherit;
+    text-decoration: none;
+    margin: 0;
+    display: inline-block;
+    transition: opacity 0.2s ease;
+  }
+
+  .announcement-bar__link:hover {
+    opacity: 0.85;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Announcement Text",
+      "default": "FREE 7-DAY USA SHIPPING — 20% OFF LAUNCH WEEK ONLY"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#0B0B0C"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement Bar"
+    }
+  ]
+}
+{% endschema %}

@@ -9,12 +9,62 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "hello-world",
+    "announcement_bar": {
+      "type": "announcement-bar",
+      "settings": {}
+    },
+    "hero": {
+      "type": "hero",
+      "settings": {}
+    },
+    "marquee": {
+      "type": "marquee",
+      "settings": {}
+    },
+    "color_stage": {
+      "type": "color-stage",
+      "settings": {}
+    },
+    "timeline": {
+      "type": "timeline",
+      "settings": {}
+    },
+    "performance": {
+      "type": "performance",
+      "settings": {}
+    },
+    "tech_rows": {
+      "type": "tech-rows",
+      "settings": {}
+    },
+    "trust": {
+      "type": "trust",
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {}
+    },
+    "final_cta": {
+      "type": "final-cta",
+      "settings": {}
+    },
+    "sticky_buy_bar": {
+      "type": "sticky-buy-bar",
       "settings": {}
     }
   },
   "order": [
-    "main"
+    "announcement_bar",
+    "hero",
+    "marquee",
+    "color_stage",
+    "timeline",
+    "performance",
+    "tech_rows",
+    "trust",
+    "faq",
+    "final_cta",
+    "sticky_buy_bar"
   ]
 }
