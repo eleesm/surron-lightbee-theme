@@ -24,12 +24,27 @@
     "stats_dark": {
       "type": "stats-dark",
       "settings": {}
+    },
+    "timeline": {
+      "type": "timeline",
+      "settings": {}
+    },
+    "tech_rows": {
+      "type": "tech-rows",
+      "settings": {}
+    },
+    "trust": {
+      "type": "trust",
+      "settings": {}
     }
   },
   "order": [
     "hero",
     "marquee",
     "color_stage",
-    "stats_dark"
+    "stats_dark",
+    "timeline",
+    "tech_rows",
+    "trust"
   ]
 }

@@ -1,121 +1,115 @@
-<section class="tech-rows-section" id="technology" aria-labelledby="TechHeading">
+<section class="tech-rows-section full-width" id="technology" aria-labelledby="TechRowsHeading">
   <div class="tech-rows__container">
-    <div class="tech-rows__header text-center scroll-reveal">
-      <span class="tech-rows__eyebrow">PRECISION ENGINEERING</span>
-      <h2 id="TechHeading" class="tech-rows__heading">
+    <div class="tech-rows__header text-center" data-rv>
+      <h2 id="TechRowsHeading" class="tech-rows__heading">
         {{ section.settings.heading | default: 'Engineered To <span class="stroke">Dominate.</span>' }}
       </h2>
-      <p class="tech-rows__subtext subtext">
-        Every component re-designed from the molecular level up for high thermal tolerance and brutal trail endurance.
-      </p>
     </div>
 
+    {%- liquid
+      if section.settings.motor_image != blank
+        assign motor_img_src = section.settings.motor_image | image_url: width: 2000
+      else
+        assign motor_img_src = 'motor.jpg' | asset_url
+      endif
+
+      if section.settings.battery_image != blank
+        assign battery_img_src = section.settings.battery_image | image_url: width: 2000
+      else
+        assign battery_img_src = 'battery.jpg' | asset_url
+      endif
+
+      if section.settings.suspension_image != blank
+        assign suspension_img_src = section.settings.suspension_image | image_url: width: 2000
+      else
+        assign suspension_img_src = 'suspension.jpg' | asset_url
+      endif
+
+      if section.settings.wheelie_image != blank
+        assign wheelie_img_src = section.settings.wheelie_image | image_url: width: 2000
+      else
+        assign wheelie_img_src = 'wheelie.jpg' | asset_url
+      endif
+    -%}
+
     <div class="tech-rows__list">
-      <!-- Row 1: Motor -->
-      <article class="tech-row scroll-reveal delay-1">
+      <!-- Row 1: Image Left, Text Right -->
+      <article class="tech-row" data-rv>
         <div class="tech-row__media zoom-on-hover">
           <img
-            src="{{ 'motor.jpg' | asset_url }}"
-            alt="10kW Mid-Drive Motor with 38UH High-Grade Magnets"
+            src="{{ motor_img_src }}"
+            alt="10kW Mid-Drive Motor"
             class="tech-row__img"
-            width="900"
+            width="1000"
             height="600"
             loading="lazy"
           >
-          <div class="tech-row__badge">POWERTRAIN</div>
         </div>
         <div class="tech-row__content">
-          <span class="tech-row__step">01 // TORQUE & DRIVE</span>
           <h3 class="tech-row__title">10kW Mid-Drive Motor</h3>
           <p class="tech-row__desc">
             295N&middot;m of torque. Peak power leapt from 8kW to 10kW. 38UH high-grade magnets shrug off 180&deg;C heat. Climb anything.
           </p>
-          <ul class="tech-row__specs">
-            <li><strong>295 N&middot;m</strong> Peak Torque</li>
-            <li><strong>10,000 W</strong> Max Power Output</li>
-            <li><strong>180&deg;C</strong> Thermal Resistance</li>
-          </ul>
         </div>
       </article>
 
-      <!-- Row 2: Battery (Reversed) -->
-      <article class="tech-row tech-row--reverse scroll-reveal delay-2">
+      <!-- Row 2: Image Right, Text Left -->
+      <article class="tech-row tech-row--reverse" data-rv>
         <div class="tech-row__media zoom-on-hover">
           <img
-            src="{{ 'battery.jpg' | asset_url }}"
-            alt="72V35Ah Quick-Swap Battery"
+            src="{{ battery_img_src }}"
+            alt="72V35Ah Battery — 2.5kWh"
             class="tech-row__img"
-            width="900"
+            width="1000"
             height="600"
             loading="lazy"
           >
-          <div class="tech-row__badge">ENERGY STORAGE</div>
         </div>
         <div class="tech-row__content">
-          <span class="tech-row__step">02 // MODULAR POWER</span>
           <h3 class="tech-row__title">72V35Ah Battery — 2.5kWh</h3>
           <p class="tech-row__desc">
             50S high-rate cells with real-time monitoring on every cell. 10-second quick-swap. Charge anywhere, anytime. Stability over capacity.
           </p>
-          <ul class="tech-row__specs">
-            <li><strong>2.5 kWh</strong> Total Energy</li>
-            <li><strong>50S</strong> High-Rate Cells</li>
-            <li><strong>10s</strong> Tool-Free Quick Swap</li>
-          </ul>
         </div>
       </article>
 
-      <!-- Row 3: Suspension -->
-      <article class="tech-row scroll-reveal delay-1">
+      <!-- Row 3: Image Left, Text Right -->
+      <article class="tech-row" data-rv>
         <div class="tech-row__media zoom-on-hover">
           <img
-            src="{{ 'suspension.jpg' | asset_url }}"
-            alt="Triple-Rate Spring Suspension"
+            src="{{ suspension_img_src }}"
+            alt="Suspension Built For Landings"
             class="tech-row__img"
-            width="900"
+            width="1000"
             height="600"
             loading="lazy"
           >
-          <div class="tech-row__badge">CHASSIS & DAMPING</div>
         </div>
         <div class="tech-row__content">
-          <span class="tech-row__step">03 // LANDING SUPPORT</span>
           <h3 class="tech-row__title">Suspension Built For Landings</h3>
           <p class="tech-row__desc">
             7.87" front travel, 10.51" fully adjustable rear shock with 450lbs alloy spring. Triple-rate springs: supple start, massive end support. Smooth landings, every time.
           </p>
-          <ul class="tech-row__specs">
-            <li><strong>7.87"</strong> Inverted Front Travel</li>
-            <li><strong>10.51"</strong> Rear Multi-Link Shock</li>
-            <li><strong>450 lbs</strong> High-Tensile Alloy Spring</li>
-          </ul>
         </div>
       </article>
 
-      <!-- Row 4: Wheelie Control (Reversed) -->
-      <article class="tech-row tech-row--reverse scroll-reveal delay-2">
+      <!-- Row 4: Image Right, Text Left -->
+      <article class="tech-row tech-row--reverse" data-rv>
         <div class="tech-row__media zoom-on-hover">
           <img
-            src="{{ 'wheelie.jpg' | asset_url }}"
-            alt="Dynamic Wheelie and Traction Control"
+            src="{{ wheelie_img_src }}"
+            alt="All-New Wheelie Control"
             class="tech-row__img"
-            width="900"
+            width="1000"
             height="600"
             loading="lazy"
           >
-          <div class="tech-row__badge">SAFETY & ALGORITHMS</div>
         </div>
         <div class="tech-row__content">
-          <span class="tech-row__step">04 // INTEL CONTROL</span>
           <h3 class="tech-row__title">All-New Wheelie Control</h3>
           <p class="tech-row__desc">
             Safe and free. Battery safety never compromised — millisecond-level cell monitoring with enhanced redundancy. Push your limits with a system that has your back.
           </p>
-          <ul class="tech-row__specs">
-            <li><strong>1ms</strong> Sampling Frequency</li>
-            <li><strong>Dual</strong> Redundant Hall Sensors</li>
-            <li><strong>Zero</strong> Battery Compromise</li>
-          </ul>
         </div>
       </article>
     </div>
@@ -124,8 +118,8 @@
 
 {% stylesheet %}
   .tech-rows-section {
-    padding: 6.5rem 0;
-    background-color: var(--color-background, #F5F6F8);
+    padding: 90px 0;
+    background-color: #FFFFFF;
     position: relative;
   }
 
@@ -136,64 +130,44 @@
   }
 
   .tech-rows__header {
-    max-width: 44rem;
-    margin: 0 auto 4.5rem;
-  }
-
-  .tech-rows__eyebrow {
-    font-family: var(--font-body, 'Inter', sans-serif);
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: var(--color-accent-blue, #1E90FF);
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 4.5rem;
+    text-align: center;
   }
 
   .tech-rows__heading {
-    font-size: clamp(2.2rem, 4vw, 3.8rem);
-    margin: 0 0 1rem;
-    color: var(--color-foreground, #0B0B0C);
+    font-size: clamp(34px, 4.5vw, 56px);
+    color: #0B0B0C;
+    margin: 0;
   }
 
   .tech-rows__list {
     display: flex;
     flex-direction: column;
-    gap: 3.5rem;
+    gap: 4rem;
+    max-width: 68rem;
+    margin: 0 auto;
   }
 
   .tech-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3.5rem;
+    gap: 44px;
     align-items: center;
-    background: #FFFFFF;
-    border-radius: var(--radius-card, 32px);
-    border: 1px solid rgba(11, 11, 12, 0.06);
-    padding: 2.5rem;
-    box-shadow: 0 12px 36px -10px rgba(11, 11, 12, 0.05);
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .tech-row:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 48px -12px rgba(11, 11, 12, 0.08);
-  }
-
-  .tech-row--reverse {
-    direction: rtl;
+  .tech-row--reverse .tech-row__media {
+    order: 2;
   }
 
   .tech-row--reverse .tech-row__content {
-    direction: ltr;
+    order: 1;
   }
 
   .tech-row__media {
-    position: relative;
-    border-radius: 24px;
+    border-radius: 28px;
     overflow: hidden;
-    height: 380px;
+    height: 300px;
+    box-shadow: 0 14px 36px -8px rgba(11, 11, 12, 0.08);
   }
 
   .tech-row__img {
@@ -201,91 +175,57 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .tech-row__badge {
-    position: absolute;
-    top: 1.25rem;
-    left: 1.25rem;
-    background: rgba(11, 11, 12, 0.75);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    color: #FFFFFF;
-    font-family: var(--font-body, 'Inter', sans-serif);
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    padding: 0.3rem 0.8rem;
-    border-radius: var(--radius-pill, 999px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+  .tech-row__media:hover .tech-row__img {
+    transform: scale(1.07);
   }
 
   .tech-row__content {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding: 1rem 0;
-  }
-
-  .tech-row__step {
-    font-family: var(--font-body, 'Inter', sans-serif);
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: var(--color-accent-blue, #1E90FF);
   }
 
   .tech-row__title {
     font-family: var(--font-heading, 'Archivo', sans-serif);
     font-style: italic;
     font-weight: 900;
-    font-size: clamp(1.6rem, 2.5vw, 2.3rem);
-    color: var(--color-foreground, #0B0B0C);
+    font-size: 24px;
+    color: #1E90FF;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
     margin: 0;
   }
 
   .tech-row__desc {
+    font-family: var(--font-body, 'Inter', sans-serif);
     font-size: 1.05rem;
-    line-height: 1.6;
-    color: var(--color-subtext, #61666D);
+    line-height: 1.65;
+    color: #61666D;
     margin: 0;
   }
 
-  .tech-row__specs {
-    list-style: none;
-    padding: 0;
-    margin: 0.75rem 0 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.25rem;
-    border-top: 1px solid rgba(11, 11, 12, 0.08);
-    padding-top: 1.25rem;
-  }
-
-  .tech-row__specs li {
-    font-size: 0.88rem;
-    color: var(--color-subtext, #61666D);
-    display: flex;
-    flex-direction: column;
-  }
-
-  .tech-row__specs li strong {
-    font-family: var(--font-heading, 'Archivo', sans-serif);
-    font-style: italic;
-    font-weight: 900;
-    font-size: 1.2rem;
-    color: var(--color-foreground, #0B0B0C);
-  }
-
-  @media (max-width: 880px) {
+  @media (max-width: 768px) {
+    .tech-rows-section {
+      padding: 60px 0;
+    }
+    .tech-rows__list {
+      gap: 3rem;
+    }
     .tech-row {
       grid-template-columns: 1fr;
-      direction: ltr !important;
-      padding: 1.5rem;
-      gap: 1.75rem;
+      gap: 20px;
+    }
+    .tech-row--reverse .tech-row__media {
+      order: 1;
+    }
+    .tech-row--reverse .tech-row__content {
+      order: 2;
     }
     .tech-row__media {
-      height: 260px;
+      height: 240px;
     }
   }
 {% endstylesheet %}
@@ -299,6 +239,26 @@
       "id": "heading",
       "label": "Heading",
       "default": "Engineered To <span class=\"stroke\">Dominate.</span>"
+    },
+    {
+      "type": "image_picker",
+      "id": "motor_image",
+      "label": "Motor Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "battery_image",
+      "label": "Battery Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "suspension_image",
+      "label": "Suspension Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "wheelie_image",
+      "label": "Wheelie Image"
     }
   ],
   "presets": [

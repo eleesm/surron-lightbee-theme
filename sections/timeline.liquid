@@ -1,77 +1,81 @@
-<section class="timeline-section" id="timeline" aria-labelledby="TimelineHeading">
+<section class="timeline-section full-width" id="timeline" aria-labelledby="TimelineHeading">
   <div class="timeline__container">
-    <div class="timeline__header text-center scroll-reveal">
-      <span class="timeline__eyebrow">CONTINUOUS EVOLUTION</span>
+    <div class="timeline__header text-center" data-rv>
       <h2 id="TimelineHeading" class="timeline__heading">
         {{ section.settings.heading | default: 'A Decade Of <span class="stroke">Light Bee</span>.' }}
       </h2>
-      <p class="timeline__subtext subtext">
-        {{ section.settings.subtext | default: '2017 &rarr; 2026. From 1.9kWh/5kW to 2.5kWh/10kW — a steadfast focus on stability, reliability and safety.' }}
+      <p class="timeline__subtitle">
+        {{ section.settings.subtitle | default: '2017 &rarr; 2026. From 1.9kWh/5kW to 2.5kWh/10kW — a steadfast focus on stability, reliability and safety.' }}
       </p>
     </div>
 
-    <!-- Timeline Grid with Rising Connection Line -->
-    <div class="timeline__track-container scroll-reveal delay-1">
-      <div class="timeline__track-line" aria-hidden="true">
-        <svg viewBox="0 0 1000 120" preserveAspectRatio="none" class="timeline__svg-line">
-          <path d="M 50,90 Q 250,75 500,55 T 950,20" fill="none" stroke="#1E90FF" stroke-width="4" stroke-linecap="round" stroke-dasharray="6,6" class="timeline__path-base" />
-          <path d="M 50,90 Q 250,75 500,55 T 950,20" fill="none" stroke="#1E90FF" stroke-width="4" stroke-linecap="round" class="timeline__path-solid" />
+    <!-- Timeline Component -->
+    <div class="timeline__wrapper">
+      <!-- Rising SVG Line (Desktop) -->
+      <div class="timeline__svg-container" aria-hidden="true">
+        <svg viewBox="0 0 1000 70" preserveAspectRatio="none" class="timeline__svg">
+          <path d="M 50,60 Q 300,48 550,30 T 950,10" fill="none" stroke="#1E90FF" stroke-width="3" stroke-linecap="round" />
         </svg>
       </div>
 
       <div class="timeline__nodes">
         <!-- Node 1 -->
-        <div class="timeline__node">
-          <div class="timeline__node-dot"></div>
-          <div class="timeline__card">
+        <div class="timeline__node" data-rv>
+          <div class="timeline__dot-wrap">
+            <span class="timeline__dot"></span>
+          </div>
+          <div class="timeline__content">
             <span class="timeline__year">2017–2020</span>
             <div class="timeline__specs">
               <span class="timeline__power">5000W</span>
+              <span class="timeline__slash">/</span>
               <span class="timeline__weight">55kg</span>
             </div>
-            <p class="timeline__desc">The pioneer that sparked the lightweight electric revolution.</p>
           </div>
         </div>
 
         <!-- Node 2 -->
-        <div class="timeline__node">
-          <div class="timeline__node-dot"></div>
-          <div class="timeline__card">
+        <div class="timeline__node" data-rv>
+          <div class="timeline__dot-wrap">
+            <span class="timeline__dot"></span>
+          </div>
+          <div class="timeline__content">
             <span class="timeline__year">2021–2024</span>
             <div class="timeline__specs">
               <span class="timeline__power">6000W</span>
+              <span class="timeline__slash">/</span>
               <span class="timeline__weight">56kg</span>
             </div>
-            <p class="timeline__desc">Sine-wave X-controller architecture and reinforced battery casing.</p>
           </div>
         </div>
 
         <!-- Node 3 -->
-        <div class="timeline__node">
-          <div class="timeline__node-dot"></div>
-          <div class="timeline__card">
+        <div class="timeline__node" data-rv>
+          <div class="timeline__dot-wrap">
+            <span class="timeline__dot"></span>
+          </div>
+          <div class="timeline__content">
             <span class="timeline__year">2025</span>
             <div class="timeline__specs">
               <span class="timeline__power">8000W</span>
+              <span class="timeline__slash">/</span>
               <span class="timeline__weight">57kg</span>
             </div>
-            <p class="timeline__desc">Advanced thermal dissipation and refined chassis geometry.</p>
           </div>
         </div>
 
         <!-- Node 4 (Highlighted) -->
-        <div class="timeline__node timeline__node--highlighted">
-          <div class="timeline__node-dot">
-            <span class="timeline__dot-pulse"></span>
+        <div class="timeline__node timeline__node--highlighted" data-rv>
+          <div class="timeline__dot-wrap">
+            <span class="timeline__dot timeline__dot--highlighted"></span>
           </div>
-          <div class="timeline__card timeline__card--highlighted">
-            <span class="timeline__badge">CURRENT GEN</span>
-            <span class="timeline__year">2026</span>
+          <div class="timeline__content">
+            <span class="timeline__year timeline__year--highlighted">2026</span>
             <div class="timeline__specs">
-              <span class="timeline__power">10000W</span>
-              <span class="timeline__weight">59kg</span>
+              <span class="timeline__power timeline__power--highlighted">10000W</span>
+              <span class="timeline__slash">/</span>
+              <span class="timeline__weight timeline__weight--highlighted">59kg</span>
             </div>
-            <p class="timeline__desc">Peak 10kW output, 2.5kWh high-rate pack, zero compromises.</p>
           </div>
         </div>
       </div>
@@ -81,7 +85,7 @@
 
 {% stylesheet %}
   .timeline-section {
-    padding: 6rem 0;
+    padding: 90px 0;
     background-color: #FFFFFF;
     position: relative;
     overflow: hidden;
@@ -94,44 +98,48 @@
   }
 
   .timeline__header {
-    max-width: 44rem;
-    margin: 0 auto 4.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-  }
-
-  .timeline__eyebrow {
-    font-family: var(--font-body, 'Inter', sans-serif);
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: var(--color-accent-blue, #1E90FF);
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 4.5rem;
   }
 
   .timeline__heading {
-    font-size: clamp(2.2rem, 4vw, 3.6rem);
+    font-size: clamp(36px, 4.8vw, 64px);
+    line-height: 1.05;
     margin: 0 0 1rem;
-    color: var(--color-foreground, #0B0B0C);
+    color: #0B0B0C;
   }
 
-  .timeline__track-container {
+  .timeline__subtitle {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #61666D;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .timeline__wrapper {
     position: relative;
-    padding: 2rem 0;
+    max-width: 68rem;
+    margin: 0 auto;
+    padding: 2.5rem 0 1.5rem;
   }
 
-  .timeline__track-line {
+  /* SVG Rising Line */
+  .timeline__svg-container {
     position: absolute;
-    top: 35px;
-    left: 4%;
-    right: 4%;
-    height: 100px;
+    top: 30px;
+    left: 8%;
+    right: 8%;
+    height: 70px;
     z-index: 1;
     pointer-events: none;
   }
 
-  .timeline__svg-line {
+  .timeline__svg {
     width: 100%;
     height: 100%;
     overflow: visible;
@@ -149,147 +157,114 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
+    text-align: center;
   }
 
-  .timeline__node-dot {
-    width: 20px;
-    height: 20px;
+  .timeline__dot-wrap {
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .timeline__dot {
+    display: block;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    background: #FFFFFF;
-    border: 4px solid var(--color-accent-blue, #1E90FF);
+    background-color: #1E90FF;
     box-shadow: 0 0 0 4px rgba(30, 144, 255, 0.2);
-    margin-bottom: 2rem;
-    position: relative;
-    z-index: 3;
     transition: transform 0.3s ease;
   }
 
-  .timeline__node--highlighted .timeline__node-dot {
-    background: var(--color-accent-yellow, #FFD400);
-    border-color: #0B0B0C;
-    box-shadow: 0 0 0 6px rgba(255, 212, 0, 0.4);
-    transform: scale(1.3);
-  }
-
-  .timeline__dot-pulse {
-    position: absolute;
-    inset: -6px;
-    border-radius: 50%;
-    border: 2px solid var(--color-accent-yellow, #FFD400);
+  .timeline__dot--highlighted {
+    width: 18px;
+    height: 18px;
+    background-color: #FFD400;
+    box-shadow: 0 0 0 6px rgba(255, 212, 0, 0.35);
     animation: pulseDot 2s infinite;
   }
 
-  .timeline__card {
-    background: var(--color-background, #F5F6F8);
-    border-radius: 24px;
-    border: 1px solid rgba(11, 11, 12, 0.06);
-    padding: 2rem 1.5rem;
-    width: 100%;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .timeline__card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.07);
-  }
-
-  .timeline__card--highlighted {
-    background: #0B0B0C;
-    color: #FFFFFF;
-    border-color: #0B0B0C;
-    box-shadow: 0 20px 48px rgba(11, 11, 12, 0.2);
-    position: relative;
-  }
-
-  .timeline__badge {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--color-accent-yellow, #FFD400);
-    color: #0B0B0C;
-    font-family: var(--font-body, 'Inter', sans-serif);
-    font-size: 0.68rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    padding: 0.2rem 0.75rem;
-    border-radius: 999px;
-    white-space: nowrap;
+  .timeline__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
   }
 
   .timeline__year {
-    font-family: var(--font-heading, 'Archivo', sans-serif);
-    font-style: italic;
-    font-weight: 900;
-    font-size: 1.25rem;
-    display: block;
-    margin-bottom: 0.6rem;
-    color: var(--color-subtext, #61666D);
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #61666D;
   }
 
-  .timeline__card--highlighted .timeline__year {
-    color: var(--color-accent-yellow, #FFD400);
+  .timeline__year--highlighted {
+    color: #0B0B0C;
+    font-weight: 800;
+    font-size: 0.95rem;
   }
 
   .timeline__specs {
     display: flex;
     align-items: baseline;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 0.8rem;
-  }
-
-  .timeline__power {
+    gap: 0.4rem;
     font-family: var(--font-heading, 'Archivo', sans-serif);
     font-style: italic;
     font-weight: 900;
-    font-size: 1.7rem;
-    color: var(--color-foreground, #0B0B0C);
+    font-size: 1.4rem;
+    color: #0B0B0C;
   }
 
-  .timeline__card--highlighted .timeline__power {
-    color: #FFFFFF;
+  .timeline__specs--highlighted {
+    font-size: 1.6rem;
   }
 
-  .timeline__weight {
+  .timeline__slash {
     font-family: var(--font-body, 'Inter', sans-serif);
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--color-subtext, #61666D);
+    font-weight: 400;
+    color: #61666D;
+    font-size: 1.1rem;
+    font-style: normal;
   }
 
-  .timeline__card--highlighted .timeline__weight {
-    color: rgba(255, 255, 255, 0.7);
+  .timeline__node:hover .timeline__dot {
+    transform: scale(1.3);
   }
 
-  .timeline__desc {
-    font-size: 0.88rem;
-    line-height: 1.5;
-    margin: 0;
-    color: var(--color-subtext, #61666D);
-  }
-
-  .timeline__card--highlighted .timeline__desc {
-    color: rgba(255, 255, 255, 0.85);
-  }
-
-  @media (max-width: 960px) {
-    .timeline__track-line {
+  /* Mobile Layout */
+  @media (max-width: 768px) {
+    .timeline-section {
+      padding: 60px 0;
+    }
+    .timeline__svg-container {
       display: none;
     }
     .timeline__nodes {
-      grid-template-columns: repeat(2, 1fr);
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      border-left: 3px solid #1E90FF;
+      margin-left: 2rem;
+      padding-left: 1.5rem;
     }
-  }
-
-  @media (max-width: 580px) {
-    .timeline__nodes {
-      grid-template-columns: 1fr;
+    .timeline__node {
+      align-items: flex-start;
+      text-align: left;
+      position: relative;
     }
-    .timeline__node-dot {
-      margin-bottom: 1rem;
+    .timeline__dot-wrap {
+      position: absolute;
+      left: calc(-1.5rem - 7px);
+      top: 0;
+      margin-bottom: 0;
+    }
+    .timeline__dot--highlighted {
+      left: calc(-1.5rem - 10px);
+    }
+    .timeline__content {
+      align-items: flex-start;
     }
   }
 {% endstylesheet %}
@@ -306,8 +281,8 @@
     },
     {
       "type": "textarea",
-      "id": "subtext",
-      "label": "Subtext",
+      "id": "subtitle",
+      "label": "Subtitle",
       "default": "2017 → 2026. From 1.9kWh/5kW to 2.5kWh/10kW — a steadfast focus on stability, reliability and safety."
     }
   ],

@@ -1,50 +1,23 @@
-<section class="trust-section" id="guarantees" aria-labelledby="TrustHeading">
+<section class="trust-section full-width" id="guarantees" aria-labelledby="TrustHeading">
   <div class="trust__container">
-    <div class="trust__header text-center scroll-reveal">
-      <span class="trust__eyebrow">OUR COMMITMENT</span>
+    <div class="trust__header text-center" data-rv>
       <h2 id="TrustHeading" class="trust__heading">
         {{ section.settings.heading | default: 'Ride <span class="stroke">Worry-Free.</span>' }}
       </h2>
-      <p class="trust__subtext subtext">
-        Direct from our US fulfillment center with dedicated rider support on speed-dial.
-      </p>
     </div>
 
-    <div class="trust__grid">
-      <!-- Card 1 -->
-      <div class="trust-card scroll-reveal delay-1">
-        <div class="trust-card__icon-wrap">
-          <span class="trust-card__icon" aria-hidden="true">↩️</span>
-        </div>
-        <h3 class="trust-card__title">30-Day Money-Back</h3>
-        <p class="trust-card__desc">Ride it on your home trails. If it doesn't blow your expectations away, return it hassle-free.</p>
+    <div class="trust__grid" data-rv>
+      <div class="trust-card">
+        <span class="trust-card__text">↩️ 30-Day Money-Back Returns</span>
       </div>
-
-      <!-- Card 2 -->
-      <div class="trust-card scroll-reveal delay-2">
-        <div class="trust-card__icon-wrap">
-          <span class="trust-card__icon" aria-hidden="true">🛡️</span>
-        </div>
-        <h3 class="trust-card__title">100-Day Warranty</h3>
-        <p class="trust-card__desc">Comprehensive factory warranty on motor and battery cells. We stand behind every kilowatt.</p>
+      <div class="trust-card">
+        <span class="trust-card__text">🛡️ 100-Day Motor & Battery Warranty</span>
       </div>
-
-      <!-- Card 3 -->
-      <div class="trust-card scroll-reveal delay-3">
-        <div class="trust-card__icon-wrap">
-          <span class="trust-card__icon" aria-hidden="true">🚚</span>
-        </div>
-        <h3 class="trust-card__title">Free 7-Day USA Shipping</h3>
-        <p class="trust-card__desc">Dispatched within 24h via insured freight right to your driveway. Fully tracked from hub to doorstep.</p>
+      <div class="trust-card">
+        <span class="trust-card__text">🚚 Free 7-Day USA Shipping</span>
       </div>
-
-      <!-- Card 4 -->
-      <div class="trust-card scroll-reveal delay-4">
-        <div class="trust-card__icon-wrap">
-          <span class="trust-card__icon" aria-hidden="true">🔒</span>
-        </div>
-        <h3 class="trust-card__title">Secure Checkout</h3>
-        <p class="trust-card__desc">256-bit encrypted checkout with Klarna, Shop Pay, credit card, or financing available.</p>
+      <div class="trust-card">
+        <span class="trust-card__text">🔒 Secure Checkout</span>
       </div>
     </div>
   </div>
@@ -52,7 +25,7 @@
 
 {% stylesheet %}
   .trust-section {
-    padding: 5.5rem 0;
+    padding: 70px 0;
     background-color: #FFFFFF;
     position: relative;
   }
@@ -64,92 +37,59 @@
   }
 
   .trust__header {
-    max-width: 44rem;
-    margin: 0 auto 3.5rem;
+    margin-bottom: 3rem;
     text-align: center;
   }
 
-  .trust__eyebrow {
-    font-family: var(--font-body, 'Inter', sans-serif);
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: var(--color-accent-blue, #1E90FF);
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-
   .trust__heading {
-    font-size: clamp(2.2rem, 4vw, 3.6rem);
-    margin: 0 0 0.75rem;
-    color: var(--color-foreground, #0B0B0C);
+    font-size: clamp(32px, 4vw, 52px);
+    margin: 0;
+    color: #0B0B0C;
   }
 
   .trust__grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
+    gap: 16px;
+    max-width: 68rem;
+    margin: 0 auto;
   }
 
   .trust-card {
-    background: var(--color-background, #F5F6F8);
+    background-color: #FFFFFF;
     border-radius: 20px;
-    border: 1px solid rgba(11, 11, 12, 0.06);
-    padding: 2.2rem 1.6rem;
+    padding: 26px 16px;
     text-align: center;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .trust-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
-    border-color: rgba(30, 144, 255, 0.3);
-  }
-
-  .trust-card__icon-wrap {
-    width: 3.5rem;
-    height: 3.5rem;
-    background: #FFFFFF;
-    border-radius: 50%;
-    margin: 0 auto 1.25rem;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-weight: 700;
+    font-size: 14px;
+    color: #0B0B0C;
+    border: 1px solid rgba(11, 11, 12, 0.08);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
   }
 
-  .trust-card__icon {
-    font-size: 1.6rem;
+  .trust-card:hover {
+    border: 1px solid #1E90FF;
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(30, 144, 255, 0.12);
   }
 
-  .trust-card__title {
-    font-family: var(--font-heading, 'Archivo', sans-serif);
-    font-style: italic;
-    font-weight: 900;
-    text-transform: uppercase;
-    font-size: 1.2rem;
-    margin: 0 0 0.6rem;
-    color: var(--color-foreground, #0B0B0C);
-    letter-spacing: -0.01em;
+  .trust-card__text {
+    line-height: 1.4;
   }
 
-  .trust-card__desc {
-    font-size: 0.9rem;
-    line-height: 1.55;
-    color: var(--color-subtext, #61666D);
-    margin: 0;
-  }
-
-  @media (max-width: 960px) {
+  @media (max-width: 768px) {
     .trust__grid {
       grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
     }
-  }
-
-  @media (max-width: 580px) {
-    .trust__grid {
-      grid-template-columns: 1fr;
+    .trust-card {
+      padding: 20px 12px;
+      font-size: 13px;
     }
   }
 {% endstylesheet %}
