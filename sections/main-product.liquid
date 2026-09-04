@@ -285,6 +285,48 @@
                         {{ form | payment_button }}
                       </div>
                     {%- endif -%}
+
+                    <!-- 3 Collapsible Accordions Below Buy Box -->
+                    <div class="product-accordions">
+                      <!-- Accordion 1: Shipping -->
+                      <details class="product-accordion" open>
+                        <summary class="product-accordion__summary">
+                          <span class="product-accordion__title">📦 Shipping</span>
+                          <span class="product-accordion__icon" aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                          </span>
+                        </summary>
+                        <div class="product-accordion__content">
+                          <p><strong>Free 7-day USA shipping.</strong> All orders are dispatched within 24 hours via tracked, insured freight logistics with liftgate service. Your Light Bee arrives 90% assembled with toolkit and charger included.</p>
+                        </div>
+                      </details>
+
+                      <!-- Accordion 2: Warranty -->
+                      <details class="product-accordion">
+                        <summary class="product-accordion__summary">
+                          <span class="product-accordion__title">🛡️ Warranty</span>
+                          <span class="product-accordion__icon" aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                          </span>
+                        </summary>
+                        <div class="product-accordion__content">
+                          <p><strong>100-day motor & battery warranty.</strong> Comprehensive direct manufacturer coverage on the 10kW mid-drive motor, 72V35Ah power pack, controller, and forged aluminum frame.</p>
+                        </div>
+                      </details>
+
+                      <!-- Accordion 3: Returns -->
+                      <details class="product-accordion">
+                        <summary class="product-accordion__summary">
+                          <span class="product-accordion__title">↩️ Returns</span>
+                          <span class="product-accordion__icon" aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                          </span>
+                        </summary>
+                        <div class="product-accordion__content">
+                          <p><strong>30-day money-back guarantee.</strong> Test ride on your local trails with complete confidence. If you are not thoroughly satisfied, return the bike in original packaging for a full refund.</p>
+                        </div>
+                      </details>
+                    </div>
                   </div>
 
                 {%- when 'description' -%}
@@ -435,52 +477,52 @@
               </div>
             {%- endif -%}
 
+            <!-- 3 Collapsible Accordions Below Buy Box -->
+            <div class="product-accordions">
+              <!-- Accordion 1: Shipping -->
+              <details class="product-accordion" open>
+                <summary class="product-accordion__summary">
+                  <span class="product-accordion__title">📦 Shipping</span>
+                  <span class="product-accordion__icon" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </span>
+                </summary>
+                <div class="product-accordion__content">
+                  <p><strong>Free 7-day USA shipping.</strong> All orders are dispatched within 24 hours via tracked, insured freight logistics with liftgate service. Your Light Bee arrives 90% assembled with toolkit and charger included.</p>
+                </div>
+              </details>
+
+              <!-- Accordion 2: Warranty -->
+              <details class="product-accordion">
+                <summary class="product-accordion__summary">
+                  <span class="product-accordion__title">🛡️ Warranty</span>
+                  <span class="product-accordion__icon" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </span>
+                </summary>
+                <div class="product-accordion__content">
+                  <p><strong>100-day motor & battery warranty.</strong> Comprehensive direct manufacturer coverage on the 10kW mid-drive motor, 72V35Ah power pack, controller, and forged aluminum frame.</p>
+                </div>
+              </details>
+
+              <!-- Accordion 3: Returns -->
+              <details class="product-accordion">
+                <summary class="product-accordion__summary">
+                  <span class="product-accordion__title">↩️ Returns</span>
+                  <span class="product-accordion__icon" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </span>
+                </summary>
+                <div class="product-accordion__content">
+                  <p><strong>30-day money-back guarantee.</strong> Test ride on your local trails with complete confidence. If you are not thoroughly satisfied, return the bike in original packaging for a full refund.</p>
+                </div>
+              </details>
+            </div>
+
             <div class="product-description rte">
               {{ product.description | default: '<p>The 2026 Light Bee delivers 10kW peak output with instantaneous torque vectoring in a razor-sharp 59kg forged alloy chassis. Engineered for relentless trail performance and absolute airborne control.</p>' }}
             </div>
           {%- endif -%}
-
-          <!-- 3 Collapsible Accordions Below Buy Box -->
-          <div class="product-accordions">
-            <!-- Accordion 1: Shipping -->
-            <details class="product-accordion" open>
-              <summary class="product-accordion__summary">
-                <span class="product-accordion__title">📦 Shipping</span>
-                <span class="product-accordion__icon" aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </span>
-              </summary>
-              <div class="product-accordion__content">
-                <p><strong>Free 7-day USA shipping.</strong> All orders are dispatched within 24 hours via tracked, insured freight logistics with liftgate service. Your Light Bee arrives 90% assembled with toolkit and charger included.</p>
-              </div>
-            </details>
-
-            <!-- Accordion 2: Warranty -->
-            <details class="product-accordion">
-              <summary class="product-accordion__summary">
-                <span class="product-accordion__title">🛡️ Warranty</span>
-                <span class="product-accordion__icon" aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </span>
-              </summary>
-              <div class="product-accordion__content">
-                <p><strong>100-day motor & battery warranty.</strong> Comprehensive direct manufacturer coverage on the 10kW mid-drive motor, 72V35Ah power pack, controller, and forged aluminum frame.</p>
-              </div>
-            </details>
-
-            <!-- Accordion 3: Returns -->
-            <details class="product-accordion">
-              <summary class="product-accordion__summary">
-                <span class="product-accordion__title">↩️ Returns</span>
-                <span class="product-accordion__icon" aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </span>
-              </summary>
-              <div class="product-accordion__content">
-                <p><strong>30-day money-back guarantee.</strong> Test ride on your local trails with complete confidence. If you are not thoroughly satisfied, return the bike in original packaging for a full refund.</p>
-              </div>
-            </details>
-          </div>
         {%- endform -%}
       </div>
     </div>
