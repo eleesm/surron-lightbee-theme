@@ -41,13 +41,17 @@
     "tech_rows": {
       "type": "tech-rows",
       "settings": {
-        "heading": "Engineered To <span class=\"stroke\">Dominate.</span>"
+        "heading": "Engineered To Dominate.",
+        "motor_image": "shopify://shop_images/olive.png",
+        "battery_image": "shopify://shop_images/volt.png",
+        "suspension_image": "shopify://shop_images/volt.png",
+        "wheelie_image": "shopify://shop_images/ultra.png"
       }
     },
     "trust": {
       "type": "trust",
       "settings": {
-        "heading": "Ride <span class=\"stroke\">Worry-Free.</span>"
+        "heading": "Ride Worry-Free."
       }
     }
   },
