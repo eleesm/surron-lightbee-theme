@@ -11,7 +11,13 @@
   "sections": {
     "hero": {
       "type": "hero",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/hero.png",
+        "eyebrow": "THE 2026 LIGHT BEE",
+        "title": "Power Upgraded. Light As Always.",
+        "subtitle": "10kW of peak power. 59kg of pure control. The most powerful Light Bee ever built — still light enough to lift.",
+        "primary_cta_text": "Choose Your Color"
+      }
     },
     "marquee": {
       "type": "marquee",
@@ -27,15 +33,22 @@
     },
     "timeline": {
       "type": "timeline",
-      "settings": {}
+      "settings": {
+        "heading": "A Decade Of <span class=\"stroke\">Light Bee</span>.",
+        "subtitle": "2017 → 2026. From 1.9kWh/5kW to 2.5kWh/10kW — a steadfast focus on stability, reliability and safety."
+      }
     },
     "tech_rows": {
       "type": "tech-rows",
-      "settings": {}
+      "settings": {
+        "heading": "Engineered To <span class=\"stroke\">Dominate.</span>"
+      }
     },
     "trust": {
       "type": "trust",
-      "settings": {}
+      "settings": {
+        "heading": "Ride <span class=\"stroke\">Worry-Free.</span>"
+      }
     }
   },
   "order": [
