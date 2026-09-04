@@ -20,7 +20,14 @@
               height="2000"
             >
           {% else %}
-            {{ 'motor.jpg' | asset_url | img_tag: 'Fallback', 'loading="lazy"' }}
+            <img
+              src="{{ 'motor.jpg' | asset_url }}"
+              alt="10kW Mid-Drive Motor"
+              class="tech-row__img"
+              loading="lazy"
+              width="2000"
+              height="2000"
+            >
           {% endif %}
         </div>
         <div class="tech-row__content">
@@ -44,7 +51,14 @@
               height="2000"
             >
           {% else %}
-            {{ 'battery.jpg' | asset_url | img_tag: 'Fallback', 'loading="lazy"' }}
+            <img
+              src="{{ 'battery.jpg' | asset_url }}"
+              alt="72V35Ah Battery — 2.5kWh"
+              class="tech-row__img"
+              loading="lazy"
+              width="2000"
+              height="2000"
+            >
           {% endif %}
         </div>
         <div class="tech-row__content">
@@ -68,7 +82,14 @@
               height="2000"
             >
           {% else %}
-            {{ 'suspension.jpg' | asset_url | img_tag: 'Fallback', 'loading="lazy"' }}
+            <img
+              src="{{ 'suspension.jpg' | asset_url }}"
+              alt="Suspension Built For Landings"
+              class="tech-row__img"
+              loading="lazy"
+              width="2000"
+              height="2000"
+            >
           {% endif %}
         </div>
         <div class="tech-row__content">
@@ -92,7 +113,14 @@
               height="2000"
             >
           {% else %}
-            {{ 'wheelie.jpg' | asset_url | img_tag: 'Fallback', 'loading="lazy"' }}
+            <img
+              src="{{ 'wheelie.jpg' | asset_url }}"
+              alt="All-New Wheelie Control"
+              class="tech-row__img"
+              loading="lazy"
+              width="2000"
+              height="2000"
+            >
           {% endif %}
         </div>
         <div class="tech-row__content">

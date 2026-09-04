@@ -42,13 +42,14 @@
 
         <p>
           {% if settings.logo %}
-            {{ settings.logo | image_url: width: 300 | image_tag: alt: shop.name }}
+            {{ settings.logo | image_url: width: 300 | image_tag: alt: shop.name, loading: 'lazy' }}
           {% else %}
             <img
               src="{{ 'gift-card/card.svg' | shopify_asset_url }}"
               alt="{{ 'gift_card.card' | t }}"
               width="300"
               height="200"
+              loading="lazy"
             >
           {% endif %}
         </p>
@@ -64,6 +65,7 @@
               alt="{{ 'gift_card.add_to_apple_wallet' | t }}"
               width="200"
               height="60"
+              loading="lazy"
             >
           </a>
         {% endif %}

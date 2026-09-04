@@ -101,7 +101,7 @@ button,
   text-decoration: none;
   cursor: pointer;
   border: none;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s ease;
   white-space: nowrap;
 }
 
@@ -109,6 +109,7 @@ button,
 .btn-order-now {
   background-color: var(--color-foreground);
   color: #FFFFFF;
+  transition: all 0.3s ease;
 }
 
 .btn-primary:hover,
@@ -116,18 +117,19 @@ button,
   background-color: var(--color-accent-blue);
   color: #FFFFFF;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(30, 144, 255, 0.3);
+  box-shadow: 0 10px 20px rgba(30, 144, 255, 0.3);
 }
 
 .btn-accent-blue {
   background-color: var(--color-accent-blue);
   color: #FFFFFF;
+  transition: all 0.3s ease;
 }
 
 .btn-accent-blue:hover {
   background-color: #1877d5;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(30, 144, 255, 0.35);
+  box-shadow: 0 10px 20px rgba(30, 144, 255, 0.3);
 }
 
 .btn-accent-yellow {

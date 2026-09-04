@@ -74,7 +74,15 @@
               height="2000"
             >
           {% else %}
-            {{ 'volt.jpg' | asset_url | img_tag: 'Fallback', 'loading="lazy"' }}
+            <img
+              id="StageProductImage"
+              src="{{ 'volt.jpg' | asset_url }}"
+              alt="Sur-Ron Light Bee 2026 - Volt Black"
+              class="stage-product-img"
+              loading="lazy"
+              width="2000"
+              height="1250"
+            >
           {% endif %}
         </div>
 
