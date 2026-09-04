@@ -1,14 +1,8 @@
 <section class="stats-dark-section full-width" id="specs" aria-labelledby="StatsDarkHeading">
   <div class="stats-dark__bg-container">
-    {% if section.settings.image != blank %}
-      {% assign stats_bg_src = section.settings.image | image_url: width: 2000 %}
-    {% else %}
-      {% assign stats_bg_src = 'action.jpg' | asset_url %}
-    {% endif %}
-
     <img
-      src="{{ stats_bg_src }}"
-      alt="{{ section.settings.image.alt | default: 'Sur-Ron Light Bee 2026 Action Background' }}"
+      src="{{ 'action.jpg' | asset_url | img_url: 'master' }}"
+      alt="Sur-Ron Light Bee 2026 Action Background"
       class="stats-dark__bg-img"
       width="2000"
       height="1200"

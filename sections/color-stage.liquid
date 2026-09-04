@@ -11,29 +11,10 @@
     </div>
 
     {%- liquid
-      if section.settings.image_volt != blank
-        assign volt_src = section.settings.image_volt | image_url: width: 1200
-      else
-        assign volt_src = 'volt.jpg' | asset_url
-      endif
-
-      if section.settings.image_arctic != blank
-        assign arctic_src = section.settings.image_arctic | image_url: width: 1200
-      else
-        assign arctic_src = 'arctic.jpg' | asset_url
-      endif
-
-      if section.settings.image_olive != blank
-        assign olive_src = section.settings.image_olive | image_url: width: 1200
-      else
-        assign olive_src = 'olive.jpg' | asset_url
-      endif
-
-      if section.settings.image_ultra != blank
-        assign ultra_src = section.settings.image_ultra | image_url: width: 1200
-      else
-        assign ultra_src = 'ultra.jpg' | asset_url
-      endif
+      assign volt_src = 'volt.jpg' | asset_url | img_url: 'master'
+      assign arctic_src = 'arctic.jpg' | asset_url | img_url: 'master'
+      assign olive_src = 'olive.jpg' | asset_url | img_url: 'master'
+      assign ultra_src = 'ultra.jpg' | asset_url | img_url: 'master'
     -%}
 
     <!-- 3D Stage Card -->

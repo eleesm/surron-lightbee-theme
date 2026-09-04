@@ -7,29 +7,10 @@
     </div>
 
     {%- liquid
-      if section.settings.motor_image != blank
-        assign motor_img_src = section.settings.motor_image | image_url: width: 2000
-      else
-        assign motor_img_src = 'motor.jpg' | asset_url
-      endif
-
-      if section.settings.battery_image != blank
-        assign battery_img_src = section.settings.battery_image | image_url: width: 2000
-      else
-        assign battery_img_src = 'battery.jpg' | asset_url
-      endif
-
-      if section.settings.suspension_image != blank
-        assign suspension_img_src = section.settings.suspension_image | image_url: width: 2000
-      else
-        assign suspension_img_src = 'suspension.jpg' | asset_url
-      endif
-
-      if section.settings.wheelie_image != blank
-        assign wheelie_img_src = section.settings.wheelie_image | image_url: width: 2000
-      else
-        assign wheelie_img_src = 'wheelie.jpg' | asset_url
-      endif
+      assign motor_img_src = 'motor.jpg' | asset_url | img_url: 'master'
+      assign battery_img_src = 'battery.jpg' | asset_url | img_url: 'master'
+      assign suspension_img_src = 'suspension.jpg' | asset_url | img_url: 'master'
+      assign wheelie_img_src = 'wheelie.jpg' | asset_url | img_url: 'master'
     -%}
 
     <div class="tech-rows__list">

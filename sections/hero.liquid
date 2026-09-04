@@ -1,14 +1,8 @@
 <section class="hero full-width" id="hero">
   <div class="hero__bg-container">
-    {% if section.settings.image != blank %}
-      {% assign hero_image_src = section.settings.image | image_url: width: 2000 %}
-    {% else %}
-      {% assign hero_image_src = 'hero.jpg' | asset_url %}
-    {% endif %}
-
     <img
-      src="{{ hero_image_src }}"
-      alt="{{ section.settings.image.alt | default: 'Sur-Ron Light Bee 2026 Hero Shot' }}"
+      src="{{ 'hero.jpg' | asset_url | img_url: 'master' }}"
+      alt="Sur-Ron Light Bee 2026 Hero Shot"
       class="hero__bg-img ken-burns"
       width="2000"
       height="1200"
