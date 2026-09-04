@@ -22,10 +22,20 @@
         </shopify-account>
       {% endif %}
 
-      <a href="{{ routes.cart_url }}" class="header__cart-link" aria-label="Cart">
-        {% if cart.item_count > 0 %}
-          <span class="header__cart-count">{{ cart.item_count }}</span>
-        {% endif %}
+      <a
+        href="{{ routes.cart_url }}"
+        class="header__cart-link"
+        id="CartDrawerTrigger"
+        aria-label="Open cart drawer"
+        aria-controls="CartDrawer"
+        aria-expanded="false"
+      >
+        <span
+          class="header__cart-count {% if cart.item_count == 0 %}is-hidden{% endif %}"
+          id="HeaderCartCount"
+        >
+          {{ cart.item_count }}
+        </span>
         {{ 'icon-cart.svg' | inline_asset_content }}
       </a>
 
@@ -165,6 +175,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .header__cart-count.is-hidden {
+    display: none;
   }
 
   .header__order-btn {
