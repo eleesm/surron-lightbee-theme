@@ -6,25 +6,22 @@
       </h2>
     </div>
 
-    {%- liquid
-      assign motor_img_src = 'motor.jpg' | asset_url | img_url: 'master'
-      assign battery_img_src = 'battery.jpg' | asset_url | img_url: 'master'
-      assign suspension_img_src = 'suspension.jpg' | asset_url | img_url: 'master'
-      assign wheelie_img_src = 'wheelie.jpg' | asset_url | img_url: 'master'
-    -%}
-
     <div class="tech-rows__list">
       <!-- Row 1: Image Left, Text Right -->
       <article class="tech-row" data-rv>
         <div class="tech-row__media zoom-on-hover">
-          <img
-            src="{{ motor_img_src }}"
-            alt="10kW Mid-Drive Motor"
-            class="tech-row__img"
-            width="1000"
-            height="600"
-            loading="lazy"
-          >
+          {% if section.settings.motor_image != blank %}
+            <img
+              src="{{ section.settings.motor_image | image_url: width: 2000 }}"
+              alt="{{ section.settings.motor_image.alt | default: '10kW Mid-Drive Motor' }}"
+              class="tech-row__img"
+              loading="lazy"
+              width="2000"
+              height="2000"
+            >
+          {% else %}
+            {{ 'motor.jpg' | asset_url | img_tag: 'Fallback', 'loading="lazy"' }}
+          {% endif %}
         </div>
         <div class="tech-row__content">
           <h3 class="tech-row__title">10kW Mid-Drive Motor</h3>
@@ -37,14 +34,18 @@
       <!-- Row 2: Image Right, Text Left -->
       <article class="tech-row tech-row--reverse" data-rv>
         <div class="tech-row__media zoom-on-hover">
-          <img
-            src="{{ battery_img_src }}"
-            alt="72V35Ah Battery — 2.5kWh"
-            class="tech-row__img"
-            width="1000"
-            height="600"
-            loading="lazy"
-          >
+          {% if section.settings.battery_image != blank %}
+            <img
+              src="{{ section.settings.battery_image | image_url: width: 2000 }}"
+              alt="{{ section.settings.battery_image.alt | default: '72V35Ah Battery — 2.5kWh' }}"
+              class="tech-row__img"
+              loading="lazy"
+              width="2000"
+              height="2000"
+            >
+          {% else %}
+            {{ 'battery.jpg' | asset_url | img_tag: 'Fallback', 'loading="lazy"' }}
+          {% endif %}
         </div>
         <div class="tech-row__content">
           <h3 class="tech-row__title">72V35Ah Battery — 2.5kWh</h3>
@@ -57,14 +58,18 @@
       <!-- Row 3: Image Left, Text Right -->
       <article class="tech-row" data-rv>
         <div class="tech-row__media zoom-on-hover">
-          <img
-            src="{{ suspension_img_src }}"
-            alt="Suspension Built For Landings"
-            class="tech-row__img"
-            width="1000"
-            height="600"
-            loading="lazy"
-          >
+          {% if section.settings.suspension_image != blank %}
+            <img
+              src="{{ section.settings.suspension_image | image_url: width: 2000 }}"
+              alt="{{ section.settings.suspension_image.alt | default: 'Suspension Built For Landings' }}"
+              class="tech-row__img"
+              loading="lazy"
+              width="2000"
+              height="2000"
+            >
+          {% else %}
+            {{ 'suspension.jpg' | asset_url | img_tag: 'Fallback', 'loading="lazy"' }}
+          {% endif %}
         </div>
         <div class="tech-row__content">
           <h3 class="tech-row__title">Suspension Built For Landings</h3>
@@ -77,14 +82,18 @@
       <!-- Row 4: Image Right, Text Left -->
       <article class="tech-row tech-row--reverse" data-rv>
         <div class="tech-row__media zoom-on-hover">
-          <img
-            src="{{ wheelie_img_src }}"
-            alt="All-New Wheelie Control"
-            class="tech-row__img"
-            width="1000"
-            height="600"
-            loading="lazy"
-          >
+          {% if section.settings.wheelie_image != blank %}
+            <img
+              src="{{ section.settings.wheelie_image | image_url: width: 2000 }}"
+              alt="{{ section.settings.wheelie_image.alt | default: 'All-New Wheelie Control' }}"
+              class="tech-row__img"
+              loading="lazy"
+              width="2000"
+              height="2000"
+            >
+          {% else %}
+            {{ 'wheelie.jpg' | asset_url | img_tag: 'Fallback', 'loading="lazy"' }}
+          {% endif %}
         </div>
         <div class="tech-row__content">
           <h3 class="tech-row__title">All-New Wheelie Control</h3>

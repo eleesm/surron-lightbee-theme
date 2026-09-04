@@ -12,6 +12,7 @@
     "hero": {
       "type": "hero",
       "settings": {
+        "hero_image": "shopify://shop_images/hero.png",
         "image": "shopify://shop_images/hero.png",
         "eyebrow": "THE 2026 LIGHT BEE",
         "title": "Power Upgraded. Light As Always.",

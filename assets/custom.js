@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 3. Color Stage Swatch Switcher (Crossfade 220ms, .on class, tag update)
   const colorStage = document.querySelector('.stage-card');
-  const mainImage = document.getElementById('StageProductImage');
+  const mainImage = document.getElementById('StageProductImage') || document.querySelector('.stage-image-wrapper img');
   const variantTag = document.getElementById('StageVariantName');
   const swatches = document.querySelectorAll('.stage-swatch');
 

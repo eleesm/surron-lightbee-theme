@@ -11,10 +11,37 @@
     </div>
 
     {%- liquid
-      assign volt_src = 'volt.jpg' | asset_url | img_url: 'master'
-      assign arctic_src = 'arctic.jpg' | asset_url | img_url: 'master'
-      assign olive_src = 'olive.jpg' | asset_url | img_url: 'master'
-      assign ultra_src = 'ultra.jpg' | asset_url | img_url: 'master'
+      if section.settings.volt_image != blank
+        assign volt_src = section.settings.volt_image | image_url: width: 2000
+      elsif section.settings.image_volt != blank
+        assign volt_src = section.settings.image_volt | image_url: width: 2000
+      else
+        assign volt_src = 'volt.jpg' | asset_url | img_url: 'master'
+      endif
+
+      if section.settings.arctic_image != blank
+        assign arctic_src = section.settings.arctic_image | image_url: width: 2000
+      elsif section.settings.image_arctic != blank
+        assign arctic_src = section.settings.image_arctic | image_url: width: 2000
+      else
+        assign arctic_src = 'arctic.jpg' | asset_url | img_url: 'master'
+      endif
+
+      if section.settings.olive_image != blank
+        assign olive_src = section.settings.olive_image | image_url: width: 2000
+      elsif section.settings.image_olive != blank
+        assign olive_src = section.settings.image_olive | image_url: width: 2000
+      else
+        assign olive_src = 'olive.jpg' | asset_url | img_url: 'master'
+      endif
+
+      if section.settings.ultra_image != blank
+        assign ultra_src = section.settings.ultra_image | image_url: width: 2000
+      elsif section.settings.image_ultra != blank
+        assign ultra_src = section.settings.image_ultra | image_url: width: 2000
+      else
+        assign ultra_src = 'ultra.jpg' | asset_url | img_url: 'master'
+      endif
     -%}
 
     <!-- 3D Stage Card -->
@@ -26,15 +53,29 @@
         </div>
 
         <div class="stage-image-wrapper">
-          <img
-            id="StageProductImage"
-            src="{{ volt_src }}"
-            alt="Sur-Ron Light Bee 2026 - Volt Black"
-            class="stage-product-img"
-            width="1000"
-            height="700"
-            loading="lazy"
-          >
+          {% if section.settings.volt_image != blank %}
+            <img
+              id="StageProductImage"
+              src="{{ section.settings.volt_image | image_url: width: 2000 }}"
+              alt="{{ section.settings.volt_image.alt | default: 'Sur-Ron Light Bee 2026 - Volt Black' }}"
+              class="stage-product-img"
+              loading="lazy"
+              width="2000"
+              height="2000"
+            >
+          {% elsif section.settings.image_volt != blank %}
+            <img
+              id="StageProductImage"
+              src="{{ section.settings.image_volt | image_url: width: 2000 }}"
+              alt="{{ section.settings.image_volt.alt | default: 'Sur-Ron Light Bee 2026 - Volt Black' }}"
+              class="stage-product-img"
+              loading="lazy"
+              width="2000"
+              height="2000"
+            >
+          {% else %}
+            {{ 'volt.jpg' | asset_url | img_tag: 'Fallback', 'loading="lazy"' }}
+          {% endif %}
         </div>
 
         <!-- Glow effect under bike (radial gradient blue) -->
@@ -306,22 +347,22 @@
   "settings": [
     {
       "type": "image_picker",
-      "id": "image_volt",
+      "id": "volt_image",
       "label": "Volt Black Image"
     },
     {
       "type": "image_picker",
-      "id": "image_arctic",
+      "id": "arctic_image",
       "label": "Arctic White Image"
     },
     {
       "type": "image_picker",
-      "id": "image_olive",
+      "id": "olive_image",
       "label": "Trail Olive Image"
     },
     {
       "type": "image_picker",
-      "id": "image_ultra",
+      "id": "ultra_image",
       "label": "Ultra Violet Image"
     }
   ],
