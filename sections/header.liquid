@@ -33,8 +33,19 @@
         {{ 'icon-cart.svg' | inline_asset_content }}
       </a>
 
+      {%- assign order_url = section.settings.order_button_url -%}
+      {%- if order_url == blank or order_url contains '/collections/' -%}
+        {%- assign main_prod = all_products['2026-surron-light-bee-2'] | default: collections.all.products.first -%}
+        {%- if main_prod != blank -%}
+          {%- assign order_url = main_prod.url -%}
+        {%- else -%}
+          {%- assign order_url = '/products/2026-surron-light-bee-2' -%}
+        {%- endif -%}
+      {%- endif -%}
       {% # theme-check-disable HardcodedRoutes %}
-      <a href="/collections/all" class="header__order-now-btn">Order Now</a>
+      <a href="{{ order_url }}" class="header__order-now-btn btn-order-now">
+        {{ section.settings.order_button_text | default: 'ORDER NOW' }}
+      </a>
       {% # theme-check-enable HardcodedRoutes %}
     </div>
   </header>
