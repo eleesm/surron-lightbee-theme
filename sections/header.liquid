@@ -33,7 +33,18 @@
         {{ 'icon-cart.svg' | inline_asset_content }}
       </a>
 
-      <a href="{{ section.settings.order_button_url | default: '#order' }}" class="header__order-btn">
+      {%- liquid
+        assign product_target = all_products['sur-ron-light-bee-2026']
+        if section.settings.order_button_url != blank
+          assign order_url = section.settings.order_button_url
+        elsif product_target != blank
+          assign order_url = product_target.url
+        else
+          assign order_url = '/products/sur-ron-light-bee-2026'
+        endif
+      -%}
+
+      <a href="{{ order_url }}" class="header__order-btn btn-order-now">
         {{ section.settings.order_button_text | default: 'Order Now' }}
       </a>
     </div>
@@ -192,7 +203,8 @@
     display: none;
   }
 
-  .header__order-btn {
+  .header__order-btn,
+  .btn-order-now {
     background-color: var(--color-foreground, #0B0B0C);
     color: #FFFFFF;
     font-family: var(--font-body, 'Inter', sans-serif);
@@ -210,7 +222,8 @@
     box-shadow: 0 4px 14px rgba(11, 11, 12, 0.15);
   }
 
-  .header__order-btn:hover {
+  .header__order-btn:hover,
+  .btn-order-now:hover {
     background-color: var(--color-accent-blue, #1E90FF);
     color: #FFFFFF;
     transform: scale(1.04);
@@ -221,7 +234,8 @@
     .header__menu {
       display: none;
     }
-    .header__order-btn {
+    .header__order-btn,
+    .btn-order-now {
       padding: 0.55rem 1.2rem;
       font-size: 0.8rem;
     }
