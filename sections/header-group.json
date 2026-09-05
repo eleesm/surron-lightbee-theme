@@ -13,10 +13,15 @@
   "sections": {
     "header": {
       "type": "header",
-      "settings": {}
+      "settings": {
+        "menu": "main-menu",
+        "customer_account_menu": "customer-account-main-menu",
+        "order_button_text": "Order Now",
+        "order_button_url": "shopify://products/2026-surron-light-bee-2"
+      }
     }
   },
   "order": [
     "header"
-  ],
+  ]
 }
