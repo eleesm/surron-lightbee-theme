@@ -218,15 +218,21 @@ button,
 .product-page,
 .main-product,
 .shopify-section--main-product {
+  width: 100% !important;
   max-width: 100% !important;
-  margin: 0 auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .product-page .container,
-.main-product .container {
-  max-width: 1200px !important;
-  margin: 0 auto !important;
-  padding: 0 24px !important;
+.main-product .container,
+.product-page-container {
+  max-width: 1320px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 6rem 24px 5rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 /* Section Wrapper Overrides for Grid Framework */
@@ -238,16 +244,10 @@ button,
 .main-product-section {
   width: 100% !important;
   max-width: 100% !important;
-  margin: 0 auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
   grid-column: 1 / -1 !important;
   display: block !important;
-}
-
-.product-page-container {
-  max-width: 1200px !important;
-  margin: 0 auto !important;
-  padding: 0 24px !important;
-  width: 100% !important;
   box-sizing: border-box !important;
 }
 
@@ -275,11 +275,11 @@ body.template-product .header-wrapper .header__cart-link {
    ========================================================================== */
 /* Thumbnail gallery */
 .product-media-thumbnail {
-  width: 100px !important;
-  height: 100px !important;
+  width: 90px !important;
+  height: 90px !important;
   object-fit: contain;
   border-radius: 12px;
-  margin: 0 8px;
+  margin: 0 4px !important;
 }
 
 /* Main image container */
@@ -290,7 +290,7 @@ body.template-product .header-wrapper .header__cart-link {
 
 /* Gallery wrapper */
 .product-media-gallery {
-  padding: 20px;
+  padding: 0;
 }
 
 /* Active thumbnail border */
@@ -304,11 +304,18 @@ body.template-product .header-wrapper .header__cart-link {
   .product-media-thumbnail {
     width: 80px !important;
     height: 80px !important;
+    margin: 0 3px !important;
   }
   
   .product-media-container {
     min-height: 350px;
     max-height: 500px;
+  }
+
+  .product-page .container,
+  .main-product .container,
+  .product-page-container {
+    padding: 5rem 16px 3rem !important;
   }
 }
 
