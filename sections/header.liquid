@@ -42,74 +42,9 @@
       <a href="{{ section.settings.order_button_url | default: '#order' }}" class="header__order-btn">
         {{ section.settings.order_button_text | default: 'Order Now' }}
       </a>
-
-      <button
-        type="button"
-        class="header__hamburger"
-        id="MobileMenuOpen"
-        aria-label="Open mobile menu"
-        aria-expanded="false"
-        aria-controls="MobileMenuDrawer"
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-      </button>
     </div>
   </header>
 </div>
-
-<!-- Full-Screen Mobile Menu Drawer -->
-<div id="MobileMenuOverlay" class="mobile-menu-overlay" aria-hidden="true"></div>
-
-<nav id="MobileMenuDrawer" class="mobile-menu" aria-label="Mobile Navigation" aria-hidden="true">
-  <div class="mobile-menu__inner">
-    <div class="mobile-menu__header">
-      <a href="{{ routes.root_url }}" class="mobile-menu__logo">
-        <span class="mobile-menu__logo-brand">SUR-RON</span>
-        <span class="mobile-menu__logo-model">LIGHT BEE</span>
-      </a>
-      <button
-        type="button"
-        class="mobile-menu__close"
-        id="MobileMenuClose"
-        aria-label="Close mobile menu"
-      >
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
-    </div>
-
-    <div class="mobile-menu__content">
-      <ul class="mobile-menu__list" role="list">
-        {% if section.settings.menu != blank %}
-          {% for link in section.settings.menu.links %}
-            <li class="mobile-menu__item">
-              <a href="{{ link.url }}" class="mobile-menu__link">{{ link.title }}</a>
-            </li>
-          {% endfor %}
-        {% else %}
-          <li class="mobile-menu__item"><a href="#specs" class="mobile-menu__link">Overview</a></li>
-          <li class="mobile-menu__item"><a href="#colors" class="mobile-menu__link">Colorways</a></li>
-          <li class="mobile-menu__item"><a href="#specs" class="mobile-menu__link">Performance</a></li>
-          <li class="mobile-menu__item"><a href="#tech" class="mobile-menu__link">Tech Specs</a></li>
-          <li class="mobile-menu__item"><a href="/products/light-bee-2026" class="mobile-menu__link">Shop Bike</a></li>
-        {% endif %}
-      </ul>
-    </div>
-
-    <div class="mobile-menu__footer">
-      <a href="{{ section.settings.order_button_url | default: '#order' }}" class="mobile-menu__cta-btn">
-        {{ section.settings.order_button_text | default: 'Order Now — $3,599' }}
-      </a>
-      <p class="mobile-menu__disclaimer">⚠️ For off-road use only. Not street legal.</p>
-    </div>
-  </div>
-</nav>
 
 {% stylesheet %}
   .header-wrapper {
@@ -128,9 +63,9 @@
   }
 
   .header-wrapper.scrolled {
-    background-color: #FFFFFF;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background-color: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(11, 11, 12, 0.08);
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
   }
@@ -271,294 +206,38 @@
     box-shadow: 0 6px 20px rgba(30, 144, 255, 0.35);
   }
 
-  /* Hamburger Button */
-  .header__hamburger {
-    display: none;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: var(--color-foreground, #0B0B0C);
-    padding: 6px;
-    border-radius: 8px;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.2s ease, background-color 0.2s ease;
-  }
-
-  .header__hamburger:hover {
-    background-color: rgba(11, 11, 12, 0.06);
-    color: var(--color-accent-blue, #1E90FF);
-  }
-
-  /* Full-Screen Mobile Menu Drawer */
-  .mobile-menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    z-index: 1002;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.35s ease, visibility 0.35s ease;
-  }
-
-  body.mobile-menu-open .mobile-menu-overlay {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  }
-
-  .mobile-menu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    max-width: 100%;
-    height: 100%;
-    height: 100dvh;
-    background-color: #0B0B0C;
-    z-index: 1003;
-    transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    display: flex;
-    flex-direction: column;
-    color: #FFFFFF;
-  }
-
-  body.mobile-menu-open .mobile-menu {
-    transform: translateX(0);
-  }
-
-  body.mobile-menu-open {
-    overflow: hidden;
-  }
-
-  .mobile-menu__inner {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding: 1.5rem 1.75rem 2.5rem;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .mobile-menu__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .mobile-menu__logo {
-    display: flex;
-    align-items: baseline;
-    gap: 0.4rem;
-    text-decoration: none;
-    font-family: var(--font-heading, 'Archivo', sans-serif);
-    font-style: italic;
-    font-weight: 900;
-    text-transform: uppercase;
-    font-size: 1.35rem;
-    line-height: 1;
-  }
-
-  .mobile-menu__logo-brand {
-    color: #FFFFFF;
-  }
-
-  .mobile-menu__logo-model {
-    color: var(--color-accent-blue, #1E90FF);
-    font-size: 0.95rem;
-    letter-spacing: 0.05em;
-  }
-
-  .mobile-menu__close {
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    cursor: pointer;
-    color: #FFFFFF;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-  }
-
-  .mobile-menu__close:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    transform: scale(1.08);
-  }
-
-  .mobile-menu__content {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    padding: 2.5rem 0;
-  }
-
-  .mobile-menu__list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1.75rem;
-    width: 100%;
-  }
-
-  .mobile-menu__item {
-    opacity: 0;
-    transform: translateX(20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-
-  body.mobile-menu-open .mobile-menu__item {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  body.mobile-menu-open .mobile-menu__item:nth-child(1) { transition-delay: 0.1s; }
-  body.mobile-menu-open .mobile-menu__item:nth-child(2) { transition-delay: 0.15s; }
-  body.mobile-menu-open .mobile-menu__item:nth-child(3) { transition-delay: 0.2s; }
-  body.mobile-menu-open .mobile-menu__item:nth-child(4) { transition-delay: 0.25s; }
-  body.mobile-menu-open .mobile-menu__item:nth-child(5) { transition-delay: 0.3s; }
-  body.mobile-menu-open .mobile-menu__item:nth-child(6) { transition-delay: 0.35s; }
-
-  .mobile-menu__link {
-    font-family: var(--font-heading, 'Archivo', sans-serif);
-    font-style: italic;
-    font-weight: 900;
-    text-transform: uppercase;
-    font-size: 24px;
-    color: #FFFFFF;
-    text-decoration: none;
-    display: inline-block;
-    letter-spacing: -0.02em;
-    transition: color 0.2s ease, transform 0.2s ease;
-  }
-
-  .mobile-menu__link:hover {
-    color: var(--color-accent-blue, #1E90FF);
-    transform: translateX(6px);
-  }
-
-  .mobile-menu__footer {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .mobile-menu__cta-btn {
-    background-color: var(--color-accent-blue, #1E90FF);
-    color: #FFFFFF;
-    font-family: var(--font-body, 'Inter', sans-serif);
-    font-weight: 800;
-    font-size: 1rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    padding: 1.1rem 2rem;
-    border-radius: var(--radius-pill, 999px);
-    text-decoration: none;
-    text-align: center;
-    box-shadow: 0 8px 24px rgba(30, 144, 255, 0.35);
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .mobile-menu__cta-btn:hover {
-    background-color: #0077E6;
-    transform: scale(1.02);
-  }
-
-  .mobile-menu__disclaimer {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 0.78rem;
-    margin: 0;
-    text-align: center;
-  }
-
   @media (max-width: 768px) {
     .header__menu {
       display: none;
     }
     .header__order-btn {
-      display: none;
-    }
-    .header__hamburger {
-      display: flex;
+      padding: 0.55rem 1.2rem;
+      font-size: 0.8rem;
     }
   }
 {% endstylesheet %}
 
 {% javascript %}
-  function initHeader() {
-    // 1. Header Scroll (after 50px)
+  function initHeaderScroll() {
     const headerWrapper = document.querySelector('.header-wrapper');
-    if (headerWrapper) {
-      const checkScroll = () => {
-        if (window.scrollY > 50) {
-          headerWrapper.classList.add('scrolled');
-        } else {
-          headerWrapper.classList.remove('scrolled');
-        }
-      };
+    if (!headerWrapper) return;
 
-      window.addEventListener('scroll', checkScroll, { passive: true });
-      checkScroll();
-    }
-
-    // 2. Mobile Menu Drawer
-    const openBtn = document.getElementById('MobileMenuOpen');
-    const closeBtn = document.getElementById('MobileMenuClose');
-    const overlay = document.getElementById('MobileMenuOverlay');
-    const drawer = document.getElementById('MobileMenuDrawer');
-
-    const openMenu = () => {
-      document.body.classList.add('mobile-menu-open');
-      if (drawer) drawer.setAttribute('aria-hidden', 'false');
-      if (overlay) overlay.setAttribute('aria-hidden', 'false');
-      if (openBtn) openBtn.setAttribute('aria-expanded', 'true');
-    };
-
-    const closeMenu = () => {
-      document.body.classList.remove('mobile-menu-open');
-      if (drawer) drawer.setAttribute('aria-hidden', 'true');
-      if (overlay) overlay.setAttribute('aria-hidden', 'true');
-      if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
-    };
-
-    if (openBtn) openBtn.addEventListener('click', openMenu);
-    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-    if (overlay) overlay.addEventListener('click', closeMenu);
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && document.body.classList.contains('mobile-menu-open')) {
-        closeMenu();
+    const checkScroll = () => {
+      if (window.scrollY > 20) {
+        headerWrapper.classList.add('scrolled');
+      } else {
+        headerWrapper.classList.remove('scrolled');
       }
-    });
+    };
 
-    const links = document.querySelectorAll('.mobile-menu__link, .mobile-menu__cta-btn');
-    links.forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
+    window.addEventListener('scroll', checkScroll, { passive: true });
+    checkScroll();
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initHeader);
+    document.addEventListener('DOMContentLoaded', initHeaderScroll);
   } else {
-    initHeader();
+    initHeaderScroll();
   }
 {% endjavascript %}
 

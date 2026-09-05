@@ -19,14 +19,7 @@
         height="2000"
       >
     {% else %}
-      <img
-        src="{{ 'hero.jpg' | asset_url }}"
-        alt="Sur-Ron Light Bee 2026 Background"
-        class="final-cta__bg-img ken-burns"
-        loading="lazy"
-        width="2000"
-        height="1250"
-      >
+      {{ 'hero.jpg' | asset_url | img_tag: 'Fallback', 'loading="lazy"' }}
     {% endif %}
     <div class="final-cta__overlay" style="background-color: rgba(11, 11, 12, {{ section.settings.overlay_opacity | default: 72 | divided_by: 100.0 }});"></div>
   </div>

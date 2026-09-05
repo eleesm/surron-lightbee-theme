@@ -19,14 +19,7 @@
         height="2000"
       >
     {% else %}
-      <img
-        src="{{ 'action.jpg' | asset_url }}"
-        alt="Sur-Ron Light Bee 2026 Action Background"
-        class="stats-dark__bg-img"
-        loading="lazy"
-        width="2000"
-        height="1250"
-      >
+      {{ 'action.jpg' | asset_url | img_tag: 'Fallback', 'loading="lazy"' }}
     {% endif %}
     <div class="stats-dark__overlay"></div>
   </div>

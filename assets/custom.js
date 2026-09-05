@@ -3,11 +3,11 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Header Scroll State (starts transparent, active after 50px)
+  // 1. Header Scroll State
   const headerWrapper = document.querySelector('.header-wrapper');
   if (headerWrapper) {
     const handleHeaderScroll = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 25) {
         headerWrapper.classList.add('scrolled');
       } else {
         headerWrapper.classList.remove('scrolled');
@@ -17,28 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
     handleHeaderScroll();
   }
 
-  // 2. Global Scroll-Reveal with Staggering ([data-rv])
+  // 2. Global Scroll-Reveal ([data-rv] threshold 0.25)
   const rvElements = document.querySelectorAll('[data-rv]');
   if (rvElements.length > 0) {
-    // Group elements by parent container to stagger sibling animations by 100ms
-    const parentMap = new Map();
-    rvElements.forEach(el => {
-      const parent = el.parentElement;
-      if (!parent) return;
-      if (!parentMap.has(parent)) {
-        parentMap.set(parent, []);
-      }
-      parentMap.get(parent).push(el);
-    });
-
-    parentMap.forEach(group => {
-      if (group.length > 1) {
-        group.forEach((el, index) => {
-          el.style.transitionDelay = `${index * 100}ms`;
-        });
-      }
-    });
-
     const rvObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -46,8 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
-
+    }, { threshold: 0.25 });
     rvElements.forEach(el => rvObserver.observe(el));
   }
 
