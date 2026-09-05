@@ -1,4 +1,4 @@
-<section class="main-product-section" id="MainProduct-{{ section.id }}" data-section-id="{{ section.id }}">
+<section class="main-product-section full-width product-page main-product" id="MainProduct-{{ section.id }}" data-section-id="{{ section.id }}">
   {%- assign current_variant = product.selected_or_first_available_variant -%}
 
   {%- comment -%} Determine which color is currently selected {%- endcomment -%}
@@ -67,7 +67,7 @@
     {%- assign initial_image = product.featured_media | image_url: width: 2000 -%}
   {%- endif -%}
 
-  <div class="product-page-container">
+  <div class="product-page-container container">
     <div class="product-layout">
       <!-- 1. Left Column: Media Gallery with 3D Tilt -->
       <div class="product-media-column">
@@ -530,18 +530,37 @@
 </section>
 
 {% stylesheet %}
+  .shopify-section--main-product,
+  .shopify-section:has(.main-product-section),
+  .shopify-section:has(.product-page),
+  .section-main-product,
+  .product-page,
+  .main-product,
   .main-product-section {
-    padding: 3rem 0 5rem;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    grid-column: 1 / -1 !important;
+    display: block !important;
     background-color: var(--color-background, #F5F6F8);
     font-family: var(--font-body, 'Inter', sans-serif);
     color: var(--color-foreground, #0B0B0C);
     position: relative;
   }
 
-  .product-page-container {
-    max-width: var(--page-width, 110rem);
-    margin: 0 auto;
-    padding: 0 var(--page-margin, 20px);
+  .main-product-section {
+    padding: 6rem 0 5rem;
+    min-height: calc(100vh - 100px);
+  }
+
+  .product-page-container,
+  .product-page .container,
+  .main-product .container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 24px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   /* 2-column grid on desktop, 1-column on mobile */
@@ -1187,7 +1206,7 @@
 {
   "name": "Main Product",
   "tag": "section",
-  "class": "section-main-product",
+  "class": "section-main-product shopify-section--main-product product-page main-product full-width",
   "blocks": [
     {
       "type": "@app"

@@ -38,7 +38,7 @@
     <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
   </head>
 
-  <body>
+  <body class="template-{{ template.name | default: template | handle }}">
     {% sections 'header-group' %}
 
     {{ content_for_layout }}

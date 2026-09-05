@@ -211,3 +211,62 @@ button,
   transform: skew(-16deg) rotate(-1.5deg) scaleX(1.04);
   opacity: 1;
 }
+
+/* ==========================================================================
+   Product Page Layout - Full-Width & Container Width
+   ========================================================================== */
+.product-page,
+.main-product,
+.shopify-section--main-product {
+  max-width: 100% !important;
+  margin: 0 auto !important;
+}
+
+.product-page .container,
+.main-product .container {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 24px !important;
+}
+
+/* Section Wrapper Overrides for Grid Framework */
+.shopify-section--main-product,
+.shopify-section:has(.main-product-section),
+.shopify-section:has(.product-page),
+.shopify-section:has(.main-product),
+.section-main-product,
+.main-product-section {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  grid-column: 1 / -1 !important;
+  display: block !important;
+}
+
+.product-page-container {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 24px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Product template light background */
+body.template-product {
+  background-color: var(--color-background, #F5F6F8);
+}
+
+body.template-product .header-wrapper {
+  background-color: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(11, 11, 12, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+}
+
+body.template-product .header-wrapper .header__logo-brand,
+body.template-product .header-wrapper .header__link,
+body.template-product .header-wrapper .header__cart-link {
+  color: #0B0B0C;
+}
+
