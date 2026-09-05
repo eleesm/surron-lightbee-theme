@@ -1,4 +1,4 @@
-<footer class="footer">
+<footer class="footer full-width">
   <div class="footer__inner">
     <div class="footer__disclaimer">
       <span class="footer__disclaimer-badge">Notice</span>
@@ -30,10 +30,26 @@
 </footer>
 
 {% stylesheet %}
+  .shopify-section--footer,
+  .shopify-section:has(.footer) {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    grid-column: 1 / -1 !important;
+    display: block !important;
+  }
+
   .footer {
-    width: 100%;
-    margin-top: auto;
-    padding: 3rem 0 2rem;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    margin-top: auto !important;
+    padding: 3rem 0 2rem !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    grid-column: 1 / -1 !important;
     border-top: 1px solid rgba(11, 11, 12, 0.08);
     background-color: var(--color-background, #F5F6F8);
     font-family: var(--font-body, 'Inter', sans-serif);
@@ -136,6 +152,7 @@
 {% schema %}
 {
   "name": "t:general.footer",
+  "class": "shopify-section--footer",
   "settings": [
     {
       "type": "link_list",

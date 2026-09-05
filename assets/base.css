@@ -47,6 +47,20 @@ body {
   transform: none !important;
 }
 
+/* Footer Full-Width */
+.footer,
+.shopify-section--footer,
+#shopify-section-footer,
+.shopify-section:has(.footer),
+.shopify-section-group-footer-group {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  grid-column: 1 / -1 !important;
+}
+
 /* Scroll Reveal Attribute [data-rv] */
 [data-rv] {
   opacity: 0;
