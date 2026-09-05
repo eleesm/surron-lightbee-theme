@@ -319,4 +319,30 @@ body.template-product .header-wrapper .header__cart-link {
   }
 }
 
+/* ==========================================================================
+   Product Title - Force Single Line
+   ========================================================================== */
+.product__title,
+.product__title h1,
+h1.product__title,
+.product-title,
+h1.product-title {
+  white-space: nowrap !important;
+  font-size: clamp(24px, 3.5vw, 38px) !important;
+  line-height: 1.2 !important;
+  width: 100% !important;
+  display: block !important;
+}
+
+@media (max-width: 480px) {
+  .product__title,
+  .product__title h1,
+  h1.product__title,
+  .product-title,
+  h1.product-title {
+    font-size: clamp(18px, 4.8vw, 24px) !important;
+  }
+}
+
+
 

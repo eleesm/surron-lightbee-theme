@@ -138,12 +138,12 @@
                   {% render block %}
 
                 {%- when 'title' -%}
-                  <div class="product-block product-block--title" {{ block.shopify_attributes }}>
+                  <div class="product-block product-block--title product__title" {{ block.shopify_attributes }}>
                     <div class="product-eyebrow">
                       <span class="pulse-dot" aria-hidden="true"></span>
                       <span>THE 2026 LIGHT BEE</span>
                     </div>
-                    <h1 class="product-title">
+                    <h1 class="product-title product__title">
                       {{ product.title | default: 'Sur-Ron Light Bee 2026' }}
                     </h1>
                   </div>
@@ -348,7 +348,7 @@
               <span>THE 2026 LIGHT BEE</span>
             </div>
 
-            <h1 class="product-title">
+            <h1 class="product-title product__title">
               {{ product.title | default: 'Sur-Ron Light Bee 2026' }}
             </h1>
 
@@ -787,14 +787,21 @@
   }
 
   /* Product Title (Archivo, italic, 900 weight) */
-  .product-title {
+  .product-title,
+  .product__title,
+  .product__title h1,
+  h1.product__title,
+  h1.product-title {
     font-family: var(--font-heading, 'Archivo', sans-serif);
     font-style: italic;
     font-weight: 900;
     text-transform: uppercase;
-    font-size: clamp(2.2rem, 3.2vw, 3.2rem);
     letter-spacing: -0.03em;
-    line-height: 1.05;
+    white-space: nowrap !important;
+    font-size: clamp(24px, 3.5vw, 38px) !important;
+    line-height: 1.2 !important;
+    width: 100% !important;
+    display: block !important;
     color: var(--color-foreground, #0B0B0C);
     margin: 0 0 1rem;
   }
@@ -1125,6 +1132,14 @@
     }
     .product-gallery-badge__color {
       font-size: 1.25rem;
+    }
+    .product-title,
+    .product__title,
+    .product__title h1,
+    h1.product__title,
+    h1.product-title {
+      font-size: clamp(18px, 4.8vw, 24px) !important;
+      white-space: nowrap !important;
     }
     .product-swatches {
       gap: 1rem;
