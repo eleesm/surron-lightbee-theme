@@ -73,10 +73,7 @@
       <div class="product-media-column product-media-gallery">
         <div class="product-gallery-stage product-tilt" id="ProductStageCard">
           <div class="product-gallery-inner product-media-container">
-            <div class="product-gallery-badge">
-              <span class="product-gallery-badge__sub">2026 SUR-RON</span>
-              <span class="product-gallery-badge__color" id="ProductColorBadge">{{ selected_color }}</span>
-            </div>
+
 
             <div class="product-gallery-image-wrap">
               <img
@@ -637,14 +634,21 @@
     box-shadow: 0 30px 60px -12px rgba(11, 11, 12, 0.14);
   }
 
-  .product-gallery-badge {
-    position: absolute;
-    top: 2rem;
-    left: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
-    z-index: 2;
+  /* Hide variant/color name above product image */
+  .product-gallery-badge,
+  .product-gallery-badge__color,
+  .product-gallery-badge__sub,
+  #ProductColorBadge,
+  .product__media-wrapper .variant-title,
+  .product__media-wrapper .color-name,
+  .product__media-wrapper h2.variant-name,
+  .product__media-wrapper .product-variant-name,
+  .product__media-container .variant-title,
+  .product__media-container .color-name,
+  .media-caption,
+  .variant-label,
+  .selected-variant-title {
+    display: none !important;
   }
 
   .product-gallery-badge__sub {

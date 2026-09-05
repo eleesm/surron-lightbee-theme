@@ -411,3 +411,23 @@ h1.product-title {
     padding: 40px 20px !important;
   }
 }
+
+/* ==========================================================================
+   Hide variant/color name above product image
+   ========================================================================== */
+.product-gallery-badge,
+.product-gallery-badge__color,
+.product-gallery-badge__sub,
+#ProductColorBadge,
+.product__media-wrapper .variant-title,
+.product__media-wrapper .color-name,
+.product__media-wrapper h2.variant-name,
+.product__media-wrapper .product-variant-name,
+.product__media-container .variant-title,
+.product__media-container .color-name,
+.media-caption,
+.variant-label,
+.selected-variant-title {
+  display: none !important;
+}
+
