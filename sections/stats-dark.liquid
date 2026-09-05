@@ -1,29 +1,4 @@
-<section class="stats-dark-section full-width" id="specs" aria-labelledby="StatsDarkHeading">
-  <div class="stats-dark__bg-container">
-    {% if section.settings.stats_image != blank %}
-      <img
-        src="{{ section.settings.stats_image | image_url: width: 2000 }}"
-        alt="{{ section.settings.stats_image.alt | default: 'Sur-Ron Light Bee 2026 Action Background' }}"
-        class="stats-dark__bg-img"
-        loading="lazy"
-        width="2000"
-        height="2000"
-      >
-    {% elsif section.settings.image != blank %}
-      <img
-        src="{{ section.settings.image | image_url: width: 2000 }}"
-        alt="{{ section.settings.image.alt | default: 'Sur-Ron Light Bee 2026 Action Background' }}"
-        class="stats-dark__bg-img"
-        loading="lazy"
-        width="2000"
-        height="2000"
-      >
-    {% else %}
-      {{ 'action.jpg' | asset_url | img_tag: 'Fallback', 'loading="lazy"' }}
-    {% endif %}
-    <div class="stats-dark__overlay"></div>
-  </div>
-
+<section class="stats-dark-section stats-dark full-width" id="specs" aria-labelledby="StatsDarkHeading">
   <div class="stats-dark__container">
     <div class="stats-dark__header text-center" data-rv>
       <span class="stats-dark__eyebrow">DOMINANT METRICS</span>
@@ -68,38 +43,13 @@
 </section>
 
 {% stylesheet %}
-  .stats-dark-section {
+  .stats-dark-section,
+  .stats-dark {
     position: relative;
     padding: 7.5rem var(--page-margin, 20px);
     overflow: hidden;
     color: #FFFFFF;
-  }
-
-  .stats-dark__bg-container {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-  }
-
-  .stats-dark__bg-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    will-change: transform;
-  }
-
-  .stats-dark__overlay {
-    position: absolute;
-    inset: 0;
-    background-color: rgba(5, 8, 12, 0.78);
-    z-index: 1;
+    background: #0B0B0C !important; /* Solid black, no image */
   }
 
   .stats-dark__container {
@@ -217,11 +167,8 @@
     display: block;
   }
 
-  /* Mobile: 2 Columns & Parallax Disabled */
+  /* Mobile: 2 Columns */
   @media (max-width: 768px) {
-    .stats-dark__bg-img {
-      position: absolute;
-    }
     .stats-dark__grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 1.25rem;
@@ -238,18 +185,7 @@
 {% schema %}
 {
   "name": "Stats Dark",
-  "settings": [
-    {
-      "type": "image_picker",
-      "id": "stats_image",
-      "label": "Stats Background Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Background Image (Legacy)"
-    }
-  ],
+  "settings": [],
   "presets": [
     {
       "name": "Stats Dark"
