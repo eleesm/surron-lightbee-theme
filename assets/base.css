@@ -39,9 +39,12 @@ body {
 
 .shopify-section--marquee,
 #shopify-section-marquee,
-.shopify-section:has(#marquee) {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
+.shopify-section:has(#marquee),
+.marquee-section,
+.marquee {
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
 }
 
 /* Scroll Reveal Attribute [data-rv] */

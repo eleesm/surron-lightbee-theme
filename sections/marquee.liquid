@@ -1,4 +1,4 @@
-<section class="marquee-section full-width" id="marquee" aria-label="Highlights Marquee">
+<section class="marquee-section marquee full-width" id="marquee" aria-label="Highlights Marquee">
   <div class="marquee-wrapper">
     <div class="marquee-track">
       {% capture marquee_unit %}10kW PEAK POWER ✦ 59KG ✦ 2.5kWh ✦ 1.29s 0-30 ✦ FREE USA SHIPPING ✦ 100-DAY WARRANTY ✦ &nbsp;{% endcapture %}
@@ -14,23 +14,24 @@
 
 {% stylesheet %}
   .shopify-section--marquee {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
-  .marquee-section {
+  .marquee-section,
+  .marquee {
     position: relative;
     overflow: hidden;
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-    padding-bottom: 1.5rem;
-    margin-bottom: 1.5rem;
+    transform: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
     z-index: 10;
   }
 
   .marquee-wrapper {
     background-color: var(--color-accent-yellow, #FFD400);
-    transform: rotate(-1.6deg) scale(1.04);
+    transform: none !important;
+    margin: 0 !important;
     padding: 1rem 0;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(255, 212, 0, 0.25);
