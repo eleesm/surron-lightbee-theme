@@ -120,13 +120,15 @@
 
       <!-- 2. Right Column: Product Info -->
       <div class="product-info-column {% if section.settings.enable_sticky_info %}is-sticky{% endif %}">
-        {%- form 'product', product, id: 'ProductForm', class: 'product-form', novalidate: 'novalidate' -%}
+        {%- form 'product', product, id: 'ProductForm', class: 'product-form buy-now-form', novalidate: 'novalidate' -%}
           <input
             type="hidden"
             name="id"
             id="ProductVariantId"
             value="{{ current_variant.id | default: product.variants[0].id }}"
           >
+          <input type="hidden" name="return_to" value="/checkout">
+          <input type="hidden" name="checkout" value="1">
 
           {%- comment -%} If section blocks exist, render them sequentially. Otherwise render full layout. {%- endcomment -%}
           {%- if section.blocks.size > 0 -%}
@@ -260,18 +262,18 @@
                       </div>
                     </div>
 
-                    <!-- Add To Cart Button: Full-width blue pill button -->
+                    <!-- Buy Now Button: Full-width blue pill button -->
                     <div class="product-atc-wrap">
                       <button
                         type="submit"
-                        name="add"
+                        name="checkout"
                         id="AddToCartBtn"
-                        class="btn-atc"
+                        class="btn-atc btn-buy-now"
                         {% unless current_variant.available %}disabled{% endunless %}
                       >
                         <span id="AddToCartText">
                           {%- if current_variant.available -%}
-                            ADD TO CART &mdash; {{ current_variant.price | default: 359900 | money }}
+                            BUY NOW
                           {%- else -%}
                             SOLD OUT
                           {%- endif -%}
@@ -452,18 +454,18 @@
               </div>
             </div>
 
-            <!-- Add To Cart Button -->
+            <!-- Buy Now Button -->
             <div class="product-atc-wrap">
               <button
                 type="submit"
-                name="add"
+                name="checkout"
                 id="AddToCartBtn"
-                class="btn-atc"
+                class="btn-atc btn-buy-now"
                 {% unless current_variant.available %}disabled{% endunless %}
               >
                 <span id="AddToCartText">
                   {%- if current_variant.available -%}
-                    ADD TO CART &mdash; {{ current_variant.price | default: 359900 | money }}
+                    BUY NOW
                   {%- else -%}
                     SOLD OUT
                   {%- endif -%}
@@ -974,12 +976,13 @@
     margin: 0;
   }
 
-  /* Add to Cart Button */
+  /* Buy Now / Add to Cart Button */
   .product-atc-wrap {
     margin-bottom: 0.85rem;
   }
 
-  .btn-atc {
+  .btn-atc,
+  .btn-buy-now {
     width: 100%;
     background-color: var(--color-accent-blue, #1E90FF);
     color: #FFFFFF;
@@ -999,17 +1002,20 @@
     justify-content: center;
   }
 
-  .btn-atc:hover:not(:disabled) {
+  .btn-atc:hover:not(:disabled),
+  .btn-buy-now:hover:not(:disabled) {
     transform: scale(1.02);
     box-shadow: 0 12px 32px rgba(30, 144, 255, 0.45);
     background-color: #0077E6;
   }
 
-  .btn-atc:active:not(:disabled) {
+  .btn-atc:active:not(:disabled),
+  .btn-buy-now:active:not(:disabled) {
     transform: scale(0.99);
   }
 
-  .btn-atc:disabled {
+  .btn-atc:disabled,
+  .btn-buy-now:disabled {
     background-color: #9EA5AD;
     cursor: not-allowed;
     box-shadow: none;
@@ -1195,7 +1201,7 @@
           if (atcBtn && atcText) {
             if (isAvailable) {
               atcBtn.removeAttribute('disabled');
-              atcText.textContent = `ADD TO CART — ${newPrice || ''}`;
+              atcText.textContent = 'BUY NOW';
             } else {
               atcBtn.setAttribute('disabled', 'disabled');
               atcText.textContent = 'SOLD OUT';

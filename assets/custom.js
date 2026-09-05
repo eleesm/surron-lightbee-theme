@@ -299,13 +299,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Intercept Add to Cart form submissions
+  // Intercept Add to Cart / Buy Now form submissions
   document.addEventListener('submit', async (e) => {
     const form = e.target;
     if (!form) return;
 
     // Ignore checkout form in cart drawer
-    if (form.id === 'CartDrawerForm' || (e.submitter && e.submitter.name === 'checkout')) {
+    if (form.id === 'CartDrawerForm') {
+      return;
+    }
+
+    // Direct Buy Now / Checkout redirection
+    const isBuyNow = (e.submitter && (e.submitter.name === 'checkout' || e.submitter.classList.contains('btn-buy-now'))) ||
+                     form.id === 'buy-now-form' ||
+                     form.querySelector('input[name="return_to"]')?.value === '/checkout' ||
+                     form.querySelector('input[name="checkout"]');
+
+    if (isBuyNow) {
+      e.preventDefault();
+      const buyBtn = form.querySelector('#AddToCartBtn') || form.querySelector('.btn-buy-now') || form.querySelector('button[type="submit"]');
+      if (buyBtn) {
+        buyBtn.disabled = true;
+        buyBtn.style.opacity = '0.7';
+        buyBtn.innerHTML = '<span>CHECKING OUT...</span>';
+      }
+      try {
+        const formData = new FormData(form);
+        await fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: formData
+        });
+      } catch (err) {
+        console.error('Error adding item before checkout:', err);
+      }
+      window.location.href = '/checkout';
       return;
     }
 
