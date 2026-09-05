@@ -13,9 +13,7 @@
   "sections": {
     "header": {
       "type": "header",
-      "settings": {
-        "order_button_url": "/products/sur-ron-light-bee-2026"
-      }
+      "settings": {}
     }
   },
   "order": [

@@ -33,18 +33,8 @@
         {{ 'icon-cart.svg' | inline_asset_content }}
       </a>
 
-      {%- liquid
-        assign product_target = all_products['sur-ron-light-bee-2026']
-        if section.settings.order_button_url != blank
-          assign order_url = section.settings.order_button_url
-        elsif product_target != blank
-          assign order_url = product_target.url
-        else
-          assign order_url = '/products/sur-ron-light-bee-2026'
-        endif
-      -%}
-
-      <a href="{{ order_url }}" class="header__order-btn btn-order-now">
+      {% assign product = all_products['sur-ron-light-bee-2026'] %}
+      <a href="{{ product.url | default: section.settings.order_button_url | default: '/collections/all' }}" class="header__order-btn btn-order-now">
         {{ section.settings.order_button_text | default: 'Order Now' }}
       </a>
     </div>
