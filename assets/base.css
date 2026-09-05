@@ -270,3 +270,46 @@ body.template-product .header-wrapper .header__cart-link {
   color: #0B0B0C;
 }
 
+/* ==========================================================================
+   Product Page Gallery Enhancements
+   ========================================================================== */
+/* Thumbnail gallery */
+.product-media-thumbnail {
+  width: 100px !important;
+  height: 100px !important;
+  object-fit: contain;
+  border-radius: 12px;
+  margin: 0 8px;
+}
+
+/* Main image container */
+.product-media-container {
+  min-height: 500px;
+  max-height: 700px;
+}
+
+/* Gallery wrapper */
+.product-media-gallery {
+  padding: 20px;
+}
+
+/* Active thumbnail border */
+.product-media-thumbnail.active,
+.product-media-thumbnail.is-active {
+  border: 3px solid #1E90FF !important;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .product-media-thumbnail {
+    width: 80px !important;
+    height: 80px !important;
+  }
+  
+  .product-media-container {
+    min-height: 350px;
+    max-height: 500px;
+  }
+}
+
+
