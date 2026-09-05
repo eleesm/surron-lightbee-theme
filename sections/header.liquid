@@ -16,12 +16,6 @@
     {% endif %}
 
     <div class="header__right">
-      {% if shop.customer_accounts_enabled %}
-        <shopify-account menu="{{ section.settings.customer_account_menu }}">
-          {{ 'icon-account.svg' | inline_asset_content }}
-        </shopify-account>
-      {% endif %}
-
       <a
         href="{{ routes.cart_url }}"
         class="header__cart-link"
@@ -107,7 +101,12 @@
   }
 
   .header__logo-brand {
-    color: var(--color-foreground, #0B0B0C);
+    color: #FFFFFF;
+    transition: color 0.3s ease;
+  }
+
+  .header-wrapper.scrolled .header__logo-brand {
+    color: #0B0B0C;
   }
 
   .header__logo-model {
@@ -124,16 +123,20 @@
 
   .header__link {
     text-decoration: none;
-    color: var(--color-foreground, #0B0B0C);
+    color: rgba(255, 255, 255, 0.9);
     font-family: var(--font-body, 'Inter', sans-serif);
     font-size: 0.95rem;
     font-weight: 500;
     letter-spacing: 0.01em;
-    transition: color 0.2s ease;
+    transition: color 0.3s ease;
   }
 
   .header__link:hover {
     color: var(--color-accent-blue, #1E90FF);
+  }
+
+  .header-wrapper.scrolled .header__link {
+    color: #0B0B0C;
   }
 
   .header__right {
@@ -142,14 +145,15 @@
     gap: 1.25rem;
   }
 
+  /* Cart Icon: White before scroll, #0B0B0C when scrolled */
   .header__cart-link {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-foreground, #0B0B0C);
+    color: #FFFFFF;
     text-decoration: none;
-    transition: transform 0.2s ease;
+    transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s ease;
   }
 
   .header__cart-link:hover {
@@ -159,6 +163,13 @@
   .header__cart-link svg {
     width: 1.5rem;
     height: 1.5rem;
+    stroke: currentColor;
+    fill: none;
+    transition: stroke 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .header-wrapper.scrolled .header__cart-link {
+    color: #0B0B0C;
   }
 
   .header__cart-count {

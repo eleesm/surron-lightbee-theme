@@ -15,7 +15,7 @@
         "hero_image": "shopify://shop_images/hero.png",
         "image": "shopify://shop_images/hero.png",
         "eyebrow": "THE 2026 LIGHT BEE",
-        "title": "Power Upgraded. Light As Always.",
+        "title": "<span class=\"hero__title-line\">POWER UPGRADED.</span><span class=\"hero__title-line\"><span class=\"stroke\">LIGHT</span> AS ALWAYS.</span>",
         "subtitle": "10kW of peak power. 59kg of pure control. The most powerful Light Bee ever built — still light enough to lift.",
         "primary_cta_text": "Choose Your Color"
       }

@@ -32,7 +32,8 @@
       </div>
 
       <h1 class="hero__title">
-        {{ section.settings.title | default: 'Power Upgraded. <span class="stroke">Light</span> As Always.' }}
+        <span class="hero__title-line">POWER UPGRADED.</span>
+        <span class="hero__title-line"><span class="stroke">LIGHT</span> AS ALWAYS.</span>
       </h1>
 
       <p class="hero__subtext">
@@ -136,14 +137,26 @@
   }
 
   .hero__title {
-    font-size: clamp(52px, 6.2vw, 120px);
-    line-height: 0.98;
+    font-size: clamp(40px, 5.8vw, 104px);
+    line-height: 1.02;
     margin: 0;
     color: #FFFFFF;
     font-style: italic;
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: -0.04em;
+  }
+
+  .hero__title-line {
+    display: block;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 640px) {
+    .hero__title {
+      font-size: clamp(26px, 8vw, 40px);
+      line-height: 1.08;
+    }
   }
 
   .hero__subtext {
