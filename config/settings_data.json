@@ -15,7 +15,7 @@
     "accent_blue": "#1E90FF",
     "accent_yellow": "#FFD400",
     "card_corner_radius": 32,
-    "button_corner_radius": 100,
+    "button_corner_radius": 1000,
     "input_corner_radius": 8
   }
 }
