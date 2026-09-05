@@ -1,10 +1,10 @@
 <section class="timeline-section full-width" id="timeline" aria-labelledby="TimelineHeading">
   <div class="timeline__container">
     <div class="timeline__header text-center" data-rv>
-      <h2 id="TimelineHeading" class="timeline__heading">
+      <h2 id="TimelineHeading" class="timeline__heading section-title">
         {{ section.settings.heading | default: 'A Decade Of <span class="stroke">Light Bee</span>.' }}
       </h2>
-      <p class="timeline__subtitle">
+      <p class="timeline__subtitle section-subtitle">
         {{ section.settings.subtitle | default: '2017 &rarr; 2026. From 1.9kWh/5kW to 2.5kWh/10kW — a steadfast focus on stability, reliability and safety.' }}
       </p>
     </div>
@@ -98,11 +98,13 @@
   }
 
   .timeline__header {
+    width: 100%;
+    max-width: 54rem;
+    margin: 0 auto 4.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-bottom: 4.5rem;
   }
 
   .timeline__heading {
@@ -110,6 +112,11 @@
     line-height: 1.05;
     margin: 0 0 1rem;
     color: #0B0B0C;
+    width: 100%;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   .timeline__subtitle {
@@ -117,8 +124,13 @@
     font-size: 1.15rem;
     line-height: 1.6;
     color: #61666D;
-    max-width: 640px;
+    width: 100%;
+    max-width: 48rem;
     margin: 0 auto;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   .timeline__wrapper {

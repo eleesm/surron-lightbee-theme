@@ -45,7 +45,8 @@ body {
 /* Typography: Headings */
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6,
-.heading-title {
+.heading-title,
+.section-title {
   font-family: var(--font-heading);
   font-style: italic;
   font-weight: 900;
@@ -53,16 +54,25 @@ h1, h2, h3, h4, h5, h6,
   color: var(--color-foreground);
   letter-spacing: -0.03em;
   line-height: 1.05;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 /* Typography: Subtext */
 .subtext,
-p.subtext {
+p.subtext,
+.section-subtitle {
   color: var(--color-subtext);
   font-family: var(--font-body);
   font-weight: 400;
   font-size: 1.125rem;
   line-height: 1.6;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 /* Component: Large Cards */

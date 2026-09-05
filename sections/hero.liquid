@@ -36,8 +36,16 @@
         <span class="hero__title-line"><span class="stroke">LIGHT</span> AS ALWAYS.</span>
       </h1>
 
-      <p class="hero__subtext">
-        {{ section.settings.subtitle | default: '10kW of peak power. 59kg of pure control. The most powerful Light Bee ever built — still light enough to lift.' }}
+      <p class="hero__subtext section-subtitle">
+        {%- if section.settings.subtitle != blank -%}
+          {%- if section.settings.subtitle contains 'The most powerful' -%}
+            {{ section.settings.subtitle | replace: 'The most powerful', '<br class="hero__subtext-break">The most powerful' }}
+          {%- else -%}
+            {{ section.settings.subtitle }}
+          {%- endif -%}
+        {%- else -%}
+          10kW of peak power. 59kg of pure control.<br class="hero__subtext-break">The most powerful Light Bee ever built &mdash; still light enough to lift.
+        {%- endif -%}
       </p>
 
       <div class="hero__actions">
@@ -109,7 +117,8 @@
   }
 
   .hero__content {
-    max-width: 54rem;
+    width: 100%;
+    max-width: 56rem;
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -161,11 +170,26 @@
 
   .hero__subtext {
     font-size: clamp(1.1rem, 1.5vw, 1.35rem);
-    max-width: 42rem;
+    width: 100%;
+    max-width: 48rem;
     margin: 0;
     color: rgba(255, 255, 255, 0.82);
     line-height: 1.6;
     font-family: var(--font-body, 'Inter', sans-serif);
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .hero__subtext-break {
+    display: inline;
+  }
+
+  @media (min-width: 768px) {
+    .hero__subtext-break {
+      display: block;
+    }
   }
 
   .hero__actions {

@@ -1,11 +1,11 @@
-<section class="color-stage-section" id="colors" aria-labelledby="ColorStageHeading">
+<section class="color-stage-section full-width" id="colors" aria-labelledby="ColorStageHeading">
   <div class="color-stage__container">
     <div class="color-stage__header text-center" data-rv>
       <span class="color-stage__eyebrow">CUSTOM FINISHES</span>
-      <h2 id="ColorStageHeading" class="color-stage__heading">
-        Choose Your <span class="stroke">Edge.</span>
+      <h2 id="ColorStageHeading" class="color-stage__heading section-title">
+        <span class="color-stage__heading-phrase">CHOOSE YOUR</span> <span class="color-stage__heading-phrase"><span class="stroke">EDGE.</span></span>
       </h2>
-      <p class="color-stage__subtext subtext">
+      <p class="color-stage__subtext subtext section-subtitle">
         Four precision-anodized and powder-coated editions engineered for 2026.
       </p>
     </div>
@@ -151,8 +151,10 @@
   }
 
   .color-stage__header {
-    margin-bottom: 3.5rem;
-    max-width: 42rem;
+    width: 100%;
+    max-width: 52rem;
+    margin: 0 auto 3.5rem;
+    text-align: center;
   }
 
   .color-stage__eyebrow {
@@ -170,6 +172,24 @@
     font-size: clamp(2.2rem, 4vw, 3.8rem);
     margin: 0 0 1rem;
     color: var(--color-foreground, #0B0B0C);
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .color-stage__heading-phrase {
+    display: inline-block;
+  }
+
+  .color-stage__subtext {
+    width: 100%;
+    max-width: 44rem;
+    margin: 0 auto;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   /* Stage Card with 3D Tilt */

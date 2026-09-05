@@ -27,10 +27,10 @@
   <div class="stats-dark__container">
     <div class="stats-dark__header text-center" data-rv>
       <span class="stats-dark__eyebrow">DOMINANT METRICS</span>
-      <h2 id="StatsDarkHeading" class="stats-dark__heading">
-        Light. Rigid. <span class="stroke">Stable.</span>
+      <h2 id="StatsDarkHeading" class="stats-dark__heading section-title">
+        <span class="stats-dark__phrase">LIGHT. RIGID.</span> <span class="stats-dark__phrase"><span class="stroke">STABLE.</span></span>
       </h2>
-      <p class="stats-dark__subtext">
+      <p class="stats-dark__subtext section-subtitle">
         Zero delay torque delivery with unrivaled agility on the steepest inclines.
       </p>
     </div>
@@ -111,7 +111,8 @@
   }
 
   .stats-dark__header {
-    max-width: 44rem;
+    width: 100%;
+    max-width: 58rem;
     margin: 0 auto 4.5rem;
     text-align: center;
   }
@@ -128,9 +129,17 @@
   }
 
   .stats-dark__heading {
-    font-size: clamp(2.4rem, 4.5vw, 4.4rem);
+    font-size: clamp(2.2rem, 4.2vw, 4.2rem);
     color: #FFFFFF;
     margin: 0 0 1rem;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .stats-dark__phrase {
+    display: inline-block;
   }
 
   .stats-dark__subtext {
@@ -138,7 +147,13 @@
     font-size: 1.15rem;
     color: rgba(255, 255, 255, 0.78);
     line-height: 1.6;
-    margin: 0;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 44rem;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   /* 3 Column Grid */
