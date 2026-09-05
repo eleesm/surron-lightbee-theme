@@ -20,13 +20,28 @@ html {
 
 /* Base Body Styles */
 body {
-  background-color: var(--color-background);
+  background-color: #05080C;
   color: var(--color-foreground);
   font-family: var(--font-body);
   font-weight: 400;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove gap between hero and marquee */
+.shopify-section--hero,
+#shopify-section-hero,
+.shopify-section:has(#hero) {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.shopify-section--marquee,
+#shopify-section-marquee,
+.shopify-section:has(#marquee) {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
 /* Scroll Reveal Attribute [data-rv] */

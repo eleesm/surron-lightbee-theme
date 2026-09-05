@@ -73,6 +73,11 @@
 </section>
 
 {% stylesheet %}
+  .shopify-section--hero {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
   .hero {
     position: relative;
     min-height: 100vh;
@@ -81,6 +86,7 @@
     align-items: center;
     overflow: hidden;
     padding: 7rem var(--page-margin, 20px) 4rem;
+    margin-bottom: 0 !important;
   }
 
   .hero__bg-container {
@@ -269,6 +275,7 @@
 {% schema %}
 {
   "name": "Hero",
+  "class": "shopify-section--hero",
   "settings": [
     {
       "type": "image_picker",
