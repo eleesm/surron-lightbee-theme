@@ -48,8 +48,8 @@
       "type": "tech-rows",
       "settings": {
         "heading": "Engineered To Dominate.",
-        "motor_image": "shopify://shop_images/olive.png",
-        "battery_image": "shopify://shop_images/volt.png",
+        "motor_image": "shopify://shop_images/carousel-image-02-jpeg.webp",
+        "battery_image": "shopify://shop_images/carousel-image-01-jpeg.webp",
         "suspension_image": "shopify://shop_images/volt.png",
         "wheelie_image": "shopify://shop_images/ultra.png"
       }
