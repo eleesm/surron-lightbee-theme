@@ -12,7 +12,7 @@
     "hero": {
       "type": "hero",
       "settings": {
-        "hero_image": "shopify://shop_images/hero-mobile-tall-fixed1.jpg",
+        "hero_image": "shopify://shop_images/hero.png",
         "mobile_hero_image": "shopify://shop_images/hero-mobile-tall-fixed.jpg",
         "eyebrow": "THE 2026 LIGHT BEE X",
         "title": "Power Upgraded. Light As Always.",
