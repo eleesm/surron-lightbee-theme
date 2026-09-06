@@ -436,11 +436,12 @@ h1.product-title {
    ========================================================================== */
 @media (max-width: 768px) {
   .hero-image,
-  .hero__image,
-  .hero__media img {
-    max-height: 300px !important;
-    height: auto !important;
-    width: 100% !important;
+  .hero__image-container img {
+    max-height: 250px !important;
+    width: 90% !important;
+    margin: 0 auto !important;
+    display: block !important;
+    border-radius: 16px !important;
     object-fit: contain !important;
   }
 }

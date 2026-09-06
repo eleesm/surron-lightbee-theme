@@ -50,7 +50,7 @@
       </p>
 
       <!-- Mobile Bike Image (hidden on desktop, cleanly visible on mobile) -->
-      <div class="hero__image-mobile hero__media">
+      <div class="hero__image-container hero__image-mobile hero__media">
         <img
           src="{{ hero_img_src }}"
           alt="{{ hero_img_alt }}"
@@ -180,7 +180,8 @@
     white-space: nowrap;
   }
 
-  .hero__image-mobile {
+  .hero__image-mobile,
+  .hero__image-container {
     display: none;
   }
 
@@ -252,7 +253,7 @@
 
   @media (max-width: 768px) {
     .hero {
-      padding: 5.5rem 1.25rem 3rem !important;
+      padding: 4.75rem 1.25rem 2.5rem !important;
       min-height: auto !important;
       background-color: #05080C;
     }
@@ -261,34 +262,26 @@
       display: none !important;
     }
 
-    .hero__image-mobile {
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      width: 100% !important;
-      margin: 0.5rem 0 1rem !important;
-    }
-
-    .hero-image,
-    .hero__image,
-    .hero__media img {
-      max-height: 300px !important;
-      height: auto !important;
-      width: 100% !important;
-      object-fit: contain !important;
-    }
-
     .hero__content {
-      align-items: flex-start !important;
-      gap: 1.1rem !important;
+      align-items: center !important;
+      text-align: center !important;
+      gap: 0.75rem !important;
       width: 100% !important;
       max-width: 100% !important;
     }
 
+    .hero__eyebrow {
+      font-size: 0.75rem !important;
+      padding: 0.35rem 0.9rem !important;
+      letter-spacing: 0.12em !important;
+      margin-bottom: 0.1rem !important;
+    }
+
     .hero__title {
-      font-size: clamp(26px, 7.5vw, 42px) !important;
+      font-size: clamp(24px, 7vw, 36px) !important;
       line-height: 1.08 !important;
       letter-spacing: -0.03em !important;
+      text-align: center !important;
     }
 
     .hero__title-line {
@@ -298,45 +291,137 @@
     }
 
     .hero__subtext {
-      font-size: 0.95rem !important;
-      line-height: 1.55 !important;
-      color: rgba(255, 255, 255, 0.82) !important;
+      font-size: 0.88rem !important;
+      line-height: 1.5 !important;
+      color: rgba(255, 255, 255, 0.78) !important;
+      text-align: center !important;
+      max-width: 380px !important;
+      margin: 0 auto !important;
+    }
+
+    .hero__image-container,
+    .hero__image-mobile {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
+      margin: 0.4rem auto 0.6rem !important;
+      position: relative !important;
+    }
+
+    .hero-image,
+    .hero__image-container img {
+      max-height: 250px !important;
+      width: 90% !important;
+      margin: 0 auto !important;
+      display: block !important;
+      border-radius: 16px !important;
+      object-fit: contain !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45) !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
     }
 
     .hero__actions {
+      display: flex !important;
+      justify-content: center !important;
       width: 100% !important;
-      margin-top: 0.25rem !important;
+      margin-top: 0.35rem !important;
     }
 
     .hero__cta-primary {
-      width: 100% !important;
+      width: auto !important;
+      min-width: 200px !important;
+      max-width: 260px !important;
       justify-content: center !important;
-      padding: 0.95rem 1.8rem !important;
-      font-size: 1rem !important;
+      padding: 0.75rem 1.8rem !important;
+      font-size: 0.9rem !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.03em !important;
+      box-shadow: 0 6px 20px rgba(30, 144, 255, 0.35) !important;
     }
 
     .hero__chips {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: space-between !important;
       gap: 0.5rem !important;
-      margin-top: 0.25rem !important;
       width: 100% !important;
+      margin-top: 0.5rem !important;
+      flex-wrap: nowrap !important;
     }
 
     .hero__chip {
-      padding: 0.45rem 0.85rem !important;
-      font-size: 0.8rem !important;
+      flex: 1 1 0 !important;
+      min-width: 0 !important;
+      padding: 0.5rem 0.35rem !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 0.35rem !important;
+      font-size: 0.75rem !important;
+      white-space: nowrap !important;
+      border-radius: 999px !important;
+      background: rgba(255, 255, 255, 0.06) !important;
+      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+    }
+
+    .hero__chip .chip-icon {
+      font-size: 0.85rem !important;
+      line-height: 1 !important;
+      flex-shrink: 0 !important;
+    }
+
+    .hero__chip .chip-text {
+      font-size: 0.72rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.02em !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
     }
   }
 
   @media (max-width: 480px) {
-    .hero__title {
-      font-size: clamp(24px, 7vw, 32px) !important;
-      line-height: 1.1 !important;
+    .hero {
+      padding: 4.25rem 1rem 2rem !important;
+    }
+
+    .hero__content {
+      gap: 0.6rem !important;
     }
 
     .hero-image,
-    .hero__image,
-    .hero__media img {
-      max-height: 240px !important;
+    .hero__image-container img {
+      max-height: 210px !important;
+      width: 92% !important;
+    }
+
+    .hero__title {
+      font-size: clamp(22px, 6.8vw, 30px) !important;
+    }
+
+    .hero__subtext {
+      font-size: 0.82rem !important;
+      max-width: 320px !important;
+    }
+
+    .hero__cta-primary {
+      padding: 0.7rem 1.6rem !important;
+      font-size: 0.88rem !important;
+      min-width: 190px !important;
+    }
+
+    .hero__chips {
+      gap: 0.35rem !important;
+    }
+
+    .hero__chip {
+      padding: 0.45rem 0.25rem !important;
+    }
+
+    .hero__chip .chip-text {
+      font-size: 0.68rem !important;
     }
   }
 {% endstylesheet %}
