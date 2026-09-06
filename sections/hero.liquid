@@ -1,3 +1,29 @@
+{% style %}
+  @media screen and (max-width: 768px) {
+    .hero__media img,
+    .hero img,
+    .hero-background img,
+    .hero__image img,
+    .hero-image,
+    .hero__image,
+    .hero__bg-img {
+      transform: scale(1.15) !important;
+      transform-origin: center center !important;
+      object-fit: cover !important;
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    /* If the image is set as background */
+    .hero,
+    .hero-section,
+    .hero__background {
+      background-size: 115% !important;
+      background-position: center center !important;
+    }
+  }
+{% endstyle %}
+
 <section class="hero full-width" id="hero">
   <div class="hero__bg-container hero__media">
     <picture class="hero__picture">
