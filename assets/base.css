@@ -452,5 +452,22 @@ h1.product-title {
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
   }
+
+  .hero__image,
+  .hero__media img,
+  .hero-image,
+  .hero img,
+  .hero__bg-img {
+    transform: none !important;
+    scale: 1 !important;
+    zoom: 1 !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    animation: none !important;
+  }
 }
+
 

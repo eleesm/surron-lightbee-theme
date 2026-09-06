@@ -17,6 +17,13 @@
   will-change: transform;
 }
 
+@media (max-width: 768px) {
+  .ken-burns {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
 /* Marquee Scroll */
 @keyframes mq {
   0% {
