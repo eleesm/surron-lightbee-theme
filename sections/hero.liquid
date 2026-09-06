@@ -1,27 +1,26 @@
-{%- liquid
-  if section.settings.hero_image != blank
-    assign hero_img_src = section.settings.hero_image | image_url: width: 2000
-    assign hero_img_alt = section.settings.hero_image.alt | default: 'Sur-Ron Light Bee 2026 Hero Shot'
-  elsif section.settings.image != blank
-    assign hero_img_src = section.settings.image | image_url: width: 2000
-    assign hero_img_alt = section.settings.image.alt | default: 'Sur-Ron Light Bee 2026 Hero Shot'
-  else
-    assign hero_img_src = 'hero.jpg' | asset_url
-    assign hero_img_alt = 'Sur-Ron Light Bee 2026 Hero Shot'
-  endif
--%}
-
 <section class="hero full-width" id="hero">
-  <div class="hero__bg-container hero__media">
-    <img
-      src="{{ hero_img_src }}"
-      alt="{{ hero_img_alt }}"
-      class="hero__bg-img hero-image hero__image ken-burns"
-      loading="eager"
-      fetchpriority="high"
-      width="2000"
-      height="2000"
-    >
+  <div class="hero__bg-container">
+    {% if section.settings.hero_image != blank %}
+      <img
+        src="{{ section.settings.hero_image | image_url: width: 2000 }}"
+        alt="{{ section.settings.hero_image.alt | default: 'Sur-Ron Light Bee 2026 Hero Shot' }}"
+        class="hero__bg-img ken-burns"
+        loading="lazy"
+        width="2000"
+        height="2000"
+      >
+    {% elsif section.settings.image != blank %}
+      <img
+        src="{{ section.settings.image | image_url: width: 2000 }}"
+        alt="{{ section.settings.image.alt | default: 'Sur-Ron Light Bee 2026 Hero Shot' }}"
+        class="hero__bg-img ken-burns"
+        loading="lazy"
+        width="2000"
+        height="2000"
+      >
+    {% else %}
+      {{ 'hero.jpg' | asset_url | img_tag: 'Fallback', 'loading="lazy"' }}
+    {% endif %}
     <div class="hero__overlay"></div>
   </div>
 
@@ -48,18 +47,6 @@
           10kW of peak power. 59kg of pure control.<br class="hero__subtext-break">The most powerful Light Bee ever built &mdash; still light enough to lift.
         {%- endif -%}
       </p>
-
-      <!-- Mobile Bike Image (hidden on desktop, cleanly visible on mobile) -->
-      <div class="hero__image-container hero__image-mobile hero__media">
-        <img
-          src="{{ hero_img_src }}"
-          alt="{{ hero_img_alt }}"
-          class="hero-image hero__image hero__media-img"
-          loading="eager"
-          width="800"
-          height="500"
-        >
-      </div>
 
       <div class="hero__actions">
         <a href="#colors" class="btn btn-accent-blue pill hero__cta-primary">
@@ -180,9 +167,11 @@
     white-space: nowrap;
   }
 
-  .hero__image-mobile,
-  .hero__image-container {
-    display: none;
+  @media (max-width: 640px) {
+    .hero__title {
+      font-size: clamp(26px, 8vw, 40px);
+      line-height: 1.08;
+    }
   }
 
   .hero__subtext {
@@ -253,175 +242,32 @@
 
   @media (max-width: 768px) {
     .hero {
-      padding: 4.75rem 1.25rem 2.5rem !important;
-      min-height: auto !important;
-      background-color: #05080C;
+      padding: 6rem 1.25rem 3rem;
+      min-height: 90vh;
     }
-
-    .hero__bg-container {
-      display: none !important;
-    }
-
     .hero__content {
-      align-items: center !important;
-      text-align: center !important;
-      gap: 0.75rem !important;
-      width: 100% !important;
-      max-width: 100% !important;
+      align-items: flex-start;
+      gap: 1.2rem;
     }
-
-    .hero__eyebrow {
-      font-size: 0.75rem !important;
-      padding: 0.35rem 0.9rem !important;
-      letter-spacing: 0.12em !important;
-      margin-bottom: 0.1rem !important;
-    }
-
     .hero__title {
-      font-size: clamp(24px, 7vw, 36px) !important;
-      line-height: 1.08 !important;
-      letter-spacing: -0.03em !important;
-      text-align: center !important;
+      font-size: clamp(38px, 11vw, 60px);
     }
-
-    .hero__title-line {
-      display: block !important;
-      white-space: normal !important;
-      word-break: break-word !important;
-    }
-
     .hero__subtext {
-      font-size: 0.88rem !important;
-      line-height: 1.5 !important;
-      color: rgba(255, 255, 255, 0.78) !important;
-      text-align: center !important;
-      max-width: 380px !important;
-      margin: 0 auto !important;
+      font-size: 1rem;
     }
-
-    .hero__image-container,
-    .hero__image-mobile {
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      width: 100% !important;
-      margin: 0.4rem auto 0.6rem !important;
-      position: relative !important;
+    .hero__chips {
+      gap: 0.5rem;
     }
-
-    .hero-image,
-    .hero__image-container img {
-      max-height: 250px !important;
-      width: 90% !important;
-      margin: 0 auto !important;
-      display: block !important;
-      border-radius: 16px !important;
-      object-fit: contain !important;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45) !important;
-      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    .hero__chip {
+      padding: 0.5rem 0.9rem;
+      font-size: 0.82rem;
     }
-
     .hero__actions {
-      display: flex !important;
-      justify-content: center !important;
-      width: 100% !important;
-      margin-top: 0.35rem !important;
+      width: 100%;
     }
-
     .hero__cta-primary {
-      width: auto !important;
-      min-width: 200px !important;
-      max-width: 260px !important;
-      justify-content: center !important;
-      padding: 0.75rem 1.8rem !important;
-      font-size: 0.9rem !important;
-      font-weight: 700 !important;
-      letter-spacing: 0.03em !important;
-      box-shadow: 0 6px 20px rgba(30, 144, 255, 0.35) !important;
-    }
-
-    .hero__chips {
-      display: flex !important;
-      flex-direction: row !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      gap: 0.5rem !important;
-      width: 100% !important;
-      margin-top: 0.5rem !important;
-      flex-wrap: nowrap !important;
-    }
-
-    .hero__chip {
-      flex: 1 1 0 !important;
-      min-width: 0 !important;
-      padding: 0.5rem 0.35rem !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      gap: 0.35rem !important;
-      font-size: 0.75rem !important;
-      white-space: nowrap !important;
-      border-radius: 999px !important;
-      background: rgba(255, 255, 255, 0.06) !important;
-      border: 1px solid rgba(255, 255, 255, 0.12) !important;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
-    }
-
-    .hero__chip .chip-icon {
-      font-size: 0.85rem !important;
-      line-height: 1 !important;
-      flex-shrink: 0 !important;
-    }
-
-    .hero__chip .chip-text {
-      font-size: 0.72rem !important;
-      font-weight: 800 !important;
-      letter-spacing: 0.02em !important;
-      overflow: hidden !important;
-      text-overflow: ellipsis !important;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .hero {
-      padding: 4.25rem 1rem 2rem !important;
-    }
-
-    .hero__content {
-      gap: 0.6rem !important;
-    }
-
-    .hero-image,
-    .hero__image-container img {
-      max-height: 210px !important;
-      width: 92% !important;
-    }
-
-    .hero__title {
-      font-size: clamp(22px, 6.8vw, 30px) !important;
-    }
-
-    .hero__subtext {
-      font-size: 0.82rem !important;
-      max-width: 320px !important;
-    }
-
-    .hero__cta-primary {
-      padding: 0.7rem 1.6rem !important;
-      font-size: 0.88rem !important;
-      min-width: 190px !important;
-    }
-
-    .hero__chips {
-      gap: 0.35rem !important;
-    }
-
-    .hero__chip {
-      padding: 0.45rem 0.25rem !important;
-    }
-
-    .hero__chip .chip-text {
-      font-size: 0.68rem !important;
+      width: 100%;
+      justify-content: center;
     }
   }
 {% endstylesheet %}
