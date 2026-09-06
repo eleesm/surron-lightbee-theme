@@ -1,26 +1,34 @@
 <section class="hero full-width" id="hero">
   <div class="hero__bg-container hero__media">
-    {% if section.settings.hero_image != blank %}
-      <img
-        src="{{ section.settings.hero_image | image_url: width: 2000 }}"
-        alt="{{ section.settings.hero_image.alt | default: 'Sur-Ron Light Bee 2026 Hero Shot' }}"
-        class="hero__bg-img hero-image hero__image hero__media-img ken-burns"
-        loading="lazy"
-        width="2000"
-        height="2000"
-      >
-    {% elsif section.settings.image != blank %}
-      <img
-        src="{{ section.settings.image | image_url: width: 2000 }}"
-        alt="{{ section.settings.image.alt | default: 'Sur-Ron Light Bee 2026 Hero Shot' }}"
-        class="hero__bg-img hero-image hero__image hero__media-img ken-burns"
-        loading="lazy"
-        width="2000"
-        height="2000"
-      >
-    {% else %}
-      {{ 'hero.jpg' | asset_url | img_tag: 'Fallback', 'loading="lazy" class="hero__bg-img hero-image hero__image hero__media-img ken-burns"' }}
-    {% endif %}
+    <picture class="hero__picture">
+      {% if section.settings.mobile_hero_image != blank %}
+        <source
+          media="(max-width: 768px)"
+          srcset="{{ section.settings.mobile_hero_image | image_url: width: 1500 }}"
+        >
+      {% endif %}
+      {% if section.settings.hero_image != blank %}
+        <img
+          src="{{ section.settings.hero_image | image_url: width: 2000 }}"
+          alt="{{ section.settings.hero_image.alt | default: 'Sur-Ron Light Bee 2026 Hero Shot' }}"
+          class="hero__bg-img hero-image hero__image hero__media-img ken-burns"
+          loading="lazy"
+          width="2000"
+          height="2000"
+        >
+      {% elsif section.settings.image != blank %}
+        <img
+          src="{{ section.settings.image | image_url: width: 2000 }}"
+          alt="{{ section.settings.image.alt | default: 'Sur-Ron Light Bee 2026 Hero Shot' }}"
+          class="hero__bg-img hero-image hero__image hero__media-img ken-burns"
+          loading="lazy"
+          width="2000"
+          height="2000"
+        >
+      {% else %}
+        {{ 'hero.jpg' | asset_url | img_tag: 'Fallback', 'loading="lazy" class="hero__bg-img hero-image hero__image hero__media-img ken-burns"' }}
+      {% endif %}
+    </picture>
     <div class="hero__overlay"></div>
   </div>
 
@@ -96,6 +104,12 @@
     height: 100%;
     overflow: hidden;
     z-index: 0;
+  }
+
+  .hero__picture {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
 
   .hero__bg-img {
@@ -238,7 +252,8 @@
       padding: 6rem 1.25rem 3rem;
       min-height: 90vh;
     }
-    .hero__bg-container {
+    .hero__bg-container,
+    .hero__picture {
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
@@ -314,6 +329,12 @@
       "type": "image_picker",
       "id": "hero_image",
       "label": "Hero Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_hero_image",
+      "label": "Mobile Hero Background Image",
+      "info": "Upload a specific image optimized for mobile screens (max-width: 768px). If empty, the desktop image will be used."
     },
     {
       "type": "image_picker",
