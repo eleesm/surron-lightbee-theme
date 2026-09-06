@@ -1,3 +1,26 @@
+{% style %}
+  @media screen and (max-width: 768px) {
+    .hero__media img,
+    .hero img,
+    .hero-background img,
+    .hero__image img {
+      transform: scale(1.15) !important;
+      transform-origin: center center !important;
+      object-fit: cover !important;
+      width: 100% !important;
+      height: 100% !important;
+    }
+    
+    /* If the image is set as background */
+    .hero,
+    .hero-section,
+    .hero__background {
+      background-size: 115% !important;
+      background-position: center center !important;
+    }
+  }
+{% endstyle %}
+
 <section class="hero full-width" id="hero">
   <div class="hero__bg-container hero__media">
     <picture class="hero__picture">
@@ -258,24 +281,29 @@
       align-items: center !important;
       justify-content: center !important;
     }
-    .hero__image,
     .hero__media img,
-    .hero-image,
     .hero img,
+    .hero-background img,
+    .hero__image img,
+    .hero-image,
     .hero__bg-img {
-      transform: none !important;
-      scale: 1 !important;
-      zoom: 1 !important;
-      max-width: 100% !important;
-      max-height: 100% !important;
-      width: auto !important;
-      height: auto !important;
-      object-fit: contain !important;
-      animation: none !important;
+      transform: scale(1.15) !important;
+      transform-origin: center center !important;
+      object-fit: cover !important;
+      width: 100% !important;
+      height: 100% !important;
     }
+
+    /* If the image is set as background */
+    .hero,
+    .hero-section,
+    .hero__background {
+      background-size: 115% !important;
+      background-position: center center !important;
+    }
+
     .ken-burns {
       animation: none !important;
-      transform: none !important;
     }
     .hero__content {
       align-items: flex-start;
