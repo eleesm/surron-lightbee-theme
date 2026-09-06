@@ -431,3 +431,17 @@ h1.product-title {
   display: none !important;
 }
 
+/* ==========================================================================
+   Hero Section - Mobile Responsiveness
+   ========================================================================== */
+@media (max-width: 768px) {
+  .hero-image,
+  .hero__image,
+  .hero__media img {
+    max-height: 300px !important;
+    height: auto !important;
+    width: 100% !important;
+    object-fit: contain !important;
+  }
+}
+
