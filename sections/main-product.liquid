@@ -1112,14 +1112,123 @@
     }
   }
 
-  @media (max-width: 768px) {
-    .product-desc .pd-features {
-      grid-template-columns: 1fr !important;
-    }
+  /* === MOBILE PRODUCT DESCRIPTION FIX === */
+  @media screen and (max-width: 768px) {
     
+    /* 1. Make the main description container full width */
+    .pd-container, 
+    .product-desc .pd-container,
+    .product-desc div[style*="padding: 0 40px"],
+    .product-desc div[style*="max-width: 1200px"] {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0 15px !important;
+      margin: 0 auto !important;
+      box-sizing: border-box !important;
+    }
+
     .product__info-container .product-desc,
     .product-description-wrapper .product-desc {
-      padding: 40px 20px !important;
+      padding: 40px 15px !important;
+    }
+
+    /* 2. Make Feature Cards a 2x2 grid on mobile */
+    .pd-features, 
+    .product-desc .pd-features,
+    .product-desc div[style*="repeat(4, 1fr)"],
+    .product-desc div[style*="repeat(4,"] {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 12px !important;
+      width: 100% !important;
+    }
+    
+    .pd-feature, 
+    .product-desc .pd-feature,
+    .product-desc div[style*="repeat(4, 1fr)"] > div,
+    .product-desc div[style*="repeat(4,"] > div {
+      padding: 20px 15px !important;
+    }
+
+    /* 3. Make Tabs and Tables full width and readable */
+    .pd-tabs, 
+    .pd-tab-content, 
+    .product-desc .pd-tabs, 
+    .product-desc .pd-tab-content,
+    .product-desc div[id^="content-"] {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 15px !important;
+      box-sizing: border-box !important;
+      overflow-x: hidden !important;
+    }
+    
+    .pd-tab-btn, 
+    .product-desc .pd-tab-btn,
+    .product-desc button[onclick*="showTab"],
+    .product-desc button[id^="btn-"] {
+      font-size: 12px !important;
+      padding: 12px 8px !important;
+    }
+    
+    .pd-table, 
+    .product-desc .pd-table,
+    .product-desc table {
+      width: 100% !important;
+      font-size: 13px !important;
+    }
+    
+    .pd-table td, 
+    .product-desc .pd-table td,
+    .product-desc table td {
+      padding: 12px 10px !important;
+      font-size: 13px !important;
+      display: block !important; /* Stack table cells on very small screens if needed, or keep table layout */
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    
+    /* Keep table layout but make it scrollable if too wide */
+    .pd-table,
+    .product-desc table {
+      display: table !important;
+    }
+    .pd-table td,
+    .product-desc table td {
+      display: table-cell !important;
+      width: auto !important;
+    }
+    .pd-table td:first-child,
+    .product-desc table td:first-child {
+      width: 45% !important;
+    }
+
+    /* 4. Make Safety Grid full width (1 column for better readability) */
+    .pd-safety, 
+    .product-desc .pd-safety,
+    .product-desc div[style*="repeat(2, 1fr)"] {
+      grid-template-columns: 1fr !important;
+      width: 100% !important;
+      gap: 10px !important;
+    }
+    
+    .pd-safety-item, 
+    .product-desc .pd-safety-item,
+    .product-desc div[style*="repeat(2, 1fr)"] > div {
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    /* General text adjustments for mobile */
+    .pd-section h2, 
+    .product-desc .pd-section h2,
+    .product-desc div[style*="border-radius: 32px"] h2 {
+      font-size: 24px !important;
+    }
+    
+    .pd-section p, 
+    .product-desc .pd-section p,
+    .product-desc div[style*="border-radius: 32px"] p {
+      font-size: 14px !important;
     }
   }
 

@@ -399,4 +399,42 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
+
+  // Product Description Mobile Classes Enhancer
+  const initProductDesc = () => {
+    const productDesc = document.querySelector('.product-desc');
+    if (!productDesc) return;
+
+    const inner = productDesc.querySelector('div[style*="max-width: 1200px"]') || productDesc.querySelector('div > div');
+    if (inner) inner.classList.add('pd-container');
+
+    const grids = productDesc.querySelectorAll('div[style*="display: grid"], .pd-features');
+    grids.forEach(grid => {
+      const style = grid.getAttribute('style') || '';
+      if (style.includes('repeat(4, 1fr)') || style.includes('repeat(4,') || grid.classList.contains('pd-features')) {
+        grid.classList.add('pd-features');
+        Array.from(grid.children).forEach(child => child.classList.add('pd-feature'));
+      } else if (style.includes('repeat(2, 1fr)') || grid.classList.contains('pd-safety')) {
+        grid.classList.add('pd-safety');
+        Array.from(grid.children).forEach(child => child.classList.add('pd-safety-item'));
+      }
+    });
+
+    const tabBtns = productDesc.querySelectorAll('button[id^="btn-"], button[onclick*="showTab"], .pd-tab-btn');
+    tabBtns.forEach(btn => btn.classList.add('pd-tab-btn'));
+    const tabHeaders = productDesc.querySelector('div[style*="border-bottom"]') || (tabBtns[0] ? tabBtns[0].parentElement : null);
+    if (tabHeaders) tabHeaders.classList.add('pd-tabs');
+
+    const tabContents = productDesc.querySelectorAll('div[id^="content-"], div[id^="tab-"], .pd-tab-content');
+    tabContents.forEach(content => content.classList.add('pd-tab-content'));
+
+    const tables = productDesc.querySelectorAll('table');
+    tables.forEach(table => table.classList.add('pd-table'));
+
+    const sections = productDesc.querySelectorAll('div[style*="border-radius: 32px"]');
+    sections.forEach(sec => sec.classList.add('pd-section'));
+  };
+
+  initProductDesc();
 });
+
