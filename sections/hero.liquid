@@ -19,6 +19,54 @@
       background-position: center center !important;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    /* Smaller, left-aligned "Choose Your Color" button */
+    .hero__button,
+    .hero-cta,
+    .btn-primary,
+    .hero a.button,
+    .hero__cta-primary,
+    .hero__actions a {
+      max-width: 220px !important;
+      width: auto !important;
+      padding: 12px 24px !important;
+      font-size: 14px !important;
+      margin: 15px 0 20px 20px !important;
+      display: inline-block !important;
+    }
+    
+    /* Force stats into one row */
+    .hero__stats,
+    .stats-container,
+    .hero-stats,
+    .hero__chips {
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      gap: 8px !important;
+      width: 100% !important;
+    }
+    
+    /* Make stats smaller to fit */
+    .hero__stats > *,
+    .stat-badge,
+    .stat-item,
+    .hero__chip,
+    .floating-chip {
+      flex: 0 0 auto !important;
+      max-width: 33% !important;
+      padding: 6px 10px !important;
+      font-size: 11px !important;
+      white-space: nowrap !important;
+    }
+    
+    .hero__stats svg,
+    .stat-badge svg {
+      width: 14px !important;
+      height: 14px !important;
+    }
+  }
 {% endstyle %}
 
 <section class="hero full-width" id="hero">
@@ -80,21 +128,21 @@
       </p>
 
       <div class="hero__actions">
-        <a href="#colors" class="btn btn-accent-blue pill hero__cta-primary">
+        <a href="#colors" class="btn btn-accent-blue pill hero__cta-primary hero__button hero-cta btn-primary button">
           {{ section.settings.primary_cta_text | default: 'Choose Your Color' }}
         </a>
       </div>
 
-      <div class="hero__chips">
-        <div class="hero__chip floating-chip">
+      <div class="hero__chips hero__stats stats-container hero-stats">
+        <div class="hero__chip floating-chip stat-badge stat-item">
           <span class="chip-icon">⚡</span>
           <span class="chip-text">10kW PEAK</span>
         </div>
-        <div class="hero__chip floating-chip">
+        <div class="hero__chip floating-chip stat-badge stat-item">
           <span class="chip-icon">🪶</span>
           <span class="chip-text">59KG</span>
         </div>
-        <div class="hero__chip floating-chip">
+        <div class="hero__chip floating-chip stat-badge stat-item">
           <span class="chip-icon">🔋</span>
           <span class="chip-text">2.5kWh</span>
         </div>
