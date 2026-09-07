@@ -27,7 +27,7 @@
     "color_stage": {
       "type": "color-stage",
       "settings": {
-        "volt_image": "shopify://shop_images/volt.png",
+        "volt_image": "shopify://shop_images/lightBeeX-Black.webp",
         "arctic_image": "shopify://shop_images/arctic_jpg.png",
         "olive_image": "shopify://shop_images/olive.png",
         "ultra_image": "shopify://shop_images/ultra.png"
