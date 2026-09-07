@@ -27,7 +27,7 @@
     "color_stage": {
       "type": "color-stage",
       "settings": {
-        "volt_image": "shopify://shop_images/imgi_3_36_3000x_png.webp",
+        "volt_image": "shopify://shop_images/volt.png",
         "arctic_image": "shopify://shop_images/arctic_jpg.png",
         "olive_image": "shopify://shop_images/olive.png",
         "ultra_image": "shopify://shop_images/ultra.png"
