@@ -147,15 +147,15 @@
 
                 {%- when 'price' -%}
                   <div class="product-block product-block--price" {{ block.shopify_attributes }}>
-                    <div class="product-price-wrap" id="ProductPriceWrap">
-                      <span class="product-price-current" id="ProductPrice">
+                    <div class="product-price-wrap product-price price-container product__price-wrapper" id="ProductPriceWrap">
+                      <span class="product-price-current product__price price price-item--regular" id="ProductPrice">
                         {{ current_variant.price | default: 359900 | money }}
                       </span>
                       {%- if current_variant.compare_at_price > current_variant.price or product.compare_at_price > product.price -%}
-                        <s class="product-price-compare" id="ProductComparePrice">
+                        <s class="product-price-compare product__price--compare price-item--compare compare-price" id="ProductComparePrice">
                           {{ current_variant.compare_at_price | default: 449900 | money }}
                         </s>
-                        <span class="product-discount-badge" id="ProductDiscountBadge">SAVE 20%</span>
+                        <span class="product-discount-badge product__badge--sale sale-badge price__badge price-item--sale" id="ProductDiscountBadge">SAVE 20%</span>
                       {%- endif -%}
                     </div>
                   </div>
