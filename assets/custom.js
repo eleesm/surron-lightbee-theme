@@ -408,6 +408,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const inner = productDesc.querySelector('div[style*="max-width: 1200px"]') || productDesc.querySelector('div > div');
     if (inner) inner.classList.add('pd-container');
 
+    const heroTitle = productDesc.querySelector('h1')?.closest('div') || productDesc.querySelector('div[style*="text-align: center"]');
+    if (heroTitle) heroTitle.classList.add('pd-hero-title');
+
+    const introSection = productDesc.querySelector('div[style*="linear-gradient"]') || productDesc.querySelector('.pd-intro');
+    if (introSection) introSection.classList.add('pd-intro');
+
     const grids = productDesc.querySelectorAll('div[style*="display: grid"], .pd-features');
     grids.forEach(grid => {
       const style = grid.getAttribute('style') || '';

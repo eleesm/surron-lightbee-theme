@@ -1218,6 +1218,48 @@
       box-sizing: border-box !important;
     }
 
+    /* 1. Force main title to ONE line */
+    .pd-hero-title h1, 
+    .product-desc h1,
+    .product-desc div[style*="text-align: center"] h1 {
+      font-size: 18px !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      text-align: center !important;
+      width: 100% !important;
+      margin-bottom: 15px !important;
+    }
+    
+    /* 2. Force "ELECTRIC DIRT BIKE" box text to ONE line */
+    .pd-intro h2, 
+    .product-desc .pd-intro h2,
+    .product-desc div[style*="linear-gradient"] h2 {
+      font-size: 20px !important;
+      white-space: nowrap !important;
+      padding: 8px 20px !important;
+      display: inline-block !important;
+      margin-bottom: 15px !important;
+    }
+    
+    /* 3. Make description text smaller and more compact */
+    .pd-intro p, 
+    .product-desc .pd-intro p,
+    .product-desc div[style*="linear-gradient"] p {
+      font-size: 12px !important;
+      line-height: 1.4 !important;
+      margin-top: 10px !important;
+    }
+
+    /* Compact container styling on mobile for intro box */
+    .pd-intro,
+    .product-desc .pd-intro,
+    .product-desc div[style*="linear-gradient"] {
+      padding: 30px 20px !important;
+      margin-bottom: 30px !important;
+      border-radius: 20px !important;
+    }
+
     /* General text adjustments for mobile */
     .pd-section h2, 
     .product-desc .pd-section h2,
