@@ -345,15 +345,15 @@
               {{ product.title | default: 'Sur-Ron Light Bee 2026' }}
             </h1>
 
-            <div class="product-price-wrap" id="ProductPriceWrap">
-              <span class="product-price-current" id="ProductPrice">
+            <div class="product-price-wrap product-price price-container product__price-wrapper" id="ProductPriceWrap">
+              <span class="product-price-current product__price price price-item--regular" id="ProductPrice">
                 {{ current_variant.price | default: 359900 | money }}
               </span>
               {%- if current_variant.compare_at_price > current_variant.price or product.compare_at_price > product.price -%}
-                <s class="product-price-compare" id="ProductComparePrice">
+                <s class="product-price-compare product__price--compare price-item--compare compare-price" id="ProductComparePrice">
                   {{ current_variant.compare_at_price | default: 449900 | money }}
                 </s>
-                <span class="product-discount-badge" id="ProductDiscountBadge">SAVE 20%</span>
+                <span class="product-discount-badge product__badge--sale sale-badge price__badge price-item--sale" id="ProductDiscountBadge">SAVE 20%</span>
               {%- endif -%}
             </div>
 
@@ -1335,6 +1335,63 @@
       width: 48px;
       height: 48px;
       min-width: 48px;
+    }
+
+    /* Reduce main price size */
+    .product__price,
+    .price-item--regular,
+    .product-price .price,
+    .product__info-container .price,
+    .product-price-current,
+    #ProductPrice {
+      font-size: 20px !important;
+      font-weight: 700 !important;
+      display: inline-block !important;
+      margin-right: 8px !important;
+    }
+    
+    /* Make original price and save badge inline */
+    .product__price--compare,
+    .price-item--compare,
+    .compare-price,
+    .product-price .compare-price,
+    .product-price-compare,
+    #ProductComparePrice {
+      font-size: 14px !important;
+      color: #61666D !important;
+      display: inline-block !important;
+      margin-right: 6px !important;
+      text-decoration: line-through !important;
+    }
+    
+    /* Make save badge smaller and inline */
+    .product__badge--sale,
+    .price-item--sale,
+    .sale-badge,
+    .product-price .badge,
+    .price__badge,
+    .product-discount-badge,
+    #ProductDiscountBadge {
+      font-size: 11px !important;
+      padding: 3px 8px !important;
+      display: inline-block !important;
+      margin-left: 0 !important;
+      vertical-align: middle !important;
+    }
+    
+    /* Force price container to be one line */
+    .product__price-wrapper,
+    .price-container,
+    .product-price,
+    .product__info-container .price-wrapper,
+    .product-price-wrap,
+    #ProductPriceWrap {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      flex-wrap: nowrap !important;
+      gap: 6px !important;
+      white-space: nowrap !important;
     }
   }
 {% endstylesheet %}

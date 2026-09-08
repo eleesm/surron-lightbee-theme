@@ -584,4 +584,68 @@ h1.product-title {
   }
 }
 
+/* ==========================================================================
+   Mobile Product Price Layout Fix
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+  
+  /* Reduce main price size */
+  .product__price,
+  .price-item--regular,
+  .product-price .price,
+  .product__info-container .price,
+  .product-price-current,
+  #ProductPrice {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    display: inline-block !important;
+    margin-right: 8px !important;
+  }
+  
+  /* Make original price and save badge inline */
+  .product__price--compare,
+  .price-item--compare,
+  .compare-price,
+  .product-price .compare-price,
+  .product-price-compare,
+  #ProductComparePrice {
+    font-size: 14px !important;
+    color: #61666D !important;
+    display: inline-block !important;
+    margin-right: 6px !important;
+    text-decoration: line-through !important;
+  }
+  
+  /* Make save badge smaller and inline */
+  .product__badge--sale,
+  .price-item--sale,
+  .sale-badge,
+  .product-price .badge,
+  .price__badge,
+  .product-discount-badge,
+  #ProductDiscountBadge {
+    font-size: 11px !important;
+    padding: 3px 8px !important;
+    display: inline-block !important;
+    margin-left: 0 !important;
+    vertical-align: middle !important;
+  }
+  
+  /* Force price container to be one line */
+  .product__price-wrapper,
+  .price-container,
+  .product-price,
+  .product__info-container .price-wrapper,
+  .product-price-wrap,
+  #ProductPriceWrap {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    gap: 6px !important;
+    white-space: nowrap !important;
+  }
+}
+
+
 
