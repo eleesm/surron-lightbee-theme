@@ -75,7 +75,16 @@
       {% if section.settings.mobile_hero_image != blank %}
         <source
           media="(max-width: 768px)"
-          srcset="{{ section.settings.mobile_hero_image | image_url: width: 750 }} 750w, {{ section.settings.mobile_hero_image | image_url: width: 1080 }} 1080w"
+          srcset="
+            {{ section.settings.mobile_hero_image | image_url: width: 480, format: 'webp' }} 480w,
+            {{ section.settings.mobile_hero_image | image_url: width: 750, format: 'webp' }} 750w
+          "
+          sizes="100vw"
+          type="image/webp"
+        >
+        <source
+          media="(max-width: 768px)"
+          srcset="{{ section.settings.mobile_hero_image | image_url: width: 750 }}"
           sizes="100vw"
         >
       {% endif %}

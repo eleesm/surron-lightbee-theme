@@ -6,25 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {%- if template.name == 'index' -%}
-      <link rel="preload" as="image" href="{{ 'hero.jpg' | asset_url }}" fetchpriority="high">
+      <link rel="preload" as="image" href="{{ 'hero.jpg' | asset_url }}" fetchpriority="high" media="(min-width: 769px)">
     {%- endif -%}
 
-    <!-- Google Fonts: Archivo (Italic 900) & Inter (400-700) -->
     {% # theme-check-disable RemoteAsset %}
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <link rel="dns-prefetch" href="//cdn.shopify.com">
+
+    <!-- Google Fonts: Archivo (Italic 900) & Inter (400-700) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
     {% # theme-check-enable RemoteAsset %}
 
     {% # Inlined CSS Variables %}
     {% render 'css-variables' %}
 
-
-
     {% # Stylesheets %}
     {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
     {{ 'base.css' | asset_url | stylesheet_tag }}
-    {{ 'animations.css' | asset_url | stylesheet_tag }}
+    <link rel="stylesheet" href="{{ 'animations.css' | asset_url }}" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="{{ 'animations.css' | asset_url }}"></noscript>
 
     {% # Social, title, etc. %}
     {% render 'meta-tags' %}
