@@ -1,1 +1,8 @@
-{% render 'page-shipping-policy' %}
+<div class="page__wrapper full-width">
+  <div class="page__container">
+    <h1 class="page__title">{{ page.title | default: 'Shipping Policy' }}</h1>
+    <div class="page__content">
+      {% render 'page-shipping-policy' %}
+    </div>
+  </div>
+</div>

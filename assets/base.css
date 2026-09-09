@@ -1127,5 +1127,358 @@ h1.product-title {
   }
 }
 
+/* ==========================================================================
+   Page Content Styling (About Us, Privacy, Refund, Shipping, Terms, Contact, FAQ)
+   ========================================================================== */
+body.template-page {
+  background-color: #F5F6F8 !important;
+}
+
+body.template-page .shopify-section,
+.shopify-section:has(.page__wrapper),
+.shopify-section:has(#page),
+.shopify-section--page {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  grid-column: 1 / -1 !important;
+  background-color: #F5F6F8 !important;
+}
+
+.page__wrapper {
+  background: #F5F6F8;
+  min-height: 100vh;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+  padding: 80px 20px;
+  margin: 0 !important;
+}
+
+.page__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-sizing: border-box;
+}
+
+.page__title {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  font-size: 36px;
+  color: #0B0B0C;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.page__content {
+  font-family: 'Inter', sans-serif;
+  color: #0B0B0C;
+  line-height: 1.6;
+}
+
+.page__content h2 {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #0B0B0C;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.page__content h3 {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #1E90FF;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.page__content p {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.page__content ul,
+.page__content ol {
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+.page__content li {
+  margin-bottom: 10px;
+}
+
+.page__content a {
+  color: #1E90FF;
+  text-decoration: underline;
+}
+
+.last-updated {
+  color: #61666D;
+  font-size: 14px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #F5F6F8;
+}
+
+/* Page Components Inside Content */
+.page__content .legal-notice-banner {
+  background: #FFFDF0;
+  border: 1px solid #FFE58F;
+  border-left: 4px solid var(--color-accent-yellow, #FFD400);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.page__content .legal-notice-banner h2,
+.page__content .legal-notice-banner h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #0B0B0C;
+}
+
+.page__content .legal-notice-banner p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #4A4D53;
+}
+
+.page__content .page-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin: 1.75rem 0;
+}
+
+.page__content .page-card {
+  background: #F9FAFB;
+  border: 1px solid rgba(11, 11, 12, 0.08);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.page__content .page-card h3 {
+  margin-top: 0;
+  color: #0B0B0C;
+}
+
+.page__content .step-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.75rem 0;
+}
+
+.page__content .step-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: #F9FAFB;
+  border: 1px solid rgba(11, 11, 12, 0.08);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.page__content .step-number {
+  flex-shrink: 0;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: var(--color-accent-blue, #1E90FF);
+  color: #FFFFFF;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page__content .step-body h4 {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin: 0 0 0.35rem;
+  color: #0B0B0C;
+}
+
+.page__content .step-body p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: #61666D;
+}
+
+.page__content .page-cta-box {
+  background: #0B0B0C;
+  color: #FFFFFF;
+  border-radius: 16px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  margin: 3rem 0 1.5rem;
+}
+
+.page__content .page-cta-box h2 {
+  color: #FFFFFF;
+  margin-top: 0;
+}
+
+.page__content .page-cta-box p {
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.page__content .page-cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.page__content .page-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.75rem;
+  border-radius: 999px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  min-height: 44px;
+}
+
+.page__content .page-btn--primary {
+  background-color: var(--color-accent-blue, #1E90FF);
+  color: #FFFFFF !important;
+}
+
+.page__content .page-btn--primary:hover {
+  background-color: #0077EA;
+}
+
+.page__content .page-btn--secondary {
+  background-color: transparent;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.page__content .page-btn--secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.page__content .faq-detail {
+  background: #F9FAFB;
+  border: 1px solid rgba(11, 11, 12, 0.08);
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+}
+
+.page__content .faq-summary {
+  padding: 1rem 1.25rem;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #0B0B0C;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page__content .faq-summary::-webkit-details-marker {
+  display: none;
+}
+
+.page__content .faq-summary::after {
+  content: '+';
+  font-size: 1.3rem;
+  color: #1E90FF;
+}
+
+.page__content .faq-detail[open] .faq-summary::after {
+  content: '−';
+}
+
+.page__content .faq-answer {
+  padding: 0 1.25rem 1rem;
+  font-size: 0.95rem;
+  color: #4A4D53;
+  line-height: 1.6;
+  border-top: 1px solid rgba(11, 11, 12, 0.04);
+  padding-top: 0.75rem;
+}
+
+.page__content .contact-highlight-box {
+  background: #F9FAFB;
+  border: 1px solid rgba(11, 11, 12, 0.08);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.25rem 0;
+}
+
+.page__content .page-disclaimer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(11, 11, 12, 0.08);
+  font-size: 0.82rem;
+  color: #61666D;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  .page__wrapper {
+    padding: 40px 15px;
+  }
+
+  .page__container {
+    padding: 20px 15px;
+    border-radius: 12px;
+  }
+  
+  .page__title {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .page__content h2 {
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+  
+  .page__content h3 {
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .page__content .page-cta-box {
+    padding: 1.75rem 1rem;
+  }
+  
+  .page__content .page-btn {
+    width: 100%;
+  }
+}
+
 
 

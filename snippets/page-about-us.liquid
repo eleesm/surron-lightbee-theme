@@ -1,96 +1,73 @@
 {% doc %}
-  Renders the complete About Us page content for Bike Bee.
-  Includes brand story, mission, core values, competitive differentiators, and CTA.
+  Renders the complete About Us content for Bike Bee.
+  Designed to be embedded within .page__content inside .page__container.
 {% enddoc %}
 
-<article class="page-wrapper">
-  <div class="page-container page-container--wide">
-    <header class="page-header">
-      <span class="page-eyebrow">⚡ CALIFORNIA BASED • RIDERS FIRST</span>
-      <h1 class="page-title">About Bike Bee</h1>
-      <p class="page-subtitle">Pioneering sustainable, high-performance electric dirt bikes for riders across the United States.</p>
-    </header>
+<p class="about-intro">
+  Welcome to <strong>Bike Bee</strong>, your premier destination for cutting-edge electric dirt bikes and off-road vehicles. Headquartered in Dinuba, California (430 W Ventura St, Dinuba, CA 93618), we are a passionate collective of riders, technicians, and electric mobility advocates dedicated to bringing exhilarating, eco-conscious riding experiences to enthusiasts nationwide.
+</p>
 
-    <div class="page-container">
-      <section class="content-section about-hero">
-        <h2>Powering Your Off-Road Adventures</h2>
-        <p>Welcome to <strong>Bike Bee</strong>, your premier destination for cutting-edge electric dirt bikes and off-road vehicles. Headquartered in Dinuba, California (430 W Ventura St, Dinuba, CA 93618), we are a passionate collective of riders, technicians, and electric mobility advocates dedicated to bringing exhilarating, eco-conscious riding experiences to enthusiasts nationwide.</p>
-        <p>We believe off-road recreation should deliver raw adrenaline and instantaneous power without the fumes, high maintenance, or noise pollution of traditional gas powerplants. That conviction drives everything we do.</p>
-      </section>
+<h2>Powering Your Off-Road Adventures</h2>
+<p>
+  We believe off-road recreation should deliver raw adrenaline and instantaneous power without the fumes, high maintenance, or noise pollution of traditional gas powerplants. That conviction drives everything we do at Bike Bee.
+</p>
 
-      <section class="content-section about-mission">
-        <h2>Our Mission</h2>
-        <p>At Bike Bee, our mission is clear: to equip American riders with highest-tier, eco-friendly electric dirt bikes that refuse to compromise on power, reliability, or thrill. We specialize in the <strong>2026 Sur-Ron Light Bee X</strong>—widely recognized as the pinnacle of lightweight electric trail and dirt engineering.</p>
-        <p>Every bike we supply is backed by direct US-based support, an unwavering commitment to rider safety, and transparent customer care from order to unboxing and beyond.</p>
-      </section>
+<h2>Our Mission</h2>
+<p>
+  At Bike Bee, our mission is clear: to equip American riders with highest-tier, eco-friendly electric dirt bikes that refuse to compromise on power, reliability, or thrill. We specialize in the <strong>2026 Sur-Ron Light Bee X</strong>—widely recognized as the pinnacle of lightweight electric trail and dirt engineering.
+</p>
+<p>
+  Every bike we supply is backed by direct US-based support, an unwavering commitment to rider safety, and transparent customer care from order to unboxing and beyond.
+</p>
 
-      <section class="content-section about-values">
-        <h2>Our Core Values</h2>
-        <div class="page-grid">
-          <div class="page-card">
-            <div class="page-card__icon">🏍️</div>
-            <h3>Performance Excellence</h3>
-            <p>We only offer machines that satisfy stringent benchmarks for power delivery, chassis rigidity, suspension compliance, and long-term durability. Every batch is rigorously inspected to ensure peak performance.</p>
-          </div>
-          <div class="page-card">
-            <div class="page-card__icon">🌱</div>
-            <h3>Sustainability</h3>
-            <p>Electric dirt bikes produce zero tailpipe emissions, protect natural trail environments, and minimize noise disturbance. We are committed to fostering responsible, future-ready recreation.</p>
-          </div>
-          <div class="page-card">
-            <div class="page-card__icon">🤝</div>
-            <h3>Customer First</h3>
-            <p>Your riding confidence is our top priority. From pre-purchase advice to ongoing technical troubleshooting, our California team guarantees 24-hour response times during business days.</p>
-          </div>
-          <div class="page-card">
-            <div class="page-card__icon">🛠️</div>
-            <h3>Expert Support</h3>
-            <p>We are riders and mechanical specialists ourselves. We know motor controllers, battery chemistry, and suspension tuning inside out, providing you with authentic, knowledgeable guidance.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="content-section about-why-us">
-        <h2>Why Choose Bike Bee?</h2>
-        <div class="page-grid">
-          <div class="page-card">
-            <h3>🚚 Free 7-Day USA Shipping</h3>
-            <p>Fast, reliable freight delivery direct to your residential or business address across all 50 US states, fully insured from our warehouse.</p>
-          </div>
-          <div class="page-card">
-            <h3>🛡️ 100-Day Warranty</h3>
-            <p>Comprehensive manufacturer warranty coverage safeguarding your electric motor, lithium battery pack, controller, and main frame.</p>
-          </div>
-          <div class="page-card">
-            <h3>🔄 30-Day Returns</h3>
-            <p>Hassle-free 30-day money-back guarantee on unused bikes in original packaging so you can shop with complete peace of mind.</p>
-          </div>
-          <div class="page-card">
-            <h3>🇺🇸 California-Based Team</h3>
-            <p>Local American customer service, transparent communication, and dedicated after-sales care based in Dinuba, CA.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="content-section about-story">
-        <h2>Our Story</h2>
-        <p>Bike Bee was born out of frustration with long shipping waits, lack of replacement parts, and absent customer support in the electric dirt bike sector. As passionate riders who spent weekends carving California trails on early-generation electric bikes, our founders realized riders deserved a dedicated, US-based company that treats electric off-roading with the professionalism of traditional powersports.</p>
-        <p>Today, Bike Bee is proud to serve riders throughout the United States. Whether you're exploring backcountry singletrack, training on private motocross tracks, or enjoying open farmland, we're here to power your journey with world-class machines and unmatched support.</p>
-      </section>
-
-      <div class="page-cta-box">
-        <h2>Ready to Ride?</h2>
-        <p>Join the electric revolution and discover the instant torque, whisper-quiet stealth, and pure exhilaration of the 2026 Sur-Ron Light Bee X.</p>
-        <div class="page-cta-actions">
-          {%- assign main_product = all_products['2026-surron-light-bee-2'] | default: collections.all.products.first -%}
-          <a href="{{ main_product.url | default: '/products/2026-surron-light-bee-2' }}" class="page-btn page-btn--primary">Shop Light Bee X</a>
-          <a href="/pages/contact-us" class="page-btn page-btn--secondary">Contact Support</a>
-        </div>
-      </div>
-
-      <footer class="page-disclaimer">
-        <p>This document is for informational purposes and does not constitute legal advice. &copy; {{ 'now' | date: '%Y' }} Bike Bee. All rights reserved.</p>
-      </footer>
-    </div>
+<h2>Our Values</h2>
+<div class="page-grid">
+  <div class="page-card">
+    <h3>🏍️ Performance Excellence</h3>
+    <p>We only offer products that meet our strict standards for power, durability, and riding experience. Every bike is tested and verified to ensure peak performance.</p>
   </div>
-</article>
+  <div class="page-card">
+    <h3>🌱 Sustainability</h3>
+    <p>Electric bikes reduce carbon emissions and environmental impact. We're committed to promoting eco-friendly transportation and recreation.</p>
+  </div>
+  <div class="page-card">
+    <h3>🤝 Customer First</h3>
+    <p>Your satisfaction is our priority. From expert advice to after-sales support, we're here to ensure your riding experience is exceptional.</p>
+  </div>
+  <div class="page-card">
+    <h3>🛠️ Expert Support</h3>
+    <p>Our team consists of experienced riders and technicians who understand electric bikes inside and out. We're here to help you make informed decisions.</p>
+  </div>
+</div>
+
+<h2>Why Choose Bike Bee?</h2>
+<ul>
+  <li><strong>Free 7-Day USA Shipping:</strong> Fast, free delivery to all 50 states with full transit insurance.</li>
+  <li><strong>100-Day Warranty:</strong> Comprehensive motor, battery, controller, and frame coverage.</li>
+  <li><strong>30-Day Returns:</strong> Money-back guarantee if you're not completely satisfied.</li>
+  <li><strong>USA-Based Support:</strong> Local California customer service you can trust.</li>
+  <li><strong>Expert Knowledge:</strong> We're riders ourselves – we know electric dirt bikes inside and out.</li>
+  <li><strong>Secure Checkout:</strong> Safe, encrypted payment processing through Shopify Payments.</li>
+</ul>
+
+<h2>Our Story</h2>
+<p>
+  Bike Bee was founded by a team of off-road enthusiasts who recognized the transformative potential of electric mobility. After years of riding, testing, and tuning electric dirt bikes across California trails, we decided to create a company that puts riders first.
+</p>
+<p>
+  Today, we're proud to serve thousands of satisfied customers across the United States, helping them experience the thrill of electric off-road riding with confidence and peace of mind.
+</p>
+
+<div class="page-cta-box">
+  <h2>Ready to Ride?</h2>
+  <p>Join the electric revolution and experience off-road riding like never before.</p>
+  <div class="page-cta-actions">
+    {%- assign main_product = all_products['2026-surron-light-bee-2'] | default: collections.all.products.first -%}
+    <a href="{{ main_product.url | default: '/products/2026-surron-light-bee-2' }}" class="page-btn page-btn--primary">Shop Now</a>
+    <a href="/pages/contact-us" class="page-btn page-btn--secondary">Contact Us</a>
+  </div>
+</div>
+
+<div class="page-disclaimer">
+  <p>This document is for informational purposes and does not constitute legal advice. &copy; {{ 'now' | date: '%Y' }} Bike Bee. All rights reserved.</p>
+</div>
