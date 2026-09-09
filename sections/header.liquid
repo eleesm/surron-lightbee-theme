@@ -296,6 +296,7 @@
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 0 4px 14px rgba(11, 11, 12, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    white-space: nowrap !important;
   }
 
   .header__order-btn:hover,
@@ -309,6 +310,13 @@
   }
 
   @media (max-width: 768px) {
+    .header {
+      padding: 0.85rem var(--page-margin, 16px);
+      gap: 0.75rem;
+    }
+    .header__right {
+      gap: 0.75rem;
+    }
     .header__menu {
       display: none;
     }
@@ -319,8 +327,12 @@
       color: #FFFFFF !important;
       background: #0B0B0C !important;
       border: 1px solid rgba(255, 255, 255, 0.2) !important;
-      padding: 0.55rem 1.2rem !important;
-      font-size: 0.8rem !important;
+      padding: 0.45rem 0.85rem !important;
+      font-size: 0.75rem !important;
+      white-space: nowrap !important;
+      flex-shrink: 0 !important;
+      line-height: 1 !important;
+      letter-spacing: 0.02em !important;
     }
   }
 
@@ -413,22 +425,49 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
+  /* Force white and blue logo inside mobile drawer */
+  .mobile-nav-drawer .header__logo {
+    color: #FFFFFF !important;
+  }
+
+  .mobile-nav-drawer .header__logo-brand {
+    color: #FFFFFF !important;
+  }
+
+  .mobile-nav-drawer .header__logo-model {
+    color: #1E90FF !important;
+  }
+
+  /* Clean Close button: white 'X' icon with no circular artifact */
   .mobile-nav-drawer__close {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #FFFFFF;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color: #FFFFFF !important;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .mobile-nav-drawer__close:hover {
-    background-color: rgba(255, 255, 255, 0.15);
+    background: transparent !important;
+    opacity: 0.75;
+  }
+
+  .mobile-nav-drawer__close svg {
+    width: 24px;
+    height: 24px;
+    stroke: #FFFFFF !important;
+    display: block;
   }
 
   .mobile-nav-drawer__links {

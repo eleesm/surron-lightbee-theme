@@ -1,4 +1,4 @@
-<section class="faq-section" id="faq" aria-labelledby="FaqHeading">
+<section class="faq-section full-width" id="faq" aria-labelledby="FaqHeading">
   <div class="faq__container">
     <div class="faq__header text-center" data-rv>
       <span class="faq__eyebrow">COMMON QUESTIONS</span>
@@ -80,16 +80,32 @@
 </section>
 
 {% stylesheet %}
+  .shopify-section:has(.faq-section),
+  .shopify-section--faq,
+  #shopify-section-faq,
+  .faq-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    grid-column: 1 / -1 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
   .faq-section {
     padding: 6rem 0;
     background-color: var(--color-background, #F5F6F8);
     position: relative;
+    width: 100% !important;
   }
 
   .faq__container {
     max-width: 50rem;
     margin: 0 auto;
     padding: 0 var(--page-margin, 20px);
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .faq__header {
@@ -192,15 +208,31 @@
     margin: 0;
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
+    .faq-section {
+      padding: 3.5rem 0 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+    }
+    .faq__container {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0 16px !important;
+      margin: 0 auto !important;
+      box-sizing: border-box !important;
+    }
+    .faq-item {
+      border-radius: 16px !important;
+    }
     .faq-header {
-      padding: 1.25rem 1.5rem;
+      padding: 1.25rem 1.25rem !important;
     }
     .faq-question {
-      font-size: 1.05rem;
+      font-size: 1.05rem !important;
     }
     .faq-content {
-      padding: 0 1.5rem 1.25rem;
+      padding: 0 1.25rem 1.25rem !important;
     }
   }
 {% endstylesheet %}
@@ -208,6 +240,7 @@
 {% schema %}
 {
   "name": "FAQ",
+  "class": "shopify-section--faq full-width",
   "settings": [
     {
       "type": "text",

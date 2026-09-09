@@ -55,6 +55,20 @@ body {
   grid-column: 1 / -1 !important;
 }
 
+/* FAQ Full-Width */
+.faq-section,
+.shopify-section--faq,
+#shopify-section-faq,
+.shopify-section:has(#faq),
+.shopify-section:has(.faq-section) {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  grid-column: 1 / -1 !important;
+}
+
 /* Scroll Reveal Attribute [data-rv] */
 [data-rv] {
   opacity: 0;
@@ -887,6 +901,14 @@ h1.product-title {
     color: #FFFFFF !important;
     background: #0B0B0C !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+
+  .header__order-now-btn {
+    padding: 0.45rem 0.85rem !important;
+    font-size: 0.75rem !important;
+    line-height: 1 !important;
   }
 
   .hero__title,
