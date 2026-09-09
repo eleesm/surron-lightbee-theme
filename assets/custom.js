@@ -446,7 +446,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const tabBtns = productDesc.querySelectorAll('button[id^="btn-"], button[onclick*="showTab"], .pd-tab-btn');
-    tabBtns.forEach(btn => btn.classList.add('pd-tab-btn'));
+    tabBtns.forEach(btn => {
+      btn.classList.add('pd-tab-btn');
+      btn.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      });
+    });
     const tabHeaders = productDesc.querySelector('div[style*="border-bottom"]') || (tabBtns[0] ? tabBtns[0].parentElement : null);
     if (tabHeaders) tabHeaders.classList.add('pd-tabs');
 
