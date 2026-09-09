@@ -38,6 +38,10 @@
     <noscript><link rel="stylesheet" href="{{ 'base.css' | asset_url }}"></noscript>
     <link rel="stylesheet" href="{{ 'animations.css' | asset_url }}" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="{{ 'animations.css' | asset_url }}"></noscript>
+    {%- if request.page_type == 'page' -%}
+      <link rel="stylesheet" href="{{ 'pages.css' | asset_url }}" media="print" onload="this.media='all'">
+      <noscript><link rel="stylesheet" href="{{ 'pages.css' | asset_url }}"></noscript>
+    {%- endif -%}
 
     {% # Social, title, etc. %}
     {% render 'meta-tags' %}

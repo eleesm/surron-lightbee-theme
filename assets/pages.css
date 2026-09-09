@@ -1,0 +1,593 @@
+/* ==========================================================================
+   Bike Bee - Legal & Content Pages Stylesheet
+   Scope: Loaded exclusively on standard page templates (request.page_type == 'page')
+   Theme Tokens: #0B0B0C, #1E90FF, #FFD400, #F5F6F8, Archivo & Inter
+   ========================================================================== */
+
+.page-wrapper {
+  width: 100%;
+  max-width: 100%;
+  min-height: 70vh;
+  padding: 4rem 0 6rem;
+  background-color: var(--color-background, #F5F6F8);
+  color: var(--color-foreground, #0B0B0C);
+  font-family: var(--font-body, 'Inter', sans-serif);
+  line-height: 1.65;
+  box-sizing: border-box;
+}
+
+.page-container {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 0 var(--page-margin, 20px);
+  box-sizing: border-box;
+}
+
+.page-container--wide {
+  max-width: 72rem;
+}
+
+/* Page Header & Badges */
+.page-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(11, 11, 12, 0.08);
+}
+
+.page-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-blue, #1E90FF);
+  margin-bottom: 0.75rem;
+}
+
+.page-title {
+  font-family: var(--font-heading, 'Archivo', sans-serif);
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1.15;
+  color: var(--color-foreground, #0B0B0C);
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-subtext, #61666D);
+  max-width: 42rem;
+  margin: 0 auto 1.25rem;
+}
+
+.page-last-updated {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--color-subtext, #61666D);
+  background: rgba(11, 11, 12, 0.04);
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-pill, 999px);
+  font-weight: 500;
+}
+
+/* Legal Notice Banner */
+.legal-notice-banner {
+  background: #FFFDF0;
+  border: 1px solid #FFE58F;
+  border-left: 4px solid var(--color-accent-yellow, #FFD400);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.legal-notice-banner h2,
+.legal-notice-banner h3 {
+  font-family: var(--font-heading, 'Archivo', sans-serif);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #0B0B0C;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legal-notice-banner p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: #4A4D53;
+  line-height: 1.55;
+}
+
+/* Content Sections */
+.content-section {
+  margin-bottom: 3rem;
+}
+
+.content-section h2 {
+  font-family: var(--font-heading, 'Archivo', sans-serif);
+  font-size: clamp(1.4rem, 2.8vw, 1.8rem);
+  font-weight: 800;
+  color: var(--color-foreground, #0B0B0C);
+  margin: 2rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(30, 144, 255, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.content-section h3 {
+  font-family: var(--font-heading, 'Archivo', sans-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-foreground, #0B0B0C);
+  margin: 1.5rem 0 0.5rem;
+}
+
+.content-section p {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  color: #2D3139;
+}
+
+.content-section ul,
+.content-section ol {
+  margin: 0 0 1.25rem 1.25rem;
+  padding-left: 0.5rem;
+  color: #2D3139;
+}
+
+.content-section li {
+  margin-bottom: 0.5rem;
+  font-size: 0.98rem;
+}
+
+.content-section a {
+  color: var(--color-accent-blue, #1E90FF);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.content-section a:hover {
+  color: #0066CC;
+}
+
+/* Feature & Values Grids */
+.page-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.page-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(11, 11, 12, 0.08);
+  border-radius: var(--radius-card, 24px);
+  padding: 1.75rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(30, 144, 255, 0.08);
+  border-color: rgba(30, 144, 255, 0.3);
+}
+
+.page-card__icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.page-card h3 {
+  font-family: var(--font-heading, 'Archivo', sans-serif);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--color-foreground, #0B0B0C);
+  margin: 0 0 0.5rem;
+}
+
+.page-card p {
+  font-size: 0.92rem;
+  color: var(--color-subtext, #61666D);
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* Numbered Steps */
+.step-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+.step-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(11, 11, 12, 0.08);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+.step-number {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--color-accent-blue, #1E90FF);
+  color: #FFFFFF;
+  font-family: var(--font-heading, 'Archivo', sans-serif);
+  font-weight: 900;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-body {
+  flex: 1;
+}
+
+.step-body h4 {
+  font-family: var(--font-heading, 'Archivo', sans-serif);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-foreground, #0B0B0C);
+  margin: 0 0 0.35rem;
+}
+
+.step-body p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--color-subtext, #61666D);
+}
+
+.step-body ul {
+  margin: 0.5rem 0 0 1rem;
+  padding: 0;
+  font-size: 0.88rem;
+  color: var(--color-subtext, #61666D);
+}
+
+/* Contact Info Box */
+.contact-highlight-box {
+  background: #FFFFFF;
+  border: 1px solid rgba(11, 11, 12, 0.08);
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  margin: 1.5rem 0;
+}
+
+.contact-highlight-box p {
+  margin: 0 0 0.5rem;
+}
+
+.contact-highlight-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* CTA Box */
+.page-cta-box {
+  background: #0B0B0C;
+  color: #FFFFFF;
+  border-radius: var(--radius-card, 24px);
+  padding: 3rem 2rem;
+  text-align: center;
+  margin: 3.5rem 0 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-cta-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(30, 144, 255, 0.25) 0%, rgba(30, 144, 255, 0) 70%);
+  pointer-events: none;
+}
+
+.page-cta-box h2 {
+  font-family: var(--font-heading, 'Archivo', sans-serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 900;
+  font-style: italic;
+  color: #FFFFFF;
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+}
+
+.page-cta-box p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.05rem;
+  max-width: 32rem;
+  margin: 0 auto 1.75rem;
+}
+
+.page-cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.page-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius-pill, 999px);
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  min-height: 48px;
+  box-sizing: border-box;
+}
+
+.page-btn--primary {
+  background-color: var(--color-accent-blue, #1E90FF);
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(30, 144, 255, 0.35);
+}
+
+.page-btn--primary:hover {
+  background-color: #0077EA;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(30, 144, 255, 0.45);
+}
+
+.page-btn--secondary {
+  background-color: transparent;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.page-btn--secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #FFFFFF;
+}
+
+.page-btn--outline-dark {
+  background-color: transparent;
+  color: #0B0B0C !important;
+  border: 1px solid rgba(11, 11, 12, 0.25);
+}
+
+.page-btn--outline-dark:hover {
+  border-color: #0B0B0C;
+  background-color: rgba(11, 11, 12, 0.04);
+}
+
+.page-btn--full {
+  width: 100%;
+}
+
+/* Contact Form */
+.contact-form-container {
+  background: #FFFFFF;
+  border: 1px solid rgba(11, 11, 12, 0.08);
+  border-radius: var(--radius-card, 24px);
+  padding: 2.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  margin: 2rem 0;
+}
+
+.contact-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group--full {
+  grid-column: 1 / -1;
+}
+
+.form-label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-foreground, #0B0B0C);
+}
+
+.form-label span {
+  color: #E53935;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(11, 11, 12, 0.15);
+  border-radius: var(--style-border-radius-inputs, 8px);
+  background: #FFFFFF;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 0.95rem;
+  color: var(--color-foreground, #0B0B0C);
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--color-accent-blue, #1E90FF);
+  box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.15);
+}
+
+.form-hint {
+  font-size: 0.78rem;
+  color: var(--color-subtext, #61666D);
+  margin-top: 0.2rem;
+}
+
+.form-message {
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 0.92rem;
+}
+
+.form-message--success {
+  background: #E8F5E9;
+  border: 1px solid #A5D6A7;
+  color: #2E7D32;
+}
+
+.form-message--error {
+  background: #FFEBEE;
+  border: 1px solid #FFCDD2;
+  color: #C62828;
+}
+
+/* FAQ Accordion */
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.faq-detail {
+  background: #FFFFFF;
+  border: 1px solid rgba(11, 11, 12, 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.faq-detail[open] {
+  border-color: var(--color-accent-blue, #1E90FF);
+  box-shadow: 0 4px 16px rgba(30, 144, 255, 0.08);
+}
+
+.faq-summary {
+  padding: 1.25rem 1.5rem;
+  font-family: var(--font-heading, 'Archivo', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-foreground, #0B0B0C);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  user-select: none;
+}
+
+.faq-summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-summary::after {
+  content: '+';
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--color-accent-blue, #1E90FF);
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.faq-detail[open] .faq-summary::after {
+  content: '−';
+}
+
+.faq-answer {
+  padding: 0 1.5rem 1.25rem;
+  font-size: 0.95rem;
+  color: #383D45;
+  line-height: 1.6;
+  border-top: 1px solid rgba(11, 11, 12, 0.04);
+  padding-top: 0.75rem;
+}
+
+/* Legal Disclaimer Footer */
+.page-disclaimer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(11, 11, 12, 0.08);
+  font-size: 0.82rem;
+  color: var(--color-subtext, #61666D);
+  text-align: center;
+  font-style: italic;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .page-wrapper {
+    padding: 2.5rem 0 4rem;
+  }
+  .page-container {
+    padding: 0 16px;
+  }
+  .page-header {
+    margin-bottom: 2rem;
+  }
+  .contact-form-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-form-container {
+    padding: 1.5rem;
+  }
+  .page-card {
+    padding: 1.25rem;
+  }
+  .step-card {
+    padding: 1.1rem;
+    gap: 0.85rem;
+  }
+  .step-number {
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 0.95rem;
+  }
+  .page-cta-box {
+    padding: 2rem 1.25rem;
+  }
+  .page-btn {
+    width: 100%;
+  }
+  .legal-notice-banner {
+    padding: 1rem;
+  }
+}

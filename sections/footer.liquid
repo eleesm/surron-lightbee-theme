@@ -10,13 +10,23 @@
         &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.
       </div>
 
-      {% if section.settings.menu != blank %}
-        <nav class="footer__links" aria-label="Footer Navigation">
+      {% # theme-check-disable HardcodedRoutes %}
+      <nav class="footer__links" aria-label="Footer Navigation">
+        {% if section.settings.menu != blank %}
           {% for link in section.settings.menu.links %}
             {{ link.title | link_to: link.url }}
           {% endfor %}
-        </nav>
-      {% endif %}
+        {% else %}
+          <a href="/pages/about-us">About Us</a>
+          <a href="/pages/contact-us">Contact Us</a>
+          <a href="/pages/faq">FAQ</a>
+          <a href="/pages/privacy-policy">Privacy Policy</a>
+          <a href="/pages/terms-of-service">Terms</a>
+          <a href="/pages/refund-policy">Refunds</a>
+          <a href="/pages/shipping-policy">Shipping</a>
+        {% endif %}
+      </nav>
+      {% # theme-check-enable HardcodedRoutes %}
 
       <div class="footer__payment">
         {% if section.settings.show_payment_icons %}

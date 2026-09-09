@@ -1,13 +1,37 @@
 {% comment %}
-  This section is used in the page template to render store pages like About us
-  or Contact us.
-
-  https://shopify.dev/docs/storefronts/themes/architecture/templates/page
+  This section is used in the page template to render store pages like About Us,
+  Privacy Policy, Refund Policy, Shipping Policy, Terms of Service, Contact Us, and FAQ.
 {% endcomment %}
 
-<h1>{{ page.title }}</h1>
-
-{{ page.content }}
+<div class="main-page-wrapper">
+  {% case page.handle %}
+    {% when 'about-us' %}
+      {% render 'page-about-us' %}
+    {% when 'privacy-policy' %}
+      {% render 'page-privacy-policy' %}
+    {% when 'refund-policy', 'refund-and-return-policy' %}
+      {% render 'page-refund-policy' %}
+    {% when 'shipping-policy' %}
+      {% render 'page-shipping-policy' %}
+    {% when 'terms-of-service', 'terms-and-conditions' %}
+      {% render 'page-terms-of-service' %}
+    {% when 'contact-us', 'contact' %}
+      {% render 'page-contact-us' %}
+    {% when 'faq', 'faqs' %}
+      {% render 'page-faq' %}
+    {% else %}
+      <article class="page-wrapper">
+        <div class="page-container">
+          <header class="page-header">
+            <h1 class="page-title">{{ page.title }}</h1>
+          </header>
+          <div class="content-section rte">
+            {{ page.content }}
+          </div>
+        </div>
+      </article>
+  {% endcase %}
+</div>
 
 {% schema %}
 {

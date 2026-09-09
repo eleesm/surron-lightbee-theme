@@ -11,3 +11,6 @@
 #
 # Ignore templates and sections with a regular expression:
 #   /(templates|sections)/.*\.json/
+
+# Exclude templates subfolder from Shopify CLI theme upload (Shopify prohibits template subfolders)
+templates/pages/*
