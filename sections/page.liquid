@@ -11,7 +11,7 @@
       {% case page.handle %}
         {% when 'about-us' %}
           {% render 'page-about-us' %}
-        {% when 'privacy-policy' %}
+        {% when 'privacy-policy', 'privacy-policy-1', 'privacy' %}
           {% render 'page-privacy-policy' %}
         {% when 'refund-policy', 'refund-and-return-policy' %}
           {% render 'page-refund-policy' %}
@@ -21,7 +21,7 @@
           {% render 'page-terms-of-service' %}
         {% when 'contact-us', 'contact' %}
           {% render 'page-contact-us' %}
-        {% when 'faq', 'faqs' %}
+        {% when 'faq', 'faqs', 'f-a-q' %}
           {% render 'page-faq' %}
         {% else %}
           {{ page.content }}
