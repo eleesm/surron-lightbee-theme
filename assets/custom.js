@@ -463,8 +463,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const tables = productDesc.querySelectorAll('table');
     tables.forEach(table => table.classList.add('pd-table'));
 
-    const sections = productDesc.querySelectorAll('div[style*="border-radius: 32px"]');
-    sections.forEach(sec => sec.classList.add('pd-section'));
+    const sections = productDesc.querySelectorAll('div[style*="border-radius: 32px"], div[style*="background: #0B0B0C"]');
+    sections.forEach(sec => {
+      sec.classList.add('pd-section');
+      const style = sec.getAttribute('style') || '';
+      if (style.includes('#0B0B0C') || style.includes('linear-gradient')) {
+        sec.classList.add('pd-dark-section');
+      }
+    });
+
+    const highlightBoxes = productDesc.querySelectorAll('div[style*="rgba(30, 144, 255"], div[style*="border-left"]');
+    highlightBoxes.forEach(box => box.classList.add('pd-highlight-box'));
   };
 
   initProductDesc();

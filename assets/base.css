@@ -654,17 +654,136 @@ h1.product-title {
     text-align: left !important;
   }
 
-  /* General text adjustments for mobile */
-  .pd-section h2, 
-  .product-desc .pd-section h2,
-  .product-desc div[style*="border-radius: 32px"] h2 {
-    font-size: 24px !important;
+  /* 1. Make dark & content sections full-width with compact internal padding */
+  .pd-section,
+  .pd-intro,
+  .pd-dark-section,
+  .product-desc .pd-section,
+  .product-desc .pd-intro,
+  .product-desc .pd-dark-section,
+  .product-desc div[style*="border-radius: 32px"],
+  .product-desc div[style*="background: #0B0B0C"],
+  .product-desc div[style*="background:#0B0B0C"],
+  .product-desc div[style*="background: linear-gradient"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 28px 18px !important;
+    border-radius: 20px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 20px !important;
+    box-sizing: border-box !important;
   }
-  
-  .pd-section p, 
+
+  /* 2. Compact text & headings inside dark and content sections */
+  .product-desc div[style*="border-radius: 32px"] h2,
+  .product-desc div[style*="background: #0B0B0C"] h2,
+  .product-desc div[style*="background:#0B0B0C"] h2,
+  .product-desc .pd-section h2,
+  .product-desc .pd-dark-section h2 {
+    font-size: 22px !important;
+    line-height: 1.25 !important;
+    margin: 0 0 14px 0 !important;
+  }
+
+  /* Paragraphs: 13.5px font size, 1.4 line-height, compact bottom margin */
+  .product-desc div[style*="border-radius: 32px"] p,
+  .product-desc div[style*="background: #0B0B0C"] p,
+  .product-desc div[style*="background:#0B0B0C"] p,
+  .product-desc div[style*="background: linear-gradient"] p,
   .product-desc .pd-section p,
-  .product-desc div[style*="border-radius: 32px"] p {
+  .product-desc .pd-intro p,
+  .product-desc .pd-dark-section p {
+    font-size: 13.5px !important;
+    line-height: 1.4 !important;
+    margin: 0 0 12px 0 !important;
+  }
+
+  .product-desc div[style*="border-radius: 32px"] p:last-child,
+  .product-desc div[style*="background: #0B0B0C"] p:last-child,
+  .product-desc div[style*="background:#0B0B0C"] p:last-child,
+  .product-desc div[style*="background: linear-gradient"] p:last-child,
+  .product-desc .pd-section p:last-child,
+  .product-desc .pd-intro p:last-child,
+  .product-desc .pd-dark-section p:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  /* 3. Widen inner info boxes (like blue 10kW Power box) */
+  .pd-highlight-box,
+  .product-desc .pd-highlight-box,
+  .product-desc div[style*="rgba(30, 144, 255"],
+  .product-desc div[style*="border-left: 4px solid #1E90FF"],
+  .product-desc div[style*="border-left: 4px solid"],
+  .product-desc div[style*="border-left:4px solid"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block !important;
+    padding: 16px 18px !important;
+    margin: 18px 0 !important;
+    border-radius: 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  .product-desc div[style*="rgba(30, 144, 255"] strong,
+  .product-desc div[style*="border-left: 4px solid"] strong,
+  .product-desc .pd-highlight-box strong {
+    font-size: 20px !important;
+    margin-bottom: 4px !important;
+    display: block !important;
+  }
+
+  .product-desc div[style*="rgba(30, 144, 255"] span,
+  .product-desc div[style*="border-left: 4px solid"] span,
+  .product-desc .pd-highlight-box span {
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+    display: block !important;
+  }
+
+  /* 4. Safety functions grid items */
+  .pd-safety-item,
+  .product-desc .pd-safety-item,
+  .product-desc div[style*="border-radius: 999px"] {
+    width: 100% !important;
+    padding: 12px 16px !important;
+    border-radius: 12px !important;
+    box-sizing: border-box !important;
+    gap: 10px !important;
+  }
+
+  .pd-safety-item span,
+  .product-desc .pd-safety-item span,
+  .product-desc div[style*="border-radius: 999px"] span {
+    font-size: 13px !important;
+    line-height: 1.35 !important;
+  }
+
+  /* Warning box at bottom */
+  .pd-warning,
+  .product-desc .pd-warning,
+  .product-desc div[style*="background: #FEF3C7"],
+  .product-desc div[style*="background:#FEF3C7"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 18px 16px !important;
+    border-radius: 14px !important;
+    box-sizing: border-box !important;
+    margin-top: 20px !important;
+  }
+
+  .product-desc div[style*="background: #FEF3C7"] strong,
+  .product-desc div[style*="background:#FEF3C7"] strong {
     font-size: 14px !important;
+    margin-bottom: 6px !important;
+    display: block !important;
+  }
+
+  .product-desc div[style*="background: #FEF3C7"] p,
+  .product-desc div[style*="background:#FEF3C7"] p {
+    font-size: 12.5px !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
   }
 }
 
