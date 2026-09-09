@@ -46,9 +46,14 @@
         "enable_sticky_info": true,
         "show_dynamic_checkout": true
       }
+    },
+    "sticky_buy_bar": {
+      "type": "sticky-buy-bar",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "sticky_buy_bar"
   ]
 }

@@ -1,4 +1,4 @@
-<div class="header-wrapper full-width">
+<div class="header-wrapper full-width {% if template.name != 'index' %}header-wrapper--solid{% endif %}">
   <header class="header">
     <div class="header__left">
       <a href="{{ routes.root_url }}" class="header__logo">
@@ -47,8 +47,58 @@
         {{ section.settings.order_button_text | default: 'ORDER NOW' }}
       </a>
       {% # theme-check-enable HardcodedRoutes %}
+
+      <!-- Mobile Hamburger Button -->
+      <button
+        type="button"
+        class="header__mobile-toggle"
+        id="MobileNavTrigger"
+        aria-label="Open navigation menu"
+        aria-controls="MobileNavDrawer"
+        aria-expanded="false"
+      >
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
     </div>
   </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div id="MobileNavBackdrop" class="mobile-nav-backdrop" aria-hidden="true"></div>
+  <aside id="MobileNavDrawer" class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation" aria-hidden="true">
+    <div class="mobile-nav-drawer__header">
+      <a href="{{ routes.root_url }}" class="header__logo">
+        <span class="header__logo-brand">BIKE</span>
+        <span class="header__logo-model">BEE</span>
+      </a>
+      <button
+        type="button"
+        class="mobile-nav-drawer__close"
+        id="MobileNavClose"
+        aria-label="Close menu"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    {% if section.settings.menu != blank %}
+      <nav class="mobile-nav-drawer__links" aria-label="Mobile Navigation Links">
+        {% for link in section.settings.menu.links %}
+          <a href="{{ link.url }}" class="mobile-nav-drawer__link">{{ link.title }}</a>
+        {% endfor %}
+      </nav>
+    {% endif %}
+
+    <div class="mobile-nav-drawer__footer">
+      <a href="{{ order_url }}" class="mobile-nav-drawer__order-btn btn-order-now">
+        {{ section.settings.order_button_text | default: 'ORDER NOW' }}
+      </a>
+    </div>
+  </aside>
 </div>
 
 {% stylesheet %}
@@ -73,6 +123,29 @@
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(11, 11, 12, 0.08);
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+  }
+
+  .header-wrapper--solid {
+    background-color: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(11, 11, 12, 0.08);
+  }
+
+  .header-wrapper--solid .header__logo-brand {
+    color: #0B0B0C;
+  }
+
+  .header-wrapper--solid .header__link {
+    color: #0B0B0C;
+  }
+
+  .header-wrapper--solid .header__cart-link {
+    color: #0B0B0C;
+  }
+
+  .header-wrapper--solid .hamburger-bar {
+    background-color: #0B0B0C;
   }
 
   .header {
@@ -250,31 +323,171 @@
       font-size: 0.8rem !important;
     }
   }
+
+  /* Mobile Hamburger Button */
+  .header__mobile-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .hamburger-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: #FFFFFF;
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease, background-color 0.3s ease;
+  }
+
+  .header-wrapper.scrolled .hamburger-bar {
+    background-color: #0B0B0C;
+  }
+
+  /* Mobile Navigation Backdrop */
+  .mobile-nav-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
+  }
+
+  body.mobile-nav-open .mobile-nav-backdrop {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  /* Mobile Navigation Drawer */
+  .mobile-nav-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 320px;
+    height: 100vh;
+    background: #0B0B0C;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5rem 1.5rem 2rem;
+    box-shadow: -12px 0 40px rgba(0, 0, 0, 0.7);
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
+  }
+
+  body.mobile-nav-open .mobile-nav-drawer {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  .mobile-nav-drawer__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .mobile-nav-drawer__close {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .mobile-nav-drawer__close:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .mobile-nav-drawer__links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 2rem 0;
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .mobile-nav-drawer__link {
+    display: block;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-family: var(--font-heading, 'Archivo', sans-serif);
+    font-style: italic;
+    font-weight: 900;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .mobile-nav-drawer__link:hover {
+    background-color: rgba(30, 144, 255, 0.1);
+    color: var(--color-accent-blue, #1E90FF);
+  }
+
+  .mobile-nav-drawer__footer {
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .mobile-nav-drawer__order-btn {
+    width: 100%;
+    text-align: center;
+    display: block;
+    padding: 0.85rem 1.5rem;
+    background-color: var(--color-accent-blue, #1E90FF) !important;
+    color: #FFFFFF !important;
+    border-radius: 999px;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(30, 144, 255, 0.35);
+  }
+
+  @media (max-width: 768px) {
+    .header__mobile-toggle {
+      display: flex;
+    }
+  }
 {% endstylesheet %}
-
-{% javascript %}
-  function initHeaderScroll() {
-    const headerWrapper = document.querySelector('.header-wrapper');
-    if (!headerWrapper) return;
-
-    const checkScroll = () => {
-      if (window.scrollY > 20) {
-        headerWrapper.classList.add('scrolled');
-      } else {
-        headerWrapper.classList.remove('scrolled');
-      }
-    };
-
-    window.addEventListener('scroll', checkScroll, { passive: true });
-    checkScroll();
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initHeaderScroll);
-  } else {
-    initHeaderScroll();
-  }
-{% endjavascript %}
 
 {% schema %}
 {

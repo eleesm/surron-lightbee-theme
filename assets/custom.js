@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
     handleHeaderScroll();
   }
 
-  // 2. Global Scroll-Reveal ([data-rv] threshold 0.25)
-  const rvElements = document.querySelectorAll('[data-rv]');
+  // 2. Global Scroll-Reveal ([data-rv] and .scroll-reveal with 0.15 threshold)
+  const rvElements = document.querySelectorAll('[data-rv], .scroll-reveal');
   if (rvElements.length > 0) {
     const rvObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.25 });
+    }, { threshold: 0.15 });
     rvElements.forEach(el => rvObserver.observe(el));
   }
 
@@ -318,6 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isBuyNow) {
       e.preventDefault();
       const buyBtn = form.querySelector('#AddToCartBtn') || form.querySelector('.btn-buy-now') || form.querySelector('button[type="submit"]');
+      const originalBuyText = buyBtn ? buyBtn.innerHTML : '';
       if (buyBtn) {
         buyBtn.disabled = true;
         buyBtn.style.opacity = '0.7';
@@ -325,15 +326,27 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       try {
         const formData = new FormData(form);
-        await fetch('/cart/add.js', {
+        const res = await fetch('/cart/add.js', {
           method: 'POST',
           headers: { 'Accept': 'application/json' },
           body: formData
         });
+
+        if (!res.ok) {
+          const errJson = await res.json();
+          throw new Error(errJson.description || 'Could not add item to cart.');
+        }
+
+        window.location.href = '/checkout';
       } catch (err) {
         console.error('Error adding item before checkout:', err);
+        alert(err.message || 'There was an issue processing your order. Please try again.');
+        if (buyBtn) {
+          buyBtn.disabled = false;
+          buyBtn.style.opacity = '1';
+          buyBtn.innerHTML = originalBuyText;
+        }
       }
-      window.location.href = '/checkout';
       return;
     }
 
@@ -477,5 +490,127 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   initProductDesc();
+
+  // 12. FAQ Accordion Interactive Toggle (F-2)
+  const initFaqAccordion = () => {
+    const faqHeaders = document.querySelectorAll('.faq-header');
+    if (faqHeaders.length === 0) return;
+
+    faqHeaders.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        if (!item) return;
+        const isOpen = item.classList.contains('is-open');
+        const body = item.querySelector('.faq-body');
+
+        // Close sibling items for clean accordion UX
+        document.querySelectorAll('.faq-item.is-open').forEach(other => {
+          if (other !== item) {
+            other.classList.remove('is-open');
+            const otherBtn = other.querySelector('.faq-header');
+            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+            const otherBody = other.querySelector('.faq-body');
+            if (otherBody) otherBody.style.maxHeight = '0px';
+          }
+        });
+
+        if (isOpen) {
+          item.classList.remove('is-open');
+          btn.setAttribute('aria-expanded', 'false');
+          if (body) body.style.maxHeight = '0px';
+        } else {
+          item.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
+          if (body) body.style.maxHeight = body.scrollHeight + 'px';
+        }
+      });
+    });
+  };
+
+  initFaqAccordion();
+
+  // 13. Mobile Navigation Drawer Handler (B-1)
+  const initMobileNav = () => {
+    const trigger = document.getElementById('MobileNavTrigger');
+    const drawer = document.getElementById('MobileNavDrawer');
+    const backdrop = document.getElementById('MobileNavBackdrop');
+    const closeBtn = document.getElementById('MobileNavClose');
+    if (!trigger || !drawer) return;
+
+    const openDrawer = () => {
+      document.body.classList.add('mobile-nav-open');
+      trigger.setAttribute('aria-expanded', 'true');
+      drawer.setAttribute('aria-hidden', 'false');
+    };
+
+    const closeDrawer = () => {
+      document.body.classList.remove('mobile-nav-open');
+      trigger.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+    };
+
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isOpen = document.body.classList.contains('mobile-nav-open');
+      if (isOpen) {
+        closeDrawer();
+      } else {
+        openDrawer();
+      }
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeDrawer();
+      });
+    }
+
+    if (backdrop) {
+      backdrop.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeDrawer();
+      });
+    }
+
+    // Close drawer when any internal navigation link is clicked
+    drawer.querySelectorAll('.mobile-nav-drawer__link, .mobile-nav-drawer__order-btn').forEach(link => {
+      link.addEventListener('click', () => {
+        closeDrawer();
+      });
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && document.body.classList.contains('mobile-nav-open')) {
+        closeDrawer();
+      }
+    });
+  };
+
+  initMobileNav();
+
+  // 14. Sticky Buy Bar Observer (F-1)
+  const initStickyBuyBar = () => {
+    const stickyBar = document.querySelector('.sticky-buy-bar');
+    if (!stickyBar) return;
+
+    const target = document.getElementById('AddToCartBtn') || document.querySelector('.btn-order-now') || document.querySelector('.stage-card');
+    if (!target) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+          stickyBar.classList.add('is-visible');
+        } else {
+          stickyBar.classList.remove('is-visible');
+        }
+      });
+    }, { threshold: 0 });
+
+    observer.observe(target);
+  };
+
+  initStickyBuyBar();
 });
 

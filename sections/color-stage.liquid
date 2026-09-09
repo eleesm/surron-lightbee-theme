@@ -16,7 +16,7 @@
       elsif section.settings.image_volt != blank
         assign volt_src = section.settings.image_volt | image_url: width: 2000
       else
-        assign volt_src = 'volt.jpg' | asset_url | img_url: 'master'
+        assign volt_src = 'volt.jpg' | asset_url
       endif
 
       if section.settings.arctic_image != blank
@@ -24,7 +24,7 @@
       elsif section.settings.image_arctic != blank
         assign arctic_src = section.settings.image_arctic | image_url: width: 2000
       else
-        assign arctic_src = 'arctic.jpg' | asset_url | img_url: 'master'
+        assign arctic_src = 'arctic.jpg' | asset_url
       endif
 
       if section.settings.olive_image != blank
@@ -32,7 +32,7 @@
       elsif section.settings.image_olive != blank
         assign olive_src = section.settings.image_olive | image_url: width: 2000
       else
-        assign olive_src = 'olive.jpg' | asset_url | img_url: 'master'
+        assign olive_src = 'olive.jpg' | asset_url
       endif
 
       if section.settings.ultra_image != blank
@@ -40,7 +40,7 @@
       elsif section.settings.image_ultra != blank
         assign ultra_src = section.settings.image_ultra | image_url: width: 2000
       else
-        assign ultra_src = 'ultra.jpg' | asset_url | img_url: 'master'
+        assign ultra_src = 'ultra.jpg' | asset_url
       endif
     -%}
 
@@ -74,7 +74,15 @@
               height="2000"
             >
           {% else %}
-            {{ 'volt.jpg' | asset_url | img_tag: 'Fallback', 'loading="lazy"' }}
+            <img
+              id="StageProductImage"
+              src="{{ 'volt.jpg' | asset_url }}"
+              alt="Sur-Ron Light Bee 2026 - Volt Black"
+              class="stage-product-img"
+              loading="lazy"
+              width="2000"
+              height="2000"
+            >
           {% endif %}
         </div>
 

@@ -538,11 +538,14 @@
                       <span class="product-price-current product__price price price-item--regular" id="ProductPrice">
                         {{ current_variant.price | default: 359900 | money }}
                       </span>
-                      {%- if current_variant.compare_at_price > current_variant.price or product.compare_at_price > product.price -%}
+                      {%- assign cur_comp = current_variant.compare_at_price | default: product.compare_at_price -%}
+                      {%- assign cur_price = current_variant.price | default: product.price -%}
+                      {%- if cur_comp > cur_price -%}
+                        {%- assign savings_pct = cur_comp | minus: cur_price | times: 100.0 | divided_by: cur_comp | round -%}
                         <s class="product-price-compare product__price--compare price-item--compare compare-price" id="ProductComparePrice">
-                          {{ current_variant.compare_at_price | default: 449900 | money }}
+                          {{ cur_comp | money }}
                         </s>
-                        <span class="product-discount-badge product__badge--sale sale-badge price__badge price-item--sale" id="ProductDiscountBadge">SAVE 20%</span>
+                        <span class="product-discount-badge product__badge--sale sale-badge price__badge price-item--sale" id="ProductDiscountBadge">SAVE {{ savings_pct }}%</span>
                       {%- endif -%}
                     </div>
                   </div>
@@ -736,12 +739,15 @@
               <span class="product-price-current product__price price price-item--regular" id="ProductPrice">
                 {{ current_variant.price | default: 359900 | money }}
               </span>
-              {%- if current_variant.compare_at_price > current_variant.price or product.compare_at_price > product.price -%}
-                <s class="product-price-compare product__price--compare price-item--compare compare-price" id="ProductComparePrice">
-                  {{ current_variant.compare_at_price | default: 449900 | money }}
-                </s>
-                <span class="product-discount-badge product__badge--sale sale-badge price__badge price-item--sale" id="ProductDiscountBadge">SAVE 20%</span>
-              {%- endif -%}
+            {%- assign cur_comp = current_variant.compare_at_price | default: product.compare_at_price -%}
+            {%- assign cur_price = current_variant.price | default: product.price -%}
+            {%- if cur_comp > cur_price -%}
+              {%- assign savings_pct = cur_comp | minus: cur_price | times: 100.0 | divided_by: cur_comp | round -%}
+              <s class="product-price-compare product__price--compare price-item--compare compare-price" id="ProductComparePrice">
+                {{ cur_comp | money }}
+              </s>
+              <span class="product-discount-badge product__badge--sale sale-badge price__badge price-item--sale" id="ProductDiscountBadge">SAVE {{ savings_pct }}%</span>
+            {%- endif -%}
             </div>
 
             <div class="product-option-header">
@@ -919,6 +925,8 @@
             {{ product.description | default: '<p>The 2026 Light Bee delivers 10kW peak output with instantaneous torque vectoring in a razor-sharp 59kg forged alloy chassis. Engineered for relentless trail performance and absolute airborne control.</p>' }}
           {%- endcapture -%}
           {%- assign rendered_desc = rendered_desc 
+            | replace: '<h1', '<h2'
+            | replace: '</h1', '</h2'
             | replace: '2026 Sur-Ron Light Bee X <span', '2026 Sur-Ron Light Bee X<br><span' 
             | replace: '2026 Sur-Ron Light Bee X<span', '2026 Sur-Ron Light Bee X<br><span' 
             | replace: 'margin-bottom: 40px;', 'margin-bottom: 30px;'
@@ -1727,8 +1735,11 @@
 
     /* 1. Split main title to TWO lines */
     .pd-hero-title h1, 
+    .pd-hero-title h2, 
     .product-desc h1,
-    .product-desc div[style*="text-align: center"] h1 {
+    .product-desc h2,
+    .product-desc div[style*="text-align: center"] h1,
+    .product-desc div[style*="text-align: center"] h2 {
       font-family: 'Archivo', sans-serif !important;
       font-style: italic !important;
       font-weight: 900 !important;
@@ -1743,7 +1754,9 @@
     }
 
     .pd-hero-title h1 span,
-    .product-desc h1 span {
+    .pd-hero-title h2 span,
+    .product-desc h1 span,
+    .product-desc h2 span {
       display: block !important;
       color: #1E90FF !important;
     }

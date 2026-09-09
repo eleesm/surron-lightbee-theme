@@ -2,26 +2,30 @@
   <div class="sticky-buy-bar__inner">
     <div class="sticky-buy-bar__product">
       <img
-        src="{{ 'volt.jpg' | asset_url | img_url: 'master' }}"
-        alt="Sur-Ron Light Bee 2026 Thumbnail"
+        src="{{ 'volt.jpg' | asset_url }}"
+        alt="{{ product.title | default: 'Sur-Ron Light Bee 2026' }} Thumbnail"
         class="sticky-buy-bar__thumb"
         width="80"
         height="55"
         loading="lazy"
       >
       <div class="sticky-buy-bar__info">
-        <span class="sticky-buy-bar__title">Sur-Ron Light Bee 2026</span>
+        <span class="sticky-buy-bar__title">{{ product.title | default: 'Sur-Ron Light Bee 2026' }}</span>
         <span class="sticky-buy-bar__stock">⚡ In Stock — Ships in 24h</span>
       </div>
     </div>
 
     <div class="sticky-buy-bar__pricing">
-      <span class="sticky-buy-bar__price-current">{{ section.settings.price | default: '$3,599' }}</span>
-      <span class="sticky-buy-bar__price-original">{{ section.settings.compare_price | default: '$4,499' }}</span>
+      <span class="sticky-buy-bar__price-current">{{ product.price | default: 359900 | money }}</span>
+      {%- if product.compare_at_price > product.price -%}
+        <span class="sticky-buy-bar__price-original">{{ product.compare_at_price | money }}</span>
+      {%- elsif section.settings.compare_price != blank -%}
+        <span class="sticky-buy-bar__price-original">{{ section.settings.compare_price }}</span>
+      {%- endif -%}
     </div>
 
     <div class="sticky-buy-bar__action">
-      <a href="{{ section.settings.cta_link | default: '#colors' }}" class="btn btn-accent-blue pill sticky-buy-bar__btn">
+      <a href="{{ section.settings.cta_link | default: '#ProductForm' }}" class="btn btn-accent-blue pill sticky-buy-bar__btn">
         {{ section.settings.cta_text | default: 'Order Now' }}
       </a>
     </div>

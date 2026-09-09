@@ -1,6 +1,6 @@
 <section class="faq-section" id="faq" aria-labelledby="FaqHeading">
   <div class="faq__container">
-    <div class="faq__header text-center scroll-reveal">
+    <div class="faq__header text-center" data-rv>
       <span class="faq__eyebrow">COMMON QUESTIONS</span>
       <h2 id="FaqHeading" class="faq__heading">
         {{ section.settings.heading | default: 'FAQ' }}
@@ -10,7 +10,7 @@
       </p>
     </div>
 
-    <div class="faq__list scroll-reveal delay-1">
+    <div class="faq__list" data-rv>
       <!-- Item 1 -->
       <div class="faq-item">
         <button type="button" class="faq-header" aria-expanded="false">
@@ -175,6 +175,10 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .faq-item.is-open .faq-body {
+    max-height: 1000px;
   }
 
   .faq-content {

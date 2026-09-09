@@ -1,13 +1,9 @@
 {% style %}
-  {% # Loads all font variantions with display: swap %}
-  {{ settings.type_primary_font | font_face: font_display: 'swap' }}
-  {{ settings.type_primary_font | font_modify: 'weight', 'bold' | font_face: font_display: 'swap' }}
-  {{ settings.type_primary_font | font_modify: 'weight', 'bold' | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}
-  {{ settings.type_primary_font | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}
-
   :root {
     --font-heading-family: 'Archivo', sans-serif;
     --font-body-family: 'Inter', sans-serif;
+    --font-heading: var(--font-heading-family);
+    --font-body: var(--font-body-family);
     --font-primary--family: var(--font-body-family);
     --font-primary--style: normal;
     --font-primary--weight: 400;
