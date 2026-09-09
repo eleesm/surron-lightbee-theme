@@ -507,28 +507,48 @@ h1.product-title {
     box-sizing: border-box !important;
   }
 
-  /* 1. Force main title to ONE line */
+  /* 1. Split main title to TWO lines */
   .pd-hero-title h1, 
   .product-desc h1,
   .product-desc div[style*="text-align: center"] h1 {
-    font-size: 18px !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+    font-family: 'Archivo', sans-serif !important;
+    font-style: italic !important;
+    font-weight: 900 !important;
+    font-size: 22px !important;
+    line-height: 1.3 !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
     text-align: center !important;
     width: 100% !important;
-    margin-bottom: 15px !important;
+    margin: 0 auto 20px auto !important;
+  }
+
+  .pd-hero-title h1 span,
+  .product-desc h1 span {
+    display: block !important;
+    color: #1E90FF !important;
   }
   
-  /* 2. Force "ELECTRIC DIRT BIKE" box text to ONE line */
+  /* 2. Force "ELECTRIC DIRT BIKE" box text to ONE line and CENTER it */
+  .pd-intro,
+  .product-desc .pd-intro,
+  .product-desc div[style*="linear-gradient"] {
+    text-align: center !important;
+    padding: 30px 20px !important;
+    margin-bottom: 30px !important;
+    border-radius: 20px !important;
+  }
+
   .pd-intro h2, 
   .product-desc .pd-intro h2,
   .product-desc div[style*="linear-gradient"] h2 {
     font-size: 20px !important;
     white-space: nowrap !important;
     padding: 8px 20px !important;
-    display: inline-block !important;
-    margin-bottom: 15px !important;
+    display: table !important;
+    margin: 0 auto 15px auto !important;
+    text-align: center !important;
   }
   
   /* 3. Make description text smaller and more compact */
@@ -538,15 +558,7 @@ h1.product-title {
     font-size: 12px !important;
     line-height: 1.4 !important;
     margin-top: 10px !important;
-  }
-
-  /* Compact container styling on mobile for intro box */
-  .pd-intro,
-  .product-desc .pd-intro,
-  .product-desc div[style*="linear-gradient"] {
-    padding: 30px 20px !important;
-    margin-bottom: 30px !important;
-    border-radius: 20px !important;
+    text-align: left !important;
   }
 
   /* General text adjustments for mobile */

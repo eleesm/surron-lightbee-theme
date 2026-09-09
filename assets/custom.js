@@ -408,11 +408,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const inner = productDesc.querySelector('div[style*="max-width: 1200px"]') || productDesc.querySelector('div > div');
     if (inner) inner.classList.add('pd-container');
 
-    const heroTitle = productDesc.querySelector('h1')?.closest('div') || productDesc.querySelector('div[style*="text-align: center"]');
-    if (heroTitle) heroTitle.classList.add('pd-hero-title');
+    const h1 = productDesc.querySelector('h1');
+    if (h1) {
+      const heroTitle = h1.closest('div') || productDesc.querySelector('div[style*="text-align: center"]');
+      if (heroTitle) {
+        heroTitle.classList.add('pd-hero-title');
+        heroTitle.style.marginBottom = '30px';
+      }
+      if (!h1.querySelector('br') && h1.querySelector('span')) {
+        const span = h1.querySelector('span');
+        const br = document.createElement('br');
+        h1.insertBefore(br, span);
+      }
+    }
 
     const introSection = productDesc.querySelector('div[style*="linear-gradient"]') || productDesc.querySelector('.pd-intro');
-    if (introSection) introSection.classList.add('pd-intro');
+    if (introSection) {
+      introSection.classList.add('pd-intro');
+      const h2 = introSection.querySelector('h2');
+      if (h2) {
+        h2.style.margin = '0 auto 15px auto';
+        h2.style.display = 'table';
+        h2.style.textAlign = 'center';
+      }
+    }
 
     const grids = productDesc.querySelectorAll('div[style*="display: grid"], .pd-features');
     grids.forEach(grid => {
