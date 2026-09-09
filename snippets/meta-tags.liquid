@@ -10,6 +10,37 @@
     assign og_type = 'article'
   elsif request.page_type == 'password'
     assign og_url = request.origin
+  elsif request.page_type == 'page'
+    case page.handle
+      when 'about-us'
+        assign custom_seo_title = 'About Bike Bee - Premium Electric Dirt Bikes | Sur-Ron Light Bee'
+        assign custom_seo_desc = 'Bike Bee is your trusted source for high-performance electric dirt bikes. Learn about our mission to provide eco-friendly off-road vehicles with exceptional service.'
+      when 'privacy-policy'
+        assign custom_seo_title = 'Privacy Policy - Bike Bee | CCPA Compliant Data Protection'
+        assign custom_seo_desc = 'Bike Bee Privacy Policy explains how we collect, use, and protect your personal information. CCPA and GDPR compliant. Last updated: September 2026.'
+      when 'refund-policy', 'refund-and-return-policy'
+        assign custom_seo_title = 'Refund & Return Policy - 30-Day Money-Back Guarantee | Bike Bee'
+        assign custom_seo_desc = 'Bike Bee offers a 30-day money-back guarantee and 100-day warranty. Free returns for defective items. Read our complete refund and return policy.'
+      when 'shipping-policy'
+        assign custom_seo_title = 'Shipping Policy - Free 7-Day USA Shipping | Bike Bee'
+        assign custom_seo_desc = 'Free shipping on all orders! Bike Bee ships within 24-48 hours with 7-day delivery across USA. Track your order in real-time.'
+      when 'terms-of-service', 'terms-and-conditions'
+        assign custom_seo_title = "Terms of Service - Bike Bee | Legal Terms & Conditions"
+        assign custom_seo_desc = "Read Bike Bee's Terms of Service. Important information about off-road use only, warranty, liability, and your rights as a customer."
+      when 'contact-us', 'contact'
+        assign custom_seo_title = "Contact Us - Bike Bee | We're Here to Help"
+        assign custom_seo_desc = "Have questions? Contact Bike Bee for expert support. Email: contact@bikebee.shop | 430 W Ventura St, Dinuba, CA 93618 | Response within 24 hours."
+      when 'faq', 'faqs'
+        assign custom_seo_title = 'Frequently Asked Questions - Sur-Ron Light Bee | Bike Bee'
+        assign custom_seo_desc = 'Find answers to common questions about the 2026 Sur-Ron Light Bee X, 7-day free shipping, 100-day warranty, 30-day returns, and off-road legality.'
+    endcase
+
+    if custom_seo_title != blank
+      assign og_title = custom_seo_title
+    endif
+    if custom_seo_desc != blank
+      assign og_description = custom_seo_desc
+    endif
   endif
 %}
 
@@ -82,10 +113,14 @@
 >
 
 <title>
-  {{ page_title }}
-  {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-  {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-  {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  {%- if custom_seo_title != blank -%}
+    {{ custom_seo_title | escape }}
+  {%- else -%}
+    {{ page_title }}
+    {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  {%- endif -%}
 </title>
 
 <link
@@ -93,9 +128,47 @@
   href="{{ canonical_url }}"
 >
 
-{% if page_description %}
+{%- assign meta_desc_output = custom_seo_desc | default: page_description -%}
+{%- if meta_desc_output != blank -%}
   <meta
     name="description"
-    content="{{ page_description | escape }}"
+    content="{{ meta_desc_output | escape }}"
   >
-{% endif %}
+{%- endif -%}
+
+<!-- Schema.org Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Bike Bee",
+  "url": "https://bikebee.shop",
+  "logo": "https://bikebee.shop/cdn/shop/files/ChatGPT_Image_Sep_6_2026_05_54_14_PM.png",
+  "email": "contact@bikebee.shop",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "430 W Ventura St",
+    "addressLocality": "Dinuba",
+    "addressRegion": "CA",
+    "postalCode": "93618",
+    "addressCountry": "US"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "email": "contact@bikebee.shop",
+    "availableLanguage": "English"
+  }
+}
+</script>
+{%- if request.page_type == 'page' and page.handle == 'contact-us' or page.handle == 'contact' -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Us - Bike Bee",
+  "url": "{{ canonical_url }}",
+  "description": "Have questions? Contact Bike Bee for expert support. Email: contact@bikebee.shop | 430 W Ventura St, Dinuba, CA 93618 | Response within 24 hours."
+}
+</script>
+{%- endif -%}
