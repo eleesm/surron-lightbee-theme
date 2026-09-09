@@ -174,15 +174,38 @@
       box-sizing: border-box !important;
     }
 
-    /* 2. Compact text & headings inside dark and content sections */
+    /* 2. Compact section titles: single line, 16px-17.5px, left-aligned */
+    .pd-section h2,
+    .pd-dark-section h2,
+    .product-desc .pd-section h2,
+    .product-desc .pd-dark-section h2,
     .product-desc div[style*="border-radius: 32px"] h2,
+    .product-desc div[style*="border-radius:32px"] h2,
     .product-desc div[style*="background: #0B0B0C"] h2,
     .product-desc div[style*="background:#0B0B0C"] h2,
-    .product-desc .pd-section h2,
-    .product-desc .pd-dark-section h2 {
-      font-size: 22px !important;
+    .product-desc div[style*="background: #fff"] h2,
+    .product-desc div[style*="background:#fff"] h2,
+    .product-desc div[style*="background: #ffffff"] h2,
+    .product-desc div[style*="background:#ffffff"] h2,
+    .pd-section h3,
+    .pd-dark-section h3,
+    .product-desc .pd-section h3,
+    .product-desc .pd-dark-section h3,
+    .product-desc div[style*="border-radius: 32px"] h3,
+    .product-desc div[style*="border-radius:32px"] h3,
+    .product-desc div[style*="background: #0B0B0C"] h3,
+    .product-desc div[style*="background:#0B0B0C"] h3,
+    .product-desc div[style*="background: #fff"] h3,
+    .product-desc div[style*="background:#fff"] h3 {
+      font-size: clamp(16px, 4.3vw, 17.5px) !important;
+      font-weight: 900 !important;
+      font-style: italic !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      text-align: left !important;
       line-height: 1.25 !important;
-      margin: 0 0 14px 0 !important;
+      margin: 0 0 10px 0 !important;
     }
 
     /* Intro white badge box */
@@ -862,6 +885,8 @@
             | replace: 'style="background: linear-gradient(135deg, #0B0B0C', 'class="pd-intro pd-dark-section pd-section" style="background: linear-gradient(135deg, #0B0B0C'
             | replace: 'style="background: rgba(30, 144, 255, 0.1); border-left: 4px solid #1E90FF;', 'class="pd-highlight-box" style="background: rgba(30, 144, 255, 0.1); border-left: 4px solid #1E90FF;'
             | replace: 'style="background: #fff; padding: 60px 40px; border-radius: 32px;', 'class="pd-section" style="background: #fff; padding: 60px 40px; border-radius: 32px;'
+            | replace: 'style="background:#fff; padding: 60px 40px; border-radius: 32px;', 'class="pd-section" style="background:#fff; padding: 60px 40px; border-radius: 32px;'
+            | replace: 'style="background: #ffffff; padding: 60px 40px; border-radius: 32px;', 'class="pd-section" style="background: #ffffff; padding: 60px 40px; border-radius: 32px;'
           -%}
           {{ rendered_desc }}
         </div>
@@ -1721,15 +1746,38 @@
       box-sizing: border-box !important;
     }
 
-    /* 2. Compact text & headings inside dark and content sections */
+    /* 2. Compact section titles: single line, 16px-17.5px, left-aligned */
+    .pd-section h2,
+    .pd-dark-section h2,
+    .product-desc .pd-section h2,
+    .product-desc .pd-dark-section h2,
     .product-desc div[style*="border-radius: 32px"] h2,
+    .product-desc div[style*="border-radius:32px"] h2,
     .product-desc div[style*="background: #0B0B0C"] h2,
     .product-desc div[style*="background:#0B0B0C"] h2,
-    .product-desc .pd-section h2,
-    .product-desc .pd-dark-section h2 {
-      font-size: 22px !important;
+    .product-desc div[style*="background: #fff"] h2,
+    .product-desc div[style*="background:#fff"] h2,
+    .product-desc div[style*="background: #ffffff"] h2,
+    .product-desc div[style*="background:#ffffff"] h2,
+    .pd-section h3,
+    .pd-dark-section h3,
+    .product-desc .pd-section h3,
+    .product-desc .pd-dark-section h3,
+    .product-desc div[style*="border-radius: 32px"] h3,
+    .product-desc div[style*="border-radius:32px"] h3,
+    .product-desc div[style*="background: #0B0B0C"] h3,
+    .product-desc div[style*="background:#0B0B0C"] h3,
+    .product-desc div[style*="background: #fff"] h3,
+    .product-desc div[style*="background:#fff"] h3 {
+      font-size: clamp(16px, 4.3vw, 17.5px) !important;
+      font-weight: 900 !important;
+      font-style: italic !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      text-align: left !important;
       line-height: 1.25 !important;
-      margin: 0 0 14px 0 !important;
+      margin: 0 0 10px 0 !important;
     }
 
     /* Paragraphs: 13.5px font size, 1.4 line-height, compact bottom margin */

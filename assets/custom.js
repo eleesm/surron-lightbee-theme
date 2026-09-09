@@ -463,7 +463,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const tables = productDesc.querySelectorAll('table');
     tables.forEach(table => table.classList.add('pd-table'));
 
-    const sections = productDesc.querySelectorAll('div[style*="border-radius: 32px"], div[style*="background: #0B0B0C"]');
+    const sections = productDesc.querySelectorAll('div[style*="border-radius: 32px"], div[style*="background: #0B0B0C"], div[style*="background:#0B0B0C"], div[style*="background: #fff"], div[style*="background:#fff"]');
     sections.forEach(sec => {
       sec.classList.add('pd-section');
       const style = sec.getAttribute('style') || '';
