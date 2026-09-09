@@ -1,1 +1,8 @@
-{% render 'page-terms-of-service' %}
+<div class="page__wrapper full-width">
+  <div class="page__container">
+    <h1 class="page__title">{{ page.title | default: 'Terms of Service' }}</h1>
+    <div class="page__content">
+      {% render 'page-terms-of-service' %}
+    </div>
+  </div>
+</div>

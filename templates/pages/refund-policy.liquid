@@ -1,1 +1,8 @@
-{% render 'page-refund-policy' %}
+<div class="page__wrapper full-width">
+  <div class="page__container">
+    <h1 class="page__title">{{ page.title | default: 'Refund & Return Policy' }}</h1>
+    <div class="page__content">
+      {% render 'page-refund-policy' %}
+    </div>
+  </div>
+</div>

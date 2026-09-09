@@ -1,1 +1,8 @@
-{% render 'page-faq' %}
+<div class="page__wrapper full-width">
+  <div class="page__container">
+    <h1 class="page__title">{{ page.title | default: 'Frequently Asked Questions' }}</h1>
+    <div class="page__content">
+      {% render 'page-faq' %}
+    </div>
+  </div>
+</div>
