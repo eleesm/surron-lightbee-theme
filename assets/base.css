@@ -431,6 +431,9 @@ h1.product-title {
     gap: 10px !important;
     padding: 0 10px !important;
     width: 100% !important;
+    margin-top: 20px !important;
+    margin-bottom: 25px !important;
+    box-sizing: border-box !important;
   }
   
   /* Reduce card padding and size */
@@ -438,37 +441,56 @@ h1.product-title {
   .product-desc .pd-feature,
   .product-desc div[style*="repeat(4, 1fr)"] > div,
   .product-desc div[style*="repeat(4,"] > div {
-    padding: 15px 10px !important;
-    border-radius: 16px !important;
+    padding: 14px 10px !important;
+    border-radius: 14px !important;
+    box-sizing: border-box !important;
+    min-height: auto !important;
   }
   
   /* Make icons smaller */
   .pd-feature .icon,
   .pd-feature svg,
+  .pd-feature img,
   .product-desc .pd-feature svg,
+  .product-desc .pd-feature img,
   .product-desc div[style*="repeat(4, 1fr)"] svg,
   .product-desc div[style*="repeat(4,"] svg {
     width: 40px !important;
     height: 40px !important;
-    margin: 0 auto 10px auto !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
+    margin: 0 auto 8px auto !important;
     display: block !important;
   }
   
   /* Make card titles smaller */
   .pd-feature h3,
+  .pd-feature h4,
+  .pd-feature strong,
   .product-desc .pd-feature h3,
+  .product-desc .pd-feature h4,
+  .product-desc .pd-feature strong,
   .product-desc div[style*="repeat(4, 1fr)"] h3,
-  .product-desc div[style*="repeat(4,"] h3 {
+  .product-desc div[style*="repeat(4, 1fr)"] h4,
+  .product-desc div[style*="repeat(4, 1fr)"] strong,
+  .product-desc div[style*="repeat(4,"] h3,
+  .product-desc div[style*="repeat(4,"] h4,
+  .product-desc div[style*="repeat(4,"] strong {
     font-size: 12px !important;
-    margin: 8px 0 6px 0 !important;
+    margin: 6px 0 4px 0 !important;
     line-height: 1.2 !important;
+    letter-spacing: 0.5px !important;
   }
   
   /* Make card text smaller and more compact */
   .pd-feature p,
   .product-desc .pd-feature p,
   .product-desc div[style*="repeat(4, 1fr)"] p,
-  .product-desc div[style*="repeat(4,"] p {
+  .product-desc div[style*="repeat(4,"] p,
+  .product-desc div[style*="repeat(4, 1fr)"] > div > p,
+  .product-desc div[style*="repeat(4,"] > div > p {
     font-size: 10px !important;
     line-height: 1.3 !important;
     margin: 0 !important;
