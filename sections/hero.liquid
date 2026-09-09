@@ -77,34 +77,40 @@
           media="(max-width: 768px)"
           srcset="
             {{ section.settings.mobile_hero_image | image_url: width: 480, format: 'webp' }} 480w,
-            {{ section.settings.mobile_hero_image | image_url: width: 750, format: 'webp' }} 750w
+            {{ section.settings.mobile_hero_image | image_url: width: 750, format: 'webp' }} 750w,
+            {{ section.settings.mobile_hero_image | image_url: width: 800, format: 'webp' }} 800w
           "
           sizes="100vw"
           type="image/webp"
         >
         <source
           media="(max-width: 768px)"
-          srcset="{{ section.settings.mobile_hero_image | image_url: width: 750 }}"
+          srcset="
+            {{ section.settings.mobile_hero_image | image_url: width: 480 }} 480w,
+            {{ section.settings.mobile_hero_image | image_url: width: 800 }} 800w
+          "
           sizes="100vw"
         >
       {% endif %}
       {% if section.settings.hero_image != blank %}
         <img
-          src="{{ section.settings.hero_image | image_url: width: 2000 }}"
+          src="{{ section.settings.hero_image | image_url: width: 2000, format: 'webp' }}"
           alt="{{ section.settings.hero_image.alt | default: 'Sur-Ron Light Bee 2026 Electric Dirt Bike Hero Shot' }}"
           class="hero__bg-img hero-image hero__image hero__media-img ken-burns"
           loading="eager"
           fetchpriority="high"
+          decoding="async"
           width="2000"
           height="1125"
         >
       {% elsif section.settings.image != blank %}
         <img
-          src="{{ section.settings.image | image_url: width: 2000 }}"
+          src="{{ section.settings.image | image_url: width: 2000, format: 'webp' }}"
           alt="{{ section.settings.image.alt | default: 'Sur-Ron Light Bee 2026 Electric Dirt Bike Hero Shot' }}"
           class="hero__bg-img hero-image hero__image hero__media-img ken-burns"
           loading="eager"
           fetchpriority="high"
+          decoding="async"
           width="2000"
           height="1125"
         >
@@ -115,6 +121,7 @@
           class="hero__bg-img hero-image hero__image hero__media-img ken-burns"
           loading="eager"
           fetchpriority="high"
+          decoding="async"
           width="2000"
           height="1125"
         >

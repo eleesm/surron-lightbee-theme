@@ -40,7 +40,7 @@
               <div class="cart-drawer__item-image-wrap">
                 {%- if item.image -%}
                   <img
-                    src="{{ item.image | image_url: width: 140, height: 140 }}"
+                    src="{{ item.image | image_url: width: 140, height: 140, format: 'webp' }}"
                     alt="{{ item.title | escape }}"
                     class="cart-drawer__item-image"
                     width="64"

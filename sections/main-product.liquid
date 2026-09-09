@@ -428,16 +428,16 @@
 
   {%- comment -%} Image sources with asset fallbacks {%- endcomment -%}
   {%- assign volt_img = volt_variant.featured_media | default: 'volt.jpg' | asset_url -%}
-  {%- if volt_variant.featured_media -%}{%- assign volt_img = volt_variant.featured_media | image_url: width: 2000 -%}{%- endif -%}
+  {%- if volt_variant.featured_media -%}{%- assign volt_img = volt_variant.featured_media | image_url: width: 2000, format: 'webp' -%}{%- endif -%}
 
   {%- assign arctic_img = arctic_variant.featured_media | default: 'arctic.jpg' | asset_url -%}
-  {%- if arctic_variant.featured_media -%}{%- assign arctic_img = arctic_variant.featured_media | image_url: width: 2000 -%}{%- endif -%}
+  {%- if arctic_variant.featured_media -%}{%- assign arctic_img = arctic_variant.featured_media | image_url: width: 2000, format: 'webp' -%}{%- endif -%}
 
   {%- assign olive_img = olive_variant.featured_media | default: 'olive.jpg' | asset_url -%}
-  {%- if olive_variant.featured_media -%}{%- assign olive_img = olive_variant.featured_media | image_url: width: 2000 -%}{%- endif -%}
+  {%- if olive_variant.featured_media -%}{%- assign olive_img = olive_variant.featured_media | image_url: width: 2000, format: 'webp' -%}{%- endif -%}
 
   {%- assign ultra_img = ultra_variant.featured_media | default: 'ultra.jpg' | asset_url -%}
-  {%- if ultra_variant.featured_media -%}{%- assign ultra_img = ultra_variant.featured_media | image_url: width: 2000 -%}{%- endif -%}
+  {%- if ultra_variant.featured_media -%}{%- assign ultra_img = ultra_variant.featured_media | image_url: width: 2000, format: 'webp' -%}{%- endif -%}
 
   {%- comment -%} Determine initial active image {%- endcomment -%}
   {%- assign initial_image = volt_img -%}
@@ -449,9 +449,9 @@
     {%- assign initial_image = ultra_img -%}
   {%- endif -%}
   {%- if current_variant.featured_media -%}
-    {%- assign initial_image = current_variant.featured_media | image_url: width: 2000 -%}
+    {%- assign initial_image = current_variant.featured_media | image_url: width: 2000, format: 'webp' -%}
   {%- elsif product.featured_media -%}
-    {%- assign initial_image = product.featured_media | image_url: width: 2000 -%}
+    {%- assign initial_image = product.featured_media | image_url: width: 2000, format: 'webp' -%}
   {%- endif -%}
 
   <div class="product-page-container container">
@@ -486,11 +486,11 @@
               <button
                 type="button"
                 class="product-gallery-thumb product-media-thumbnail {% if forloop.first %}is-active active{% endif %}"
-                data-media-url="{{ media | image_url: width: 2000 }}"
+                data-media-url="{{ media | image_url: width: 2000, format: 'webp' }}"
                 aria-label="View media item {{ forloop.index }}"
               >
                 <img
-                  src="{{ media | image_url: width: 300, height: 300 }}"
+                  src="{{ media | image_url: width: 300, height: 300, format: 'webp' }}"
                   alt="{{ media.alt | default: product.title }}"
                   width="100"
                   height="100"

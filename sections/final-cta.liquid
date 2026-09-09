@@ -2,7 +2,7 @@
   <div class="final-cta__bg-container">
     {% if section.settings.cta_image != blank %}
       <img
-        src="{{ section.settings.cta_image | image_url: width: 2000 }}"
+        src="{{ section.settings.cta_image | image_url: width: 2000, format: 'webp' }}"
         alt="{{ section.settings.cta_image.alt | default: 'Sur-Ron Light Bee 2026 Background' }}"
         class="final-cta__bg-img ken-burns"
         loading="lazy"
@@ -11,7 +11,7 @@
       >
     {% elsif section.settings.image != blank %}
       <img
-        src="{{ section.settings.image | image_url: width: 2000 }}"
+        src="{{ section.settings.image | image_url: width: 2000, format: 'webp' }}"
         alt="{{ section.settings.image.alt | default: 'Sur-Ron Light Bee 2026 Background' }}"
         class="final-cta__bg-img ken-burns"
         loading="lazy"

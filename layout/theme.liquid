@@ -6,7 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {%- if template.name == 'index' -%}
+      {% # theme-check-disable AssetPreload %}
       <link rel="preload" as="image" href="{{ 'hero.jpg' | asset_url }}" fetchpriority="high" media="(min-width: 769px)">
+      {%- if images['ChatGPT_Image_Sep_6_2026_05_54_14_PM.png'] != blank -%}
+        <link rel="preload" as="image" href="{{ images['ChatGPT_Image_Sep_6_2026_05_54_14_PM.png'] | image_url: width: 800, format: 'webp' }}" fetchpriority="high" media="(max-width: 768px)">
+      {%- endif -%}
+      {% # theme-check-enable AssetPreload %}
     {%- endif -%}
 
     {% # theme-check-disable RemoteAsset %}
@@ -23,9 +28,14 @@
     {% # Inlined CSS Variables %}
     {% render 'css-variables' %}
 
-    {% # Stylesheets %}
-    {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
-    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {% # Inlined Critical CSS %}
+    <style id="critical-css">
+      {{ 'critical.css' | inline_asset_content }}
+    </style>
+
+    {% # Asynchronously loaded stylesheets to eliminate render-blocking delay %}
+    <link rel="stylesheet" href="{{ 'base.css' | asset_url }}" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="{{ 'base.css' | asset_url }}"></noscript>
     <link rel="stylesheet" href="{{ 'animations.css' | asset_url }}" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="{{ 'animations.css' | asset_url }}"></noscript>
 

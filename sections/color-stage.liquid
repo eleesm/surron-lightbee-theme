@@ -12,33 +12,33 @@
 
     {%- liquid
       if section.settings.volt_image != blank
-        assign volt_src = section.settings.volt_image | image_url: width: 2000
+        assign volt_src = section.settings.volt_image | image_url: width: 2000, format: 'webp'
       elsif section.settings.image_volt != blank
-        assign volt_src = section.settings.image_volt | image_url: width: 2000
+        assign volt_src = section.settings.image_volt | image_url: width: 2000, format: 'webp'
       else
         assign volt_src = 'volt.jpg' | asset_url
       endif
 
       if section.settings.arctic_image != blank
-        assign arctic_src = section.settings.arctic_image | image_url: width: 2000
+        assign arctic_src = section.settings.arctic_image | image_url: width: 2000, format: 'webp'
       elsif section.settings.image_arctic != blank
-        assign arctic_src = section.settings.image_arctic | image_url: width: 2000
+        assign arctic_src = section.settings.image_arctic | image_url: width: 2000, format: 'webp'
       else
         assign arctic_src = 'arctic.jpg' | asset_url
       endif
 
       if section.settings.olive_image != blank
-        assign olive_src = section.settings.olive_image | image_url: width: 2000
+        assign olive_src = section.settings.olive_image | image_url: width: 2000, format: 'webp'
       elsif section.settings.image_olive != blank
-        assign olive_src = section.settings.image_olive | image_url: width: 2000
+        assign olive_src = section.settings.image_olive | image_url: width: 2000, format: 'webp'
       else
         assign olive_src = 'olive.jpg' | asset_url
       endif
 
       if section.settings.ultra_image != blank
-        assign ultra_src = section.settings.ultra_image | image_url: width: 2000
+        assign ultra_src = section.settings.ultra_image | image_url: width: 2000, format: 'webp'
       elsif section.settings.image_ultra != blank
-        assign ultra_src = section.settings.image_ultra | image_url: width: 2000
+        assign ultra_src = section.settings.image_ultra | image_url: width: 2000, format: 'webp'
       else
         assign ultra_src = 'ultra.jpg' | asset_url
       endif
@@ -56,7 +56,7 @@
           {% if section.settings.volt_image != blank %}
             <img
               id="StageProductImage"
-              src="{{ section.settings.volt_image | image_url: width: 2000 }}"
+              src="{{ section.settings.volt_image | image_url: width: 2000, format: 'webp' }}"
               alt="{{ section.settings.volt_image.alt | default: 'Sur-Ron Light Bee 2026 - Volt Black' }}"
               class="stage-product-img"
               loading="lazy"
@@ -66,7 +66,7 @@
           {% elsif section.settings.image_volt != blank %}
             <img
               id="StageProductImage"
-              src="{{ section.settings.image_volt | image_url: width: 2000 }}"
+              src="{{ section.settings.image_volt | image_url: width: 2000, format: 'webp' }}"
               alt="{{ section.settings.image_volt.alt | default: 'Sur-Ron Light Bee 2026 - Volt Black' }}"
               class="stage-product-img"
               loading="lazy"
