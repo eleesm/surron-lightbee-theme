@@ -1147,6 +1147,7 @@ body.template-page .shopify-section,
   background-color: #F5F6F8 !important;
 }
 
+/* Fix page title hidden behind sticky header */
 .page__wrapper {
   background: #F5F6F8;
   min-height: 100vh;
@@ -1154,12 +1155,14 @@ body.template-page .shopify-section,
   max-width: 100% !important;
   box-sizing: border-box;
   padding: 80px 20px;
+  padding-top: 100px !important; /* Adjust based on header height */
   margin: 0 !important;
 }
 
 .page__container {
   max-width: 1200px;
   margin: 0 auto;
+  margin-top: 20px !important;
   padding: 40px 20px;
   background: white;
   border-radius: 16px;
@@ -1167,13 +1170,15 @@ body.template-page .shopify-section,
   box-sizing: border-box;
 }
 
-.page__title {
+.page__title,
+h1.page-title {
   font-family: 'Archivo', sans-serif;
   font-weight: 900;
   font-size: 36px;
   color: #0B0B0C;
   margin-bottom: 30px;
   text-align: center;
+  scroll-margin-top: 100px !important;
 }
 
 .page__content {
@@ -1447,6 +1452,7 @@ body.template-page .shopify-section,
 @media screen and (max-width: 768px) {
   .page__wrapper {
     padding: 40px 15px;
+    padding-top: 90px !important; /* Slightly less padding on mobile */
   }
 
   .page__container {
@@ -1454,9 +1460,11 @@ body.template-page .shopify-section,
     border-radius: 12px;
   }
   
-  .page__title {
+  .page__title,
+  h1.page-title {
     font-size: 28px;
     margin-bottom: 20px;
+    scroll-margin-top: 90px !important;
   }
   
   .page__content h2 {
