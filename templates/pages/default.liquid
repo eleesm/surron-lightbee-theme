@@ -2,7 +2,24 @@
   <div class="page__container">
     <h1 class="page__title">{{ page.title }}</h1>
     <div class="page__content">
-      {{ page.content }}
+      {% case page.handle %}
+        {% when 'about-us' %}
+          {% render 'page-about-us' %}
+        {% when 'privacy-policy', 'privacy-policy-1', 'privacy' %}
+          {% render 'page-privacy-policy' %}
+        {% when 'refund-policy', 'refund-and-return-policy' %}
+          {% render 'page-refund-policy' %}
+        {% when 'shipping-policy' %}
+          {% render 'page-shipping-policy' %}
+        {% when 'terms-of-service', 'terms-and-conditions' %}
+          {% render 'page-terms-of-service' %}
+        {% when 'contact-us', 'contact' %}
+          {% render 'page-contact-us' %}
+        {% when 'faq', 'faqs', 'f-a-q' %}
+          {% render 'page-faq' %}
+        {% else %}
+          {{ page.content }}
+      {% endcase %}
     </div>
   </div>
 </div>
