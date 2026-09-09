@@ -129,17 +129,117 @@
     font-size: 0.9rem;
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     .sticky-buy-bar {
-      bottom: 1rem;
-      padding: 0.65rem 1rem;
-      border-radius: 20px;
+      bottom: 12px !important;
+      left: 50% !important;
+      transform: translateX(-50%) translateY(120px) !important;
+      width: calc(100% - 24px) !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      padding: 10px 15px !important;
+      border-radius: 18px !important;
+      min-height: 60px !important;
+      max-height: 70px !important;
+      display: flex !important;
+      align-items: center !important;
+      overflow: hidden !important;
     }
+
+    .sticky-buy-bar.is-visible {
+      transform: translateX(-50%) translateY(0) !important;
+    }
+
+    .sticky-buy-bar__inner {
+      width: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 10px !important;
+      box-sizing: border-box !important;
+    }
+
+    .sticky-buy-bar__product {
+      display: flex !important;
+      align-items: center !important;
+      flex: 1 1 auto !important;
+      min-width: 0 !important;
+      gap: 0 !important;
+    }
+
+    .sticky-buy-bar__thumb,
     .sticky-buy-bar__stock {
-      display: none;
+      display: none !important;
     }
-    .sticky-buy-bar__thumb {
-      display: none;
+
+    .sticky-buy-bar__info {
+      min-width: 0 !important;
+      width: 100% !important;
+    }
+
+    .sticky-buy-bar__title {
+      font-size: 12px !important;
+      line-height: 1.25 !important;
+      color: #FFFFFF !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 2 !important;
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      word-break: break-word !important;
+      max-height: 2.5em !important;
+      margin: 0 !important;
+    }
+
+    .sticky-buy-bar__pricing {
+      flex: 0 0 auto !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      justify-content: center !important;
+      gap: 1px !important;
+      line-height: 1.1 !important;
+    }
+
+    .sticky-buy-bar__price-current {
+      font-size: 14px !important;
+      line-height: 1.1 !important;
+      color: #FFFFFF !important;
+      white-space: nowrap !important;
+      font-family: var(--font-heading, 'Archivo', sans-serif) !important;
+      font-weight: 900 !important;
+    }
+
+    .sticky-buy-bar__price-original {
+      font-size: 11px !important;
+      line-height: 1 !important;
+      color: rgba(255, 255, 255, 0.5) !important;
+      white-space: nowrap !important;
+      text-decoration: line-through !important;
+      font-family: var(--font-body, 'Inter', sans-serif) !important;
+    }
+
+    .sticky-buy-bar__action {
+      flex: 0 0 auto !important;
+      display: flex !important;
+      align-items: center !important;
+    }
+
+    .sticky-buy-bar__btn {
+      padding: 10px 16px !important;
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      white-space: nowrap !important;
+      flex-shrink: 0 !important;
+      line-height: 1 !important;
+      border-radius: 999px !important;
+      box-sizing: border-box !important;
+      background-color: var(--color-accent-blue, #1E90FF) !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 4px 12px rgba(30, 144, 255, 0.3) !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
     }
   }
 {% endstylesheet %}

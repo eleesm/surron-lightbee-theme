@@ -43,7 +43,7 @@
         {%- endif -%}
       {%- endif -%}
       {% # theme-check-disable HardcodedRoutes %}
-      <a href="{{ order_url }}" class="header__order-now-btn btn-order-now">
+      <a href="{{ order_url }}" class="header__order-now-btn btn-order-now{% if template.name == 'product' %} header__order-now-btn--product-hide-mobile{% endif %}">
         {{ section.settings.order_button_text | default: 'ORDER NOW' }}
       </a>
       {% # theme-check-enable HardcodedRoutes %}
@@ -333,6 +333,15 @@
       flex-shrink: 0 !important;
       line-height: 1 !important;
       letter-spacing: 0.02em !important;
+    }
+
+    /* Hide Order button in header on product page on mobile only */
+    .template-product .header .header__order-now-btn,
+    .template-product .header .btn-order-now,
+    .template-product .header__right .header__order-now-btn,
+    .template-product .header__right .btn-order-now,
+    .header__order-now-btn--product-hide-mobile {
+      display: none !important;
     }
   }
 
